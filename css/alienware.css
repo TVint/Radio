@@ -1,0 +1,1133 @@
+/* ============================================================================
+   ALIENWARE INVADER // THE SKINS FACTORY (css/alienware.css)
+   Art Direction & UI Architecture:
+   - Iconic Alienware Laptop Stealth Armor & Anodized Titanium Finish
+   - Dynamic AlienFX RGB Lighting System (Cyan Pulse, Area-51 Green, Aurora Purple, Stealth Red)
+   - 9-Slice Armor Frames (f_top_*, f_bot_*, f_left_*, f_right_*) with side LED light bars
+   - Interactive Invader Pod (preview.png shutter <-> main_back.png cockpit console)
+   - 16-Step Curved Volume Arch Sprite (volume.png)
+   - 10-Band BiquadFilter Equalizer (eq_back.png + eq_thumb.png) + Spatial Balance + SRS TruBass
+   ============================================================================ */
+
+:root {
+    /* Alienware Dark Gunmetal / Titanium Armor Palette */
+    --aw-bg-deep: #05070a;
+    --aw-bg-carbon: #0c1017;
+    --aw-chassis-dark: #121822;
+    --aw-chassis-mid: #1c2432;
+    --aw-alloy-silver: #c2cbd8;
+    --aw-alloy-bright: #e4ebf5;
+    --aw-bezel-shadow: #06090e;
+
+    /* Dynamic AlienFX Lighting (Default: Alienware Cyan Pulse) */
+    --fx-primary: #00f0ff;
+    --fx-secondary: #0077ff;
+    --fx-glow-sm: 0 0 8px rgba(0, 240, 255, 0.6);
+    --fx-glow-md: 0 0 18px rgba(0, 240, 255, 0.45);
+    --fx-glow-lg: 0 0 32px rgba(0, 240, 255, 0.35);
+    --fx-filter-hue: hue-rotate(0deg);
+
+    /* Physics & Transition curves */
+    --spring-snappy: cubic-bezier(0.22, 1, 0.36, 1);
+    --spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* AlienFX Colorway Overrides */
+body.alienware-body[data-alienfx="cyan"] {
+    --fx-primary: #00f0ff;
+    --fx-secondary: #0088ff;
+    --fx-glow-sm: 0 0 8px rgba(0, 240, 255, 0.65);
+    --fx-glow-md: 0 0 20px rgba(0, 240, 255, 0.5);
+    --fx-filter-hue: hue-rotate(0deg);
+}
+
+body.alienware-body[data-alienfx="green"] {
+    --fx-primary: #00ff66;
+    --fx-secondary: #00aa33;
+    --fx-glow-sm: 0 0 8px rgba(0, 255, 102, 0.65);
+    --fx-glow-md: 0 0 20px rgba(0, 255, 102, 0.5);
+    --fx-filter-hue: hue-rotate(115deg);
+}
+
+body.alienware-body[data-alienfx="purple"] {
+    --fx-primary: #d946ef;
+    --fx-secondary: #9333ea;
+    --fx-glow-sm: 0 0 8px rgba(217, 70, 239, 0.65);
+    --fx-glow-md: 0 0 20px rgba(217, 70, 239, 0.5);
+    --fx-filter-hue: hue-rotate(270deg);
+}
+
+body.alienware-body[data-alienfx="red"] {
+    --fx-primary: #ff2a4b;
+    --fx-secondary: #d90429;
+    --fx-glow-sm: 0 0 8px rgba(255, 42, 75, 0.65);
+    --fx-glow-md: 0 0 20px rgba(255, 42, 75, 0.5);
+    --fx-filter-hue: hue-rotate(170deg) invert(1) saturate(3);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body.alienware-body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: var(--aw-bg-deep);
+    background-image:
+        radial-gradient(circle at 50% 20%, rgba(0, 140, 255, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 10% 80%, rgba(0, 240, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 90% 85%, rgba(0, 80, 200, 0.1) 0%, transparent 50%),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.012) 0px, rgba(255, 255, 255, 0.012) 2px, transparent 2px, transparent 8px),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 16px 16px, 32px 32px, 32px 32px;
+    color: var(--aw-alloy-bright);
+    font-family: 'Chakra Petch', 'Share Tech Mono', sans-serif;
+    overflow-x: hidden;
+    padding-bottom: 40px;
+}
+
+/* ============================================================================
+   1. TOP ALIENWARE RIG STATUS BAR & ALIENFX COLORWAY SELECTOR
+   ============================================================================ */
+
+.alienware-header-bar {
+    max-width: 1400px;
+    margin: 12px auto 6px;
+    padding: 10px 18px;
+    background: linear-gradient(180deg, #1b2330 0%, #0d121a 100%);
+    border: 1px solid rgba(194, 203, 216, 0.28);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    position: relative;
+    z-index: 100;
+}
+
+.alienware-brand-cluster {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.alien-head-badge {
+    width: 32px;
+    height: 38px;
+    background-image: url('../assets/alienware/preview.png');
+    background-repeat: no-repeat;
+    background-size: auto 65px;
+    background-position: center 3px;
+    filter: drop-shadow(var(--fx-glow-sm));
+    animation: alien-pulse 2.2s infinite ease-in-out alternate;
+    cursor: pointer;
+}
+
+@keyframes alien-pulse {
+    0%   { filter: drop-shadow(0 0 4px var(--fx-primary)); transform: scale(0.97); }
+    100% { filter: drop-shadow(0 0 14px var(--fx-primary)); transform: scale(1.03); }
+}
+
+.alienware-title-group h1 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #fff;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.alienware-title-group .subline {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--fx-primary);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.alienfx-control-cluster {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.alienfx-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--aw-alloy-silver);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.alienfx-swatches {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.alienfx-swatch {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+    transition: transform 0.25s var(--spring-bounce), box-shadow 0.2s;
+}
+
+.alienfx-swatch:hover {
+    transform: scale(1.25);
+}
+
+.alienfx-swatch.active {
+    transform: scale(1.3);
+    border-color: #fff;
+    box-shadow: 0 0 12px currentColor;
+}
+
+.swatch-cyan   { background: #00f0ff; color: #00f0ff; }
+.swatch-green  { background: #00ff66; color: #00ff66; }
+.swatch-purple { background: #d946ef; color: #d946ef; }
+.swatch-red    { background: #ff2a4b; color: #ff2a4b; }
+
+/* ============================================================================
+   2. 9-SLICE LAPTOP ARMOR FRAME (.aw-armor-card)
+   Constructed from authentic Alienware Invader frame raster slices:
+   - Top-Left:  f_top_left.png (99x60)
+   - Top-Mid:   f_top_mid.png (136x35 with Alienware logo & Alien head)
+   - Top-Right: f_top_right.png (96x60)
+   - Left-Rail: f_left_tile.png (99x51 repeat-y with neon cyan vertical light bar)
+   - Right-Rail: f_right_tile.png (96x51 repeat-y with neon cyan light bar)
+   - Bot-Left:  f_bot_left.png (99x59)
+   - Bot-Mid:   f_bot_mid.png (136x35)
+   - Bot-Right: f_bot_right.png (96x59)
+   ============================================================================ */
+
+.aw-grid-shell {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 12px 14px 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+.aw-armor-card {
+    display: grid;
+    grid-template-columns: 99px 1fr 96px;
+    grid-template-rows: 60px 1fr 59px;
+    position: relative;
+    filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.85));
+    transition: transform 0.35s var(--spring-snappy), filter 0.35s ease;
+    isolation: isolate;
+}
+
+.aw-armor-card:hover {
+    filter: drop-shadow(0 22px 42px rgba(0, 0, 0, 0.9)) drop-shadow(var(--fx-glow-sm));
+}
+
+/* TOP RAIL */
+.aw-frame-top {
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
+    display: flex;
+    align-items: stretch;
+    height: 60px;
+    user-select: none;
+    z-index: 3;
+}
+
+.aw-top-l {
+    width: 99px;
+    flex-shrink: 0;
+    background-image: url('../assets/alienware/f_top_left.png');
+    background-repeat: no-repeat;
+    background-size: 99px 60px;
+}
+
+.aw-top-m {
+    flex: 1;
+    min-width: 20px;
+    background-image: url('../assets/alienware/f_top_mid.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 136px 35px;
+    background-color: #adb6c6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    border-top: 2px solid #eef2f7;
+    border-bottom: 2px solid #4a5464;
+    height: 35px;
+}
+
+.aw-top-r {
+    width: 96px;
+    flex-shrink: 0;
+    background-image: url('../assets/alienware/f_top_right.png');
+    background-repeat: no-repeat;
+    background-size: 96px 60px;
+}
+
+.aw-card-badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: #0b111a;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* SIDE RAILS with Authentic AlienFX Glowing Vertical Light Strips */
+.aw-side-l {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    background-image: url('../assets/alienware/f_left_tile.png');
+    background-repeat: repeat-y;
+    background-size: 99px 51px;
+    z-index: 2;
+    filter: var(--fx-filter-hue);
+}
+
+.aw-body-interior {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    background:
+        radial-gradient(circle at 50% 10%, rgba(28, 36, 50, 0.95), rgba(11, 15, 23, 0.98)),
+        linear-gradient(180deg, #151d2a 0%, #0a0d14 100%);
+    position: relative;
+    z-index: 1;
+    padding: 16px;
+    border-top: 1px solid rgba(194, 203, 216, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+}
+
+.aw-side-r {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+    background-image: url('../assets/alienware/f_right_tile.png');
+    background-repeat: repeat-y;
+    background-size: 96px 51px;
+    z-index: 2;
+    filter: var(--fx-filter-hue);
+}
+
+/* BOTTOM RAIL */
+.aw-frame-bot {
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+    display: flex;
+    align-items: flex-end;
+    height: 59px;
+    user-select: none;
+    z-index: 3;
+}
+
+.aw-bot-l {
+    width: 99px;
+    height: 59px;
+    flex-shrink: 0;
+    background-image: url('../assets/alienware/f_bot_left.png');
+    background-repeat: no-repeat;
+    background-size: 99px 59px;
+    filter: var(--fx-filter-hue);
+}
+
+.aw-bot-m {
+    flex: 1;
+    min-width: 20px;
+    height: 35px;
+    background-image: url('../assets/alienware/f_bot_mid.png');
+    background-repeat: repeat-x;
+    background-size: 136px 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px;
+}
+
+.aw-bot-r {
+    width: 96px;
+    height: 59px;
+    flex-shrink: 0;
+    background-image: url('../assets/alienware/f_bot_right.png');
+    background-repeat: no-repeat;
+    background-size: 96px 59px;
+    filter: var(--fx-filter-hue);
+}
+
+.aw-footer-telemetry {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: #4b5563;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+/* ============================================================================
+   3. MODULE 01: HERO INTERACTIVE INVADER POD (SHUTTER MORPH CONSOLE)
+   Switches between closed Pod (preview.png) & open cockpit (main_back.png)
+   ============================================================================ */
+
+.invader-hero-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-height: 420px;
+}
+
+/* Shutter Toggle Action Bar */
+.pod-mode-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed rgba(194, 203, 216, 0.2);
+}
+
+.pod-status-chip {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--fx-primary);
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--fx-primary);
+    padding: 4px 10px;
+    border-radius: 4px;
+    box-shadow: var(--fx-glow-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pod-toggle-btn {
+    appearance: none;
+    border: 1px solid var(--fx-primary);
+    background: linear-gradient(180deg, rgba(28, 42, 64, 0.9), rgba(11, 16, 26, 0.95));
+    color: #fff;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: var(--fx-glow-sm);
+    transition: transform 0.25s var(--spring-bounce), box-shadow 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pod-toggle-btn:hover {
+    transform: scale(1.05);
+    box-shadow: var(--fx-glow-md);
+}
+
+.pod-toggle-btn:active {
+    transform: scale(0.95);
+}
+
+/* The Invader Pod Outer Container */
+.invader-pod-chassis {
+    position: relative;
+    width: 406px;
+    height: 380px;
+    margin: 0 auto;
+    user-select: none;
+    transition: transform 0.4s var(--spring-bounce), filter 0.3s;
+}
+
+/* Closed Pod Mode View (preview.png 253x378) */
+.pod-closed-view {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 253px;
+    height: 378px;
+    background-image: url('../assets/alienware/preview.png');
+    background-repeat: no-repeat;
+    background-size: 253px 378px;
+    cursor: pointer;
+    filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.9));
+    transition: opacity 0.5s ease, transform 0.5s var(--spring-bounce);
+    z-index: 5;
+}
+
+.pod-closed-view:hover {
+    transform: translateX(-50%) scale(1.03);
+    filter: drop-shadow(var(--fx-glow-md));
+}
+
+/* Open Pod Cockpit Console (main_back.png 406x380) */
+.pod-open-view {
+    position: absolute;
+    inset: 0;
+    background-image: url('../assets/alienware/main_back.png');
+    background-repeat: no-repeat;
+    background-size: 406px 380px;
+    filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.95));
+    transition: opacity 0.5s ease, transform 0.5s var(--spring-bounce);
+    z-index: 4;
+}
+
+/* Shutter State Machine */
+.invader-pod-chassis.is-closed .pod-closed-view {
+    opacity: 1;
+    pointer-events: auto;
+}
+.invader-pod-chassis.is-closed .pod-open-view {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.92);
+}
+
+.invader-pod-chassis.is-open .pod-closed-view {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) scale(1.1);
+}
+.invader-pod-chassis.is-open .pod-open-view {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+/* ============================================================================
+   4. INTERACTIVE COCKPIT CONTROLS INSIDE THE OPEN POD
+   - 16-Step Curved Volume Arch: volume.png (560x85)
+   - Transport Buttons: Mute, Prev, Stop, Next, Play inside m_bot_no.png
+   - Digital Blue Time LCD
+   ============================================================================ */
+
+/* 16-Step Curved Volume Arch (volume.png) */
+.cockpit-volume-arch {
+    position: absolute;
+    left: 142px;
+    top: 158px;
+    width: 35px;
+    height: 85px;
+    background-image: url('../assets/alienware/volume.png');
+    background-repeat: no-repeat;
+    background-size: 560px 85px;
+    background-position: -490px 0; /* default 85% vol */
+    cursor: pointer;
+    z-index: 10;
+    filter: var(--fx-filter-hue) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.8));
+    transition: transform 0.2s var(--spring-bounce);
+}
+
+.cockpit-volume-arch:hover {
+    transform: scale(1.08);
+}
+
+/* Glowing Transport Button Group (left: 137px, top: 230px) */
+.cockpit-transport-group {
+    position: absolute;
+    left: 137px;
+    top: 230px;
+    width: 78px;
+    height: 72px;
+    background-image: url('../assets/alienware/m_bot_no.png');
+    background-repeat: no-repeat;
+    background-size: 78px 72px;
+    z-index: 10;
+    filter: var(--fx-filter-hue);
+}
+
+.cockpit-transport-group:hover {
+    background-image: url('../assets/alienware/m_bot_hov.gif');
+    filter: var(--fx-filter-hue) drop-shadow(0 0 10px var(--fx-primary));
+}
+
+/* Transparent Hit Zones positioned over the buttons */
+.cockpit-btn {
+    position: absolute;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.15s, transform 0.2s var(--spring-bounce);
+}
+
+.cockpit-btn:hover {
+    background: rgba(0, 240, 255, 0.25);
+    box-shadow: 0 0 8px var(--fx-primary);
+}
+
+.cockpit-btn:active {
+    transform: scale(0.9);
+}
+
+/* Hit zones over m_bot_no.png */
+.btn-hit-mute { left: 34px; top: 0px; width: 26px; height: 18px; }
+.btn-hit-prev { left: 4px; top: 22px; width: 24px; height: 20px; }
+.btn-hit-stop { left: 29px; top: 20px; width: 22px; height: 20px; }
+.btn-hit-next { left: 52px; top: 22px; width: 24px; height: 20px; }
+.btn-hit-play { left: 24px; top: 43px; width: 30px; height: 28px; }
+
+/* Pause overlay (left: 140px, top: 274px) */
+.cockpit-pause-overlay {
+    position: absolute;
+    left: 140px;
+    top: 274px;
+    width: 35px;
+    height: 27px;
+    background-image: url('../assets/alienware/m_pause_no.png');
+    background-repeat: no-repeat;
+    background-size: 35px 27px;
+    cursor: pointer;
+    z-index: 12;
+    display: none;
+    filter: var(--fx-filter-hue);
+}
+
+.cockpit-pause-overlay.active {
+    display: block;
+}
+
+.cockpit-pause-overlay:hover {
+    background-image: url('../assets/alienware/m_pause_hov.gif');
+    filter: var(--fx-filter-hue) drop-shadow(0 0 12px var(--fx-primary));
+}
+
+/* Digital Time LCD Display on Cockpit Screen */
+.cockpit-lcd-time {
+    position: absolute;
+    left: 110px;
+    top: 86px;
+    width: 60px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: #00f0ff;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px #00f0ff;
+    text-align: center;
+    z-index: 10;
+    filter: var(--fx-filter-hue);
+}
+
+/* Track Scrubber below Pod */
+.invader-scrubber-bar {
+    width: 100%;
+    max-width: 420px;
+    margin: 12px auto 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.scrubber-track-outer {
+    position: relative;
+    flex: 1;
+    height: 12px;
+    background: #090e16;
+    border: 1px solid rgba(194, 203, 216, 0.4);
+    border-radius: 999px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.scrubber-track-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0%;
+    background: linear-gradient(90deg, var(--fx-secondary) 0%, var(--fx-primary) 100%);
+    box-shadow: var(--fx-glow-sm);
+    pointer-events: none;
+}
+
+.time-readout {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--fx-primary);
+    min-width: 44px;
+    text-align: center;
+}
+
+/* ============================================================================
+   5. MODULE 02: 10-BAND BIQUAD EQUALIZER & SPATIAL PROCESSOR (eq_back.png)
+   359x213 Alienware Laptop Hardware Bay with Neon Blue Side Lightbars
+   ============================================================================ */
+
+.eq-bay-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+/* The Original 359x213 eq_back.png panel container */
+.eq-hardware-panel {
+    position: relative;
+    width: 359px;
+    height: 213px;
+    background-image: url('../assets/alienware/eq_back.png');
+    background-repeat: no-repeat;
+    background-size: 359px 213px;
+    border-radius: 4px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    user-select: none;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+}
+
+/* Neon Edge Glow Lightbars on eq_back.png */
+.eq-hardware-panel::before,
+.eq-hardware-panel::after {
+    content: "";
+    position: absolute;
+    top: 48px;
+    bottom: 48px;
+    width: 4px;
+    background: var(--fx-primary);
+    box-shadow: var(--fx-glow-md);
+    border-radius: 2px;
+    pointer-events: none;
+}
+.eq-hardware-panel::before { left: 4px; }
+.eq-hardware-panel::after  { right: 4px; }
+
+/* 10 Vertical Fader Slots inside eq_back.png (x: 34 to 178, y: 41 to 155) */
+.eq-slider-slot {
+    position: absolute;
+    width: 14px;
+    height: 114px;
+    top: 41px;
+    cursor: ns-resize;
+    touch-action: none;
+}
+
+.eq-slider-thumb {
+    position: absolute;
+    left: 2px;
+    width: 9px;
+    height: 19px;
+    top: calc(50% - 9px);
+    background-image: url('../assets/alienware/eq_thumb.png');
+    background-repeat: no-repeat;
+    background-size: 9px 19px;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9));
+    transition: transform 0.2s var(--spring-bounce);
+}
+
+.eq-slider-slot:hover .eq-slider-thumb {
+    transform: scale(1.25);
+    filter: drop-shadow(0 0 8px var(--fx-primary));
+}
+
+.eq-slider-slot.dragging .eq-slider-thumb {
+    background-image: url('../assets/alienware/eq_thumb_do.png');
+    transform: scale(1.35);
+    filter: drop-shadow(0 0 12px var(--fx-primary));
+}
+
+/* Balance Fader Slot in eq_back.png (x: 209 to 327, y: 42 to 62) */
+.balance-slider-slot {
+    position: absolute;
+    left: 209px;
+    top: 42px;
+    width: 118px;
+    height: 20px;
+    cursor: ew-resize;
+    touch-action: none;
+}
+
+.balance-slider-thumb {
+    position: absolute;
+    top: 1px;
+    left: calc(50% - 4px);
+    width: 9px;
+    height: 19px;
+    background-image: url('../assets/alienware/eq_thumb.png');
+    background-repeat: no-repeat;
+    background-size: 9px 19px;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+    transition: transform 0.2s var(--spring-bounce);
+}
+
+.balance-slider-slot:hover .balance-slider-thumb,
+.balance-slider-slot.dragging .balance-slider-thumb {
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 10px var(--fx-primary));
+}
+
+/* WOW Effects & SRS TruBass Interactive Toggles in eq_back.png */
+.eq-hardware-toggles {
+    position: absolute;
+    left: 210px;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.eq-chip-btn {
+    appearance: none;
+    border: 1px solid rgba(194, 203, 216, 0.4);
+    background: linear-gradient(180deg, #1b2330 0%, #0d121a 100%);
+    color: var(--aw-alloy-silver);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.2s var(--spring-bounce), color 0.2s, box-shadow 0.2s;
+}
+
+.eq-chip-btn.active {
+    background: linear-gradient(180deg, #0f2c42 0%, #061522 100%);
+    border-color: var(--fx-primary);
+    color: #fff;
+    box-shadow: var(--fx-glow-sm);
+}
+
+.eq-chip-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #475569;
+}
+.eq-chip-btn.active .eq-chip-dot {
+    background: var(--fx-primary);
+    box-shadow: 0 0 6px var(--fx-primary);
+}
+
+/* Equalizer Preset Row below Hardware Bay */
+.eq-preset-ribbon {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.eq-preset-pill {
+    padding: 4px 10px;
+    border: 1px solid rgba(194, 203, 216, 0.3);
+    background: rgba(18, 24, 34, 0.8);
+    color: var(--aw-alloy-silver);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.eq-preset-pill:hover,
+.eq-preset-pill.active {
+    border-color: var(--fx-primary);
+    color: #fff;
+    background: rgba(0, 240, 255, 0.15);
+    box-shadow: var(--fx-glow-sm);
+}
+
+/* ============================================================================
+   6. MODULE 03: ALIENWARE RADAR & TACTICAL HUD VISUALIZER
+   ============================================================================ */
+
+.visualizer-hud-container {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #03060c;
+    border: 1px solid rgba(194, 203, 216, 0.35);
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.95);
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Canvas element */
+#alien-radar-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Top LCD Metadata Bar (meta_back.png 359x35) */
+.hud-meta-header {
+    position: relative;
+    z-index: 3;
+    height: 35px;
+    background-image: url('../assets/alienware/meta_back.png');
+    background-repeat: no-repeat;
+    background-size: 100% 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.hud-track-meta {
+    position: relative;
+    z-index: 3;
+    padding: 14px 16px;
+    background: linear-gradient(0deg, rgba(5, 8, 14, 0.94) 0%, rgba(5, 8, 14, 0.4) 80%, transparent 100%);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.hud-title-line {
+    font-size: clamp(16px, 2.5vw, 22px);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #fff;
+    margin: 0;
+    text-shadow: 0 0 12px var(--fx-primary);
+}
+
+.hud-artist-line {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--fx-primary);
+    margin-top: 3px;
+    letter-spacing: 1px;
+}
+
+.viz-mode-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.viz-mode-chip {
+    padding: 4px 8px;
+    background: rgba(18, 24, 34, 0.85);
+    border: 1px solid rgba(194, 203, 216, 0.35);
+    color: var(--aw-alloy-silver);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s var(--spring-bounce), border-color 0.2s, box-shadow 0.2s;
+}
+
+.viz-mode-chip:hover,
+.viz-mode-chip.active {
+    border-color: var(--fx-primary);
+    color: #fff;
+    box-shadow: var(--fx-glow-sm);
+    transform: translateY(-2px);
+}
+
+/* ============================================================================
+   7. MODULE 04: AUTHENTIC ALIENWARE VOICE FX / CYBER TRANSMISSION MATRIX
+   Plays authentic alienskin_mix03_part01v2.wav - part07v2.wav
+   ============================================================================ */
+
+.voice-fx-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+}
+
+.voice-fx-btn {
+    padding: 10px 8px;
+    background: linear-gradient(180deg, #182230 0%, #0c121a 100%);
+    border: 1px solid rgba(194, 203, 216, 0.3);
+    border-radius: 6px;
+    color: var(--aw-alloy-bright);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: transform 0.25s var(--spring-bounce), border-color 0.2s, box-shadow 0.2s;
+}
+
+.voice-fx-btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    border-color: var(--fx-primary);
+    box-shadow: var(--fx-glow-md);
+    color: #fff;
+}
+
+.voice-fx-btn:active,
+.voice-fx-btn.playing {
+    transform: scale(0.95);
+    background: linear-gradient(180deg, #0e3048 0%, #061724 100%);
+    border-color: var(--fx-primary);
+    box-shadow: var(--fx-glow-md);
+}
+
+.voice-fx-title {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.voice-fx-badge {
+    font-size: 8px;
+    color: var(--fx-primary);
+    text-transform: uppercase;
+}
+
+/* ============================================================================
+   8. MODULE 05: TACTICAL ARCHIVE & PLAYLIST QUEUE (pl_background.png)
+   ============================================================================ */
+
+.tactical-playlist-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.tactical-playlist-container::-webkit-scrollbar {
+    width: 6px;
+}
+.tactical-playlist-container::-webkit-scrollbar-track {
+    background: #090e16;
+}
+.tactical-playlist-container::-webkit-scrollbar-thumb {
+    background: #253346;
+    border-radius: 3px;
+}
+
+.tactical-track-item {
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background-image: url('../assets/alienware/pl_background.png');
+    background-repeat: repeat;
+    border: 1px solid rgba(194, 203, 216, 0.25);
+    border-radius: 4px;
+    cursor: pointer;
+    color: #0b111a;
+    transition: transform 0.25s var(--spring-bounce), border-color 0.2s, box-shadow 0.2s;
+}
+
+.tactical-track-item:hover {
+    transform: translateX(4px);
+    border-color: var(--fx-primary);
+    box-shadow: var(--fx-glow-sm);
+}
+
+.tactical-track-item.active {
+    background: linear-gradient(90deg, #163652 0%, #0e2234 100%);
+    border-color: var(--fx-primary);
+    box-shadow: var(--fx-glow-md);
+    color: #fff;
+}
+
+.track-index-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: inherit;
+}
+
+.track-title-text {
+    font-size: 12px;
+    font-weight: 700;
+    color: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.track-artist-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    opacity: 0.85;
+}
+
+.track-length-chip {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* ============================================================================
+   9. DESKTOP 12-COLUMN BENTO GRID LAYOUT (< 960px Mobile-First Adaptations)
+   ============================================================================ */
+
+@media (min-width: 960px) {
+    .aw-grid-shell {
+        grid-template-columns: repeat(12, 1fr);
+        gap: 20px;
+    }
+
+    /* Card 1: Invader Hero Shutter Pod (5 cols) */
+    .bento-hero-pod {
+        grid-column: 1 / 6;
+        grid-row: span 2;
+    }
+
+    /* Card 2: Tactical HUD & Radar (7 cols) */
+    .bento-tactical-hud {
+        grid-column: 6 / 13;
+    }
+
+    /* Card 3: 10-Band Biquad Hardware Equalizer (7 cols) */
+    .bento-hardware-eq {
+        grid-column: 6 / 13;
+    }
+
+    /* Card 4: Voice FX Cyber Transmissions (6 cols) */
+    .bento-voice-fx {
+        grid-column: 1 / 7;
+    }
+
+    /* Card 5: Tactical Playlist Queue (6 cols) */
+    .bento-playlist {
+        grid-column: 7 / 13;
+    }
+}
+
+@media (max-width: 959px) {
+    .aw-armor-card {
+        grid-template-columns: 24px 1fr 24px;
+        grid-template-rows: 35px 1fr 35px;
+    }
+    .aw-top-l, .aw-top-r, .aw-bot-l, .aw-bot-r {
+        display: none;
+    }
+    .aw-side-l, .aw-side-r {
+        width: 24px;
+        background-size: cover;
+    }
+    .invader-pod-chassis {
+        transform: scale(0.85);
+        transform-origin: top center;
+    }
+}

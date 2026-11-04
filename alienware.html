@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALIENWARE INVADER // THE SKINS FACTORY</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,700;1,700&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/alienware.css">
+</head>
+<body class="alienware-body" data-alienfx="cyan">
+
+<!-- RETRO NAV SWITCHER -->
+<nav class="retro-nav-bar">
+    <div class="retro-nav-brand"><span class="live-dot"></span> PIRATE WEB RADIO</div>
+    <div class="retro-nav-links">
+        <a href="index.html" class="retro-nav-pill">📻 SHARP GF-9494</a>
+        <a href="televideo.html" class="retro-nav-pill">📺 TELEVIDEO</a>
+        <a href="corona.html" class="retro-nav-pill">💎 Y2K CORONA</a>
+        <a href="alienware.html" class="retro-nav-pill active">👽 ALIENWARE INVADER</a>
+    </div>
+</nav>
+
+<!-- CORE AUDIO STREAM -->
+<audio id="alienware-audio" src="test-track.mp3" preload="auto" crossorigin="anonymous"></audio>
+
+<!-- ==========================================================================
+     ALIENWARE SYSTEM STATUS & ALIENFX LIGHTING COMMAND BAR
+     ========================================================================== -->
+<header class="alienware-header-bar">
+    <div class="alienware-brand-cluster">
+        <div class="alien-head-badge" id="alien-logo-head" title="Alienware Command Center // Clicca per sound test"></div>
+        <div class="alienware-title-group">
+            <h1>ALIENWARE INVADER <span style="font-size:10px; color:#94a3b8; font-weight:normal;">// THE SKINS FACTORY</span></h1>
+            <div class="subline" id="alien-rig-status">TACTICAL AUDIO RIG // ALIENFX ONLINE // OVERCLOCK STABLE</div>
+        </div>
+    </div>
+
+    <!-- AlienFX RGB Lighting Selector -->
+    <div class="alienfx-control-cluster">
+        <span class="alienfx-label">ALIENFX:</span>
+        <div class="alienfx-swatches" role="group" aria-label="AlienFX Colorway">
+            <button type="button" class="alienfx-swatch swatch-cyan active" data-color="cyan" title="Cyan Pulse"></button>
+            <button type="button" class="alienfx-swatch swatch-green" data-color="green" title="Area-51 Matrix Green"></button>
+            <button type="button" class="alienfx-swatch swatch-purple" data-color="purple" title="Aurora Plasma Purple"></button>
+            <button type="button" class="alienfx-swatch swatch-red" data-color="red" title="Stealth Thermal Red"></button>
+        </div>
+    </div>
+</header>
+
+<!-- ==========================================================================
+     MAIN BENTO GRID SHELL FRAMED IN ALIENWARE 9-SLICE LAPTOP ARMOR
+     ========================================================================== -->
+<main class="aw-grid-shell">
+
+    <!-- ======================================================================
+         MODULE 01: HERO INTERACTIVE INVADER POD (SHUTTER MORPH CONSOLE)
+         ====================================================================== -->
+    <section class="aw-armor-card bento-hero-pod" id="card-invader-pod">
+        <div class="aw-frame-top">
+            <div class="aw-top-l"></div>
+            <div class="aw-top-m">
+                <span class="aw-card-badge">01 // INVADER POD</span>
+                <span style="font-family:'Share Tech Mono'; font-size:10px; color:#475569;">SHUTTER CONSOLE</span>
+            </div>
+            <div class="aw-top-r"></div>
+        </div>
+
+        <div class="aw-side-l"></div>
+        <div class="aw-body-interior">
+            <div class="invader-hero-stage">
+                <!-- Pod Shutter Mode Bar -->
+                <div class="pod-mode-bar">
+                    <span class="pod-status-chip" id="pod-mode-status">
+                        <span style="width:6px; height:6px; border-radius:50%; background:currentColor;"></span>
+                        COCKPIT OPEN
+                    </span>
+                    <button type="button" class="pod-toggle-btn" id="btn-toggle-pod">
+                        <span>⚡ MORPH SHUTTER</span>
+                    </button>
+                </div>
+
+                <!-- Invader Pod (Toggles between closed preview.png and open main_back.png) -->
+                <div class="invader-pod-chassis is-open" id="invader-pod-chassis">
+                    <!-- Closed Shutter View (preview.png 253x378) -->
+                    <div class="pod-closed-view" id="pod-shutter-closed" title="Clicca per aprire la console di comando"></div>
+
+                    <!-- Open Cockpit Console (main_back.png 406x380) -->
+                    <div class="pod-open-view" id="pod-cockpit-open">
+                        <!-- Digital LCD Time Display -->
+                        <div class="cockpit-lcd-time" id="pod-lcd-time">00:00</div>
+
+                        <!-- 16-Step Curved Volume Arch (volume.png 560x85) -->
+                        <div class="cockpit-volume-arch" id="pod-volume-arch" title="Clicca o trascina per regolare il volume"></div>
+
+                        <!-- Transport Button Cluster over m_bot_no.png -->
+                        <div class="cockpit-transport-group" id="pod-transports">
+                            <button type="button" class="cockpit-btn btn-hit-mute" id="btn-pod-mute" title="Mute / Unmute"></button>
+                            <button type="button" class="cockpit-btn btn-hit-prev" id="btn-pod-prev" title="Traccia Precedente"></button>
+                            <button type="button" class="cockpit-btn btn-hit-stop" id="btn-pod-stop" title="Stop"></button>
+                            <button type="button" class="cockpit-btn btn-hit-next" id="btn-pod-next" title="Traccia Successiva"></button>
+                            <button type="button" class="cockpit-btn btn-hit-play" id="btn-pod-play" title="Play"></button>
+                        </div>
+
+                        <!-- Pause Overlay (m_pause_no.png) -->
+                        <div class="cockpit-pause-overlay" id="pod-pause-overlay" title="Pausa"></div>
+                    </div>
+                </div>
+
+                <!-- Scrubber Seek Bar below Pod -->
+                <div class="invader-scrubber-bar">
+                    <span class="time-readout" id="scrubber-time-cur">00:00</span>
+                    <div class="scrubber-track-outer" id="invader-scrubber" title="Scrubbing traccia">
+                        <div class="scrubber-track-fill" id="invader-scrubber-fill"></div>
+                    </div>
+                    <span class="time-readout" id="scrubber-time-tot">03:42</span>
+                </div>
+            </div>
+        </div>
+        <div class="aw-side-r"></div>
+
+        <div class="aw-frame-bot">
+            <div class="aw-bot-l"></div>
+            <div class="aw-bot-m">
+                <span class="aw-footer-telemetry">BI-DIRECTIONAL SHUTTER</span>
+                <span class="aw-footer-telemetry" id="volume-pct-label">VOL: 85%</span>
+            </div>
+            <div class="aw-bot-r"></div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         MODULE 02: TACTICAL HUD & RADAR VISUALIZER
+         ====================================================================== -->
+    <section class="aw-armor-card bento-tactical-hud" id="card-tactical-hud">
+        <div class="aw-frame-top">
+            <div class="aw-top-l"></div>
+            <div class="aw-top-m">
+                <span class="aw-card-badge">02 // TACTICAL HUD</span>
+                <span style="font-family:'Share Tech Mono'; font-size:10px; color:#475569;">RADAR & SPECTRUM</span>
+            </div>
+            <div class="aw-top-r"></div>
+        </div>
+
+        <div class="aw-side-l"></div>
+        <div class="aw-body-interior" style="padding:10px;">
+            <div class="visualizer-hud-container" id="tactical-hud-stage">
+                <!-- Authentic Alienware Metadata Bar (meta_back.png) -->
+                <div class="hud-meta-header">
+                    <span id="hud-stream-callsign">QDG // ALIEN-NET 2005</span>
+                    <span id="hud-sample-rate" style="color:var(--fx-primary);">44.1 kHz // HI-RES</span>
+                </div>
+
+                <!-- Reactive 60FPS Canvas -->
+                <canvas id="alien-radar-canvas"></canvas>
+
+                <!-- Track Metadata & Mode Selector Bar -->
+                <div class="hud-track-meta">
+                    <div>
+                        <h2 class="hud-title-line" id="hud-track-title">CYBERIA 2004 (CORONA DUB)</h2>
+                        <div class="hud-artist-line" id="hud-track-artist">DJ MARCO BETTIN // QDG PIRATE ARCHIVE</div>
+                    </div>
+
+                    <div class="viz-mode-group">
+                        <button type="button" class="viz-mode-chip active" data-mode="radar">SONAR RADAR</button>
+                        <button type="button" class="viz-mode-chip" data-mode="spectrum">SPECTRUM 3D</button>
+                        <button type="button" class="viz-mode-chip" data-mode="scope">OSCILLOSCOPE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="aw-side-r"></div>
+
+        <div class="aw-frame-bot">
+            <div class="aw-bot-l"></div>
+            <div class="aw-bot-m">
+                <span class="aw-footer-telemetry">SONAR PULSE RATE: 60 FPS</span>
+                <span class="aw-footer-telemetry" id="hud-peak-db">PEAK: -INF dB</span>
+            </div>
+            <div class="aw-bot-r"></div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         MODULE 03: 10-BAND BIQUAD EQUALIZER & SPATIAL PROCESSOR (eq_back.png)
+         ====================================================================== -->
+    <section class="aw-armor-card bento-hardware-eq" id="card-equalizer">
+        <div class="aw-frame-top">
+            <div class="aw-top-l"></div>
+            <div class="aw-top-m">
+                <span class="aw-card-badge">03 // 10-BAND DSP EQ</span>
+                <span style="font-family:'Share Tech Mono'; font-size:10px; color:#475569;">SRS TRUBASS & BALANCE</span>
+            </div>
+            <div class="aw-top-r"></div>
+        </div>
+
+        <div class="aw-side-l"></div>
+        <div class="aw-body-interior">
+            <div class="eq-bay-wrapper">
+                <!-- Authentic Alienware 359x213 Hardware Bay (eq_back.png) -->
+                <div class="eq-hardware-panel" id="eq-hardware-panel">
+                    <!-- 10 Vertical Fader Slots (populated by JS) -->
+                    <div id="eq-slots-rack"></div>
+
+                    <!-- Stereo Balance Slot -->
+                    <div class="balance-slider-slot" id="eq-balance-slot" title="Bilanciamento Stereo L/R (Doppio click per centrare)">
+                        <div class="balance-slider-thumb" id="balance-thumb"></div>
+                    </div>
+
+                    <!-- WOW Effects & SRS TruBass Toggles -->
+                    <div class="eq-hardware-toggles">
+                        <button type="button" class="eq-chip-btn active" id="btn-toggle-wow" title="Attiva/Disattiva WOW Spatial Enhancer">
+                            <span class="eq-chip-dot"></span> WOW EFFECTS
+                        </button>
+                        <button type="button" class="eq-chip-btn active" id="btn-toggle-trubass" title="Attiva/Disattiva SRS TruBass Sub-Bass Boost">
+                            <span class="eq-chip-dot"></span> SRS TRUBASS
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Equalizer Presets Ribbon -->
+                <div class="eq-preset-ribbon">
+                    <button type="button" class="eq-preset-pill active" data-preset="0">ALIEN OVERDRIVE</button>
+                    <button type="button" class="eq-preset-pill" data-preset="1">STEALTH GAMING</button>
+                    <button type="button" class="eq-preset-pill" data-preset="2">DEEP IMPACT SUB</button>
+                    <button type="button" class="eq-preset-pill" data-preset="3">VOCAL CLARITY</button>
+                    <button type="button" class="eq-preset-pill" data-preset="4">FLAT 0 dB</button>
+                </div>
+            </div>
+        </div>
+        <div class="aw-side-r"></div>
+
+        <div class="aw-frame-bot">
+            <div class="aw-bot-l"></div>
+            <div class="aw-bot-m">
+                <span class="aw-footer-telemetry">BIQUAD DSP: ACTIVE</span>
+                <span class="aw-footer-telemetry" id="eq-balance-readout">BAL: CENTER</span>
+            </div>
+            <div class="aw-bot-r"></div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         MODULE 04: AUTHENTIC ALIENWARE VOICE FX / CYBER TRANSMISSIONS
+         ====================================================================== -->
+    <section class="aw-armor-card bento-voice-fx" id="card-voice-fx">
+        <div class="aw-frame-top">
+            <div class="aw-top-l"></div>
+            <div class="aw-top-m">
+                <span class="aw-card-badge">04 // CYBER TRANSMISSIONS</span>
+                <span style="font-family:'Share Tech Mono'; font-size:10px; color:#475569;">ALIENWARE VOICE FX</span>
+            </div>
+            <div class="aw-top-r"></div>
+        </div>
+
+        <div class="aw-side-l"></div>
+        <div class="aw-body-interior">
+            <div class="voice-fx-grid">
+                <button type="button" class="voice-fx-btn" data-sound="1">
+                    <span class="voice-fx-title">⚡ TRANSMISSION 01</span>
+                    <span class="voice-fx-badge">ALIEN VOICEOVER 6.5s</span>
+                </button>
+                <button type="button" class="voice-fx-btn" data-sound="2">
+                    <span class="voice-fx-title">🌀 TRANSMISSION 02</span>
+                    <span class="voice-fx-badge">ROBOTIC SERVO 3.4s</span>
+                </button>
+                <button type="button" class="voice-fx-btn" data-sound="3">
+                    <span class="voice-fx-title">📡 TRANSMISSION 03</span>
+                    <span class="voice-fx-badge">UPLINK CONNECT 4.1s</span>
+                </button>
+                <button type="button" class="voice-fx-btn" data-sound="4">
+                    <span class="voice-fx-title">🛸 TRANSMISSION 04</span>
+                    <span class="voice-fx-badge">WARP DRIVE 4.4s</span>
+                </button>
+                <button type="button" class="voice-fx-btn" data-sound="5">
+                    <span class="voice-fx-title">🛰 TRANSMISSION 05</span>
+                    <span class="voice-fx-badge">SENSOR SWEEP 4.0s</span>
+                </button>
+                <button type="button" class="voice-fx-btn" data-sound="6">
+                    <span class="voice-fx-title">💿 TRANSMISSION 06</span>
+                    <span class="voice-fx-badge">ALIEN ANTHEM 8.2s</span>
+                </button>
+                <button type="button" class="voice-fx-btn" data-sound="7">
+                    <span class="voice-fx-title">👾 TRANSMISSION 07</span>
+                    <span class="voice-fx-badge">INVADER OUTRO 4.5s</span>
+                </button>
+            </div>
+        </div>
+        <div class="aw-side-r"></div>
+
+        <div class="aw-frame-bot">
+            <div class="aw-bot-l"></div>
+            <div class="aw-bot-m">
+                <span class="aw-footer-telemetry">AUTHENTIC AUDIO PACK</span>
+                <span class="aw-footer-telemetry">44.1 kHz STEREO</span>
+            </div>
+            <div class="aw-bot-r"></div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         MODULE 05: TACTICAL ARCHIVE / ROTATION QUEUE
+         ====================================================================== -->
+    <section class="aw-armor-card bento-playlist" id="card-playlist">
+        <div class="aw-frame-top">
+            <div class="aw-top-l"></div>
+            <div class="aw-top-m">
+                <span class="aw-card-badge">05 // ROTATION ARCHIVE</span>
+                <span style="font-family:'Share Tech Mono'; font-size:10px; color:#475569;">TACTICAL QUEUE</span>
+            </div>
+            <div class="aw-top-r"></div>
+        </div>
+
+        <div class="aw-side-l"></div>
+        <div class="aw-body-interior">
+            <div class="tactical-playlist-container" id="playlist-container">
+                <!-- Populated dynamically by js/alienware/alienware.js -->
+            </div>
+        </div>
+        <div class="aw-side-r"></div>
+
+        <div class="aw-frame-bot">
+            <div class="aw-bot-l"></div>
+            <div class="aw-bot-m">
+                <span class="aw-footer-telemetry">PIRATE ARCHIVE VOL. 4</span>
+                <span class="aw-footer-telemetry">6 CHANNELS</span>
+            </div>
+            <div class="aw-bot-r"></div>
+        </div>
+    </section>
+
+</main>
+
+<script type="module" src="js/alienware/alienware.js"></script>
+</body>
+</html>
