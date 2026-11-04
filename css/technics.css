@@ -1,0 +1,1441 @@
+/* ============================================================================
+   TECHNICS SL-1200 // DIRECT DRIVE TURNTABLE SYSTEM (css/technics.css)
+   Photorealistic Die-Cast Brushed Silver Plinth, Stroboscopic Platter,
+   Mirrored "Technics" Slipmat, S-Shaped Gimbal Tonearm & Interactive Scratch UI
+   ============================================================================ */
+
+:root {
+    --sl-silver-bright: #eceff3;
+    --sl-silver-main: #d8dce2;
+    --sl-silver-mid: #c5cad2;
+    --sl-silver-dark: #a6acb6;
+    --sl-ink: #27292e;
+    --sl-red-led: #ff2424;
+    --sl-red-glow: rgba(255, 36, 36, 0.78);
+    --sl-slipmat-charcoal: #1e2024;
+    --sl-slipmat-print: #7b848f;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body.technics-body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 35% 25%, #232730 0%, #101216 65%, #090a0d 100%);
+    color: #f1f5f9;
+    font-family: 'Chakra Petch', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+    padding-bottom: 48px;
+}
+
+/* ============================================================================
+   TOP SYSTEM HEADER
+   ============================================================================ */
+.sl-header-bar {
+    max-width: 1360px;
+    margin: 12px auto 14px;
+    padding: 10px 18px;
+    background: rgba(18, 20, 25, 0.9);
+    border: 1px solid rgba(216, 220, 226, 0.22);
+    border-radius: 10px;
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+}
+
+.sl-brand-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sl-45-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        #9ca3af,
+        #f3f4f6,
+        #6b7280,
+        #e5e7eb,
+        #4b5563,
+        #f3f4f6,
+        #9ca3af
+    );
+    border: 2px solid #374151;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.sl-45-icon::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #111317;
+    border: 1px solid #9ca3af;
+}
+
+.sl-title-group h1 {
+    font-family: 'Inter', 'Orbitron', sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0.8px;
+    color: #f8fafc;
+}
+
+.sl-sub {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: #f87171;
+    letter-spacing: 0.8px;
+}
+
+.sl-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.sl-slipmat-switcher {
+    display: flex;
+    background: #111318;
+    padding: 3px;
+    border-radius: 6px;
+    border: 1px solid #2e333d;
+    gap: 4px;
+}
+
+.sl-style-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.sl-style-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.sl-style-btn.active {
+    background: linear-gradient(180deg, #dc2626, #991b1b);
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+.sl-telemetry-pill {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    background: #0b0d10;
+    color: #ff3b3b;
+    border: 1px solid rgba(255, 59, 59, 0.4);
+    box-shadow: inset 0 0 8px rgba(255, 59, 59, 0.15);
+}
+
+/* ============================================================================
+   MAIN STAGE LAYOUT (Turntable Left + Scratch Console Right)
+   ============================================================================ */
+.sl-main-stage {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: minmax(0, 760px) minmax(340px, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.sl-turntable-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sl-scratch-hint-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background: rgba(24, 27, 34, 0.92);
+    border: 1px solid rgba(255, 59, 59, 0.35);
+    border-radius: 8px;
+    font-size: 12px;
+    color: #e2e8f0;
+}
+
+.sl-scratch-hint-bar .hint-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sl-red-led);
+    box-shadow: 0 0 8px var(--sl-red-led);
+    flex-shrink: 0;
+}
+
+/* ============================================================================
+   TECHNICS SL-1200 DIE-CAST ALUMINUM PLINTH (1:1 Top-Down Proportions)
+   ============================================================================ */
+.sl1200-plinth {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.24 / 1;
+    /* Brushed Anodized Silver-Grey Aluminum matching Reference Image */
+    background:
+        radial-gradient(circle at 38% 48%, rgba(255, 255, 255, 0.55) 0%, transparent 58%),
+        repeating-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.03) 0px,
+            rgba(255, 255, 255, 0.03) 1px,
+            rgba(0, 0, 0, 0.02) 1px,
+            rgba(0, 0, 0, 0.02) 2px
+        ),
+        linear-gradient(135deg, #e4e7ec 0%, #d5d9e0 48%, #c3c8d1 85%, #b2b8c2 100%);
+    border-radius: 6px;
+    border-top: 2px solid #f8fafc;
+    border-left: 2px solid #f1f5f9;
+    border-right: 3px solid #8e95a0;
+    border-bottom: 6px solid #737984;
+    box-shadow:
+        0 28px 60px rgba(0, 0, 0, 0.8),
+        0 6px 16px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    user-select: none;
+    overflow: hidden;
+}
+
+.plinth-chamfer-border {
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+/* ----------------------------------------------------------------------------
+   1. TOP-LEFT: MACHINED ALUMINUM 45 RPM ADAPTER
+   ---------------------------------------------------------------------------- */
+.sl-45-adapter-well {
+    position: absolute;
+    top: 4.2%;
+    left: 3.4%;
+    width: 9.2%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 2px solid #525863;
+    background: conic-gradient(
+        from 25deg,
+        #7d8490,
+        #f1f5f9,
+        #686f7a,
+        #cbd5e1,
+        #525863,
+        #f8fafc,
+        #7d8490
+    );
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.45),
+        inset 0 0 4px rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease;
+    z-index: 5;
+}
+
+.sl-45-adapter-well:hover {
+    transform: rotate(45deg) scale(1.04);
+}
+
+.adapter-center-bore {
+    width: 22%;
+    height: 22%;
+    border-radius: 50%;
+    background: #d5d9e0;
+    border: 1px solid #646b75;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* ----------------------------------------------------------------------------
+   2. TOP-RIGHT: AUX HEADSHELL STAND HOLE
+   ---------------------------------------------------------------------------- */
+.sl-headshell-hole {
+    position: absolute;
+    top: 6.8%;
+    left: 69.5%;
+    width: 3.1%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, #262930, #090a0d 75%);
+    border: 2px solid #9aa1ad;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.95);
+}
+
+/* ============================================================================
+   3. DIRECT-DRIVE STROBOSCOPIC PLATTER & INTERACTIVE VINYL / SLIPMAT
+   ============================================================================ */
+.sl-platter-bezel {
+    position: absolute;
+    top: 2.2%;
+    left: 6.2%;
+    width: 71.5%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: #121418;
+    border: 3px solid #9da4b0;
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.65),
+        inset 0 0 14px rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+}
+
+/* Bevelled Stroboscopic Dot Rim (4 concentric dot rings like Technics SL-1200) */
+.sl-strobe-rim {
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: radial-gradient(circle, transparent 62%, #101215 63%, #1e2128 67%, #0c0d10 100%);
+    pointer-events: none;
+}
+
+.strobe-ring {
+    position: absolute;
+    border-radius: 50%;
+}
+
+/* Outer ring of strobe dots */
+.strobe-ring.r1 {
+    inset: 3px;
+    border: 3px dotted rgba(226, 232, 240, 0.85);
+}
+
+/* Second ring (largest square/round strobe dots) */
+.strobe-ring.r2 {
+    inset: 8px;
+    border: 4.5px dotted rgba(241, 245, 249, 0.92);
+}
+
+/* Third ring */
+.strobe-ring.r3 {
+    inset: 14px;
+    border: 3.5px dotted rgba(226, 232, 240, 0.85);
+}
+
+/* Inner ring */
+.strobe-ring.r4 {
+    inset: 19px;
+    border: 2.5px dotted rgba(203, 213, 225, 0.8);
+}
+
+/* Red Stroboscopic LED Reflection on Platter Edge at ~7:30-8:00 o'clock (Matches Reference Photo!) */
+.sl-strobe-red-reflection {
+    position: absolute;
+    bottom: 13.5%;
+    left: 3.8%;
+    width: 14%;
+    height: 14%;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 30, 30, 0.95) 0%,
+        rgba(255, 20, 20, 0.55) 42%,
+        transparent 72%
+    );
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 6;
+    transition: opacity 0.2s ease;
+}
+
+.sl-strobe-red-reflection.off {
+    opacity: 0;
+}
+
+/* White Target Stylus Light Reflection at ~5:30 o'clock (Matches Reference Photo!) */
+.sl-target-light-reflection {
+    position: absolute;
+    bottom: 2.2%;
+    right: 26%;
+    width: 10%;
+    height: 9%;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(219, 234, 254, 0.45) 45%,
+        transparent 75%
+    );
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 6;
+    transition: opacity 0.2s ease;
+}
+
+.sl-target-light-reflection.off {
+    opacity: 0;
+}
+
+/* Machined Chrome Lip Inside Strobe Dots */
+.sl-platter-chrome-lip {
+    position: absolute;
+    inset: 23px;
+    border-radius: 50%;
+    border: 2.5px solid #9ca3af;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* ----------------------------------------------------------------------------
+   INTERACTIVE ROTATING VINYL & TECHNICS SLIPMAT SURFACE
+   Press & hold to stop music; drag clockwise/counter-clockwise to scratch!
+   ---------------------------------------------------------------------------- */
+.sl-vinyl-disc {
+    position: relative;
+    width: calc(100% - 50px);
+    height: calc(100% - 50px);
+    border-radius: 50%;
+    background: var(--sl-slipmat-charcoal);
+    cursor: grab;
+    touch-action: none;
+    z-index: 5;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.85);
+    will-change: transform;
+}
+
+.sl-vinyl-disc:active,
+.sl-vinyl-disc.is-scratching {
+    cursor: grabbing;
+}
+
+/* Subtle Concentric Vinyl Grooves */
+.vinyl-grooves-layer {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: repeating-radial-gradient(
+        circle at 50% 50%,
+        rgba(255, 255, 255, 0.018) 0px,
+        rgba(255, 255, 255, 0.018) 1.5px,
+        rgba(0, 0, 0, 0.08) 1.5px,
+        rgba(0, 0, 0, 0.08) 3.5px
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Anisotropic Diagonal Light Sheen on Vinyl */
+.vinyl-specular-sheen {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 35deg,
+        transparent 0deg,
+        rgba(255, 255, 255, 0.06) 25deg,
+        transparent 55deg,
+        transparent 180deg,
+        rgba(255, 255, 255, 0.06) 205deg,
+        transparent 235deg
+    );
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* ----------------------------------------------------------------------------
+   ICONIC MIRRORED "Technics / Technics" SLIPMAT GRAPHIC (From Reference Photo)
+   ---------------------------------------------------------------------------- */
+.technics-slipmat-graphic {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    pointer-events: none;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+}
+
+/* Matte Felt Grain Texture */
+.slipmat-felt-texture {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+    background-size: 5px 5px;
+    pointer-events: none;
+}
+
+.slipmat-logo {
+    font-family: 'Inter', 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 5.2vw, 56px);
+    letter-spacing: -1.5px;
+    color: var(--sl-slipmat-print);
+    line-height: 0.88;
+    opacity: 0.88;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    transform: scaleX(1.08);
+}
+
+.slipmat-logo.upright {
+    margin-bottom: 4px;
+}
+
+/* Upside-Down Mirrored "Technics" below center spindle (Matches Reference Photo!) */
+.slipmat-logo.inverted {
+    transform: rotate(180deg) scaleX(1.08);
+    margin-top: 4px;
+    opacity: 0.72;
+}
+
+/* Optional Center 12" Vinyl Record Label (Hidden in pure Reference Slipmat mode, shown in Vinyl/Dubplate mode) */
+.vinyl-center-label {
+    position: absolute;
+    width: 31%;
+    height: 31%;
+    border-radius: 50%;
+    background: radial-gradient(circle, #dc2626 0%, #991b1b 75%, #450a0a 100%);
+    border: 3px solid #fca5a5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14% 6%;
+    text-align: center;
+    pointer-events: none;
+    z-index: 4;
+    opacity: 0;
+    transform: scale(0.85);
+    transition: all 0.25s ease;
+}
+
+/* Mat Mode Variations */
+.sl1200-plinth[data-mat-mode="vinyl"] .technics-slipmat-graphic {
+    opacity: 0.12;
+}
+.sl1200-plinth[data-mat-mode="vinyl"] .vinyl-center-label {
+    opacity: 1;
+    transform: scale(1);
+}
+.sl1200-plinth[data-mat-mode="vinyl"] .vinyl-specular-sheen {
+    background: conic-gradient(
+        from 35deg,
+        transparent 0deg,
+        rgba(255, 255, 255, 0.18) 25deg,
+        transparent 55deg,
+        transparent 180deg,
+        rgba(255, 255, 255, 0.18) 205deg,
+        transparent 235deg
+    );
+}
+
+.sl1200-plinth[data-mat-mode="dubplate"] .technics-slipmat-graphic {
+    opacity: 0.75;
+}
+.sl1200-plinth[data-mat-mode="dubplate"] .vinyl-center-label {
+    opacity: 0.85;
+    transform: scale(0.95);
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.85), rgba(30, 58, 138, 0.9));
+    border-color: #93c5fd;
+}
+
+.label-brand {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 8px;
+    font-weight: 900;
+    color: #fef2f2;
+    letter-spacing: 0.8px;
+}
+
+.label-title {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px;
+    color: #fde047;
+    font-weight: bold;
+}
+
+/* Cue Marker Line on Edge of Record so rotation is always unmistakable */
+.vinyl-cue-marker {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 18px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.35);
+    z-index: 4;
+    pointer-events: none;
+}
+
+/* Center Chrome Spindle */
+.sl-center-spindle {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ffffff 0%, #94a3b8 55%, #1e293b 100%);
+    border: 2px solid #0f172a;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.85);
+    z-index: 6;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spindle-tip {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #e2e8f0;
+}
+
+/* Visual Hand-Hold Halo when pressing the vinyl to stop/scratch */
+.vinyl-touch-halo {
+    position: absolute;
+    inset: 22px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    pointer-events: none;
+    z-index: 7;
+    transition: all 0.15s ease;
+}
+
+.vinyl-touch-halo.active {
+    border-color: rgba(255, 42, 42, 0.85);
+    box-shadow:
+        inset 0 0 28px rgba(255, 42, 42, 0.32),
+        0 0 18px rgba(255, 42, 42, 0.45);
+}
+
+/* ============================================================================
+   4. BOTTOM-LEFT CONTROLS: STROBE TOWER + START·STOP + 33 / 45 RPM
+   ============================================================================ */
+.sl-strobe-tower-assembly {
+    position: absolute;
+    bottom: 18.2%;
+    left: 3.8%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    z-index: 6;
+}
+
+.sl-power-knob {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 35% 30%, #4b5563 0%, #181a20 70%, #090a0d 100%);
+    border: 2.5px solid #9ca3af;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.65);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.sl-power-knob .knob-fin {
+    width: 4px;
+    height: 22px;
+    background: #d1d5db;
+    border-radius: 2px;
+    transition: transform 0.2s ease;
+}
+
+.strobe-prism-housing {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    width: 14px;
+    height: 18px;
+    background: #1f232a;
+    border: 1px solid #9ca3af;
+    border-radius: 3px;
+    transform: rotate(-35deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.strobe-red-emitter {
+    width: 8px;
+    height: 10px;
+    border-radius: 2px;
+    background: #450a0a;
+}
+
+.strobe-red-emitter.on {
+    background: #ff2424;
+    box-shadow: 0 0 12px #ff2424, 0 0 22px #ff0000;
+}
+
+.sl-strobe-legend {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 6.5px;
+    color: var(--sl-ink);
+    line-height: 1.05;
+    margin-left: 28px;
+    margin-top: -4px;
+    opacity: 0.85;
+}
+
+/* Large Square START · STOP Button (Bottom-Left Corner) */
+.sl-start-stop-btn {
+    position: absolute;
+    bottom: 4.2%;
+    left: 3.8%;
+    width: 11.2%;
+    height: 11.8%;
+    background: linear-gradient(145deg, #e5e8ee 0%, #cfd4dc 100%);
+    border: 3px solid #1f2229;
+    border-radius: 3px;
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 6;
+    transition: transform 0.08s ease, box-shadow 0.1s ease;
+}
+
+.sl-start-stop-btn span {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(7px, 0.9vw, 10px);
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    color: #1f2229;
+}
+
+.sl-start-stop-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* 33 & 45 RPM Speed Selector Buttons */
+.sl-rpm-buttons {
+    position: absolute;
+    bottom: 4.2%;
+    left: 16.2%;
+    display: flex;
+    gap: 5px;
+    z-index: 6;
+}
+
+.sl-rpm-btn {
+    width: 44px;
+    height: 22px;
+    background: linear-gradient(180deg, #e5e8ee 0%, #c6cbd4 100%);
+    border: 2px solid #23262e;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.sl-rpm-btn .rpm-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    color: #1e2026;
+}
+
+.sl-rpm-btn .rpm-led {
+    width: 12px;
+    height: 3.5px;
+    background: #3f3f46;
+    border-radius: 1px;
+}
+
+.sl-rpm-btn .rpm-led.on {
+    background: var(--sl-red-led);
+    box-shadow: 0 0 6px var(--sl-red-led);
+}
+
+/* ============================================================================
+   5. BOTTOM-CENTER: POP-UP STYLUS TARGET LIGHT
+   ============================================================================ */
+.sl-stylus-light-cylinder {
+    position: absolute;
+    bottom: 4.2%;
+    left: 55.8%;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: conic-gradient(from 45deg, #64748b, #f1f5f9, #475569, #e2e8f0, #64748b);
+    border: 2px solid #334155;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.55);
+    cursor: pointer;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sl-stylus-light-cylinder.on .stylus-bulb-glow {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 0 10px #ffffff, 0 0 18px #93c5fd;
+}
+
+/* ============================================================================
+   6. RIGHT: GIMBAL S-SHAPED TONEARM ASSEMBLY
+   ============================================================================ */
+.sl-tonearm-assembly {
+    position: absolute;
+    top: 8.5%;
+    right: 3.2%;
+    width: 27%;
+    height: 76%;
+    z-index: 8;
+    pointer-events: none;
+}
+
+/* Circular Recessed Gimbal Base Well */
+.tonearm-base-well {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 40% 35%, #f1f5f9 0%, #b8bec8 52%, #686f7c 85%, #1e2128 100%);
+    border: 3px solid #2b2e36;
+    box-shadow:
+        inset 0 6px 16px rgba(0, 0, 0, 0.65),
+        0 4px 12px rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tonearm-height-ring {
+    width: 82%;
+    height: 82%;
+    border-radius: 50%;
+    border: 3px dashed #333842;
+    background: radial-gradient(circle, #282c34 0%, #cfd4dc 62%, #8c939e 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tonearm-inner-dark-ring {
+    width: 62%;
+    height: 62%;
+    border-radius: 50%;
+    background: #1a1d24;
+    border: 2px solid #94a3b8;
+}
+
+/* Anti-Skating Knob on right of Tonearm Base */
+.antiskate-knob {
+    position: absolute;
+    top: 46%;
+    right: 4%;
+    width: 24%;
+    height: 24%;
+    border-radius: 50%;
+    background: conic-gradient(#1f232b, #525866, #181a20, #525866, #1f232b);
+    border: 1.5px solid #9ca3af;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.65);
+}
+
+/* Pivoting Tonearm Group (Rotates around gimbal center as record plays/scratches!) */
+.tonearm-pivot-group {
+    position: absolute;
+    top: 12%;
+    left: 26%;
+    width: 150px;
+    height: 390px;
+    transform-origin: 76px 46px;
+    /* Default resting angle at edge of record */
+    transform: rotate(15deg);
+    transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Rear Cylindrical Counterweight */
+.tonearm-counterweight {
+    position: absolute;
+    top: -18px;
+    left: 52px;
+    width: 48px;
+    height: 38px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #64748b 0%, #f1f5f9 45%, #94a3b8 75%, #475569 100%);
+    border: 1.5px solid #334155;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.55);
+}
+
+.cw-scale-ring {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: #181a20;
+    border-top: 1px dashed #e2e8f0;
+}
+
+/* Center Gimbal Bridge */
+.tonearm-gimbal-bridge {
+    position: absolute;
+    top: 22px;
+    left: 44px;
+    width: 64px;
+    height: 46px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 60%, #94a3b8 100%);
+    border: 1.5px solid #64748b;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gimbal-screw-top {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #64748b;
+    border: 1px solid #334155;
+}
+
+.tonearm-svg {
+    position: absolute;
+    top: 42px;
+    left: -16px;
+    width: 180px;
+    height: 390px;
+}
+
+/* ============================================================================
+   7. RIGHT-BOTTOM: PITCH ADJ. VERTICAL SLIDER + ×2 + RESET
+   ============================================================================ */
+.sl-pitch-assembly {
+    position: absolute;
+    bottom: 5.5%;
+    right: 4.2%;
+    width: 13.5%;
+    height: 46%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 6;
+}
+
+/* [ ×2 ▬ ] Button above Pitch Fader */
+.sl-x2-btn {
+    width: 38px;
+    height: 16px;
+    background: linear-gradient(180deg, #e5e8ee, #c6cbd4);
+    border: 1.5px solid #262930;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px;
+    margin-bottom: 8px;
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+.sl-x2-btn .x2-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 7.5px;
+    font-weight: 800;
+    color: #27292e;
+}
+
+.sl-x2-btn .x2-led {
+    width: 10px;
+    height: 3px;
+    background: #3f3f46;
+}
+
+.sl-x2-btn .x2-led.on {
+    background: var(--sl-red-led);
+    box-shadow: 0 0 6px var(--sl-red-led);
+}
+
+.sl-pitch-main-row {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.sl-reset-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 18px;
+    gap: 4px;
+}
+
+.pitch-zero-led {
+    width: 9px;
+    height: 4px;
+    border-radius: 1px;
+    background: #450a0a;
+    margin-bottom: 38px;
+}
+
+.pitch-zero-led.on {
+    background: var(--sl-red-led);
+    box-shadow: 0 0 8px var(--sl-red-led);
+}
+
+.sl-reset-btn {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: conic-gradient(#94a3b8, #f8fafc, #64748b, #e2e8f0, #94a3b8);
+    border: 1.5px solid #475569;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.45);
+    cursor: pointer;
+}
+
+.sl-reset-btn:active {
+    transform: scale(0.92);
+}
+
+.sl-silk-tiny {
+    font-family: 'Inter', sans-serif;
+    font-size: 7px;
+    font-weight: 800;
+    color: var(--sl-ink);
+    letter-spacing: 0.4px;
+}
+
+/* Vertical Slotted Pitch Bezel */
+.sl-pitch-slot-bezel {
+    position: relative;
+    width: 44px;
+    height: 100%;
+    background: linear-gradient(90deg, #c2c7d0 0%, #dcdfe6 50%, #b8bec8 100%);
+    border: 1.5px solid #8e95a0;
+    border-radius: 3px;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.35);
+    display: flex;
+    justify-content: center;
+}
+
+.pitch-tick-labels {
+    position: absolute;
+    left: 3px;
+    top: 10px;
+    bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 7px;
+    font-weight: bold;
+    color: var(--sl-ink);
+    pointer-events: none;
+}
+
+.pitch-tick-labels .zero {
+    color: #b91c1c;
+    font-weight: 900;
+}
+
+.pitch-black-groove {
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 55%;
+    width: 6px;
+    transform: translateX(-50%);
+    background: #0b0c0e;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 3px #000;
+}
+
+/* Vertical Range Input overlaid on the slot */
+.sl-pitch-range-input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 190px;
+    height: 40px;
+    transform: translate(-50%, -50%) rotate(90deg);
+    opacity: 0;
+    cursor: ns-resize;
+    z-index: 5;
+}
+
+/* Sculpted Silver/Black Pitch Fader Knob */
+.sl-pitch-knob-cap {
+    position: absolute;
+    left: 55%;
+    width: 28px;
+    height: 22px;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(180deg, #f1f5f9 0%, #cbd5e1 44%, #334155 50%, #e2e8f0 56%, #94a3b8 100%);
+    border: 1.5px solid #475569;
+    border-radius: 3px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.knob-center-line {
+    width: 100%;
+    height: 2px;
+    background: #0f172a;
+}
+
+.pitch-footer-label {
+    margin-top: 4px;
+    margin-right: 4px;
+}
+
+/* ============================================================================
+   8. BOTTOM-RIGHT BRANDING SILKSCREEN
+   ============================================================================ */
+.sl-bottom-branding {
+    position: absolute;
+    bottom: 3.2%;
+    right: 19.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.sl-logo-word {
+    font-family: 'Inter', 'Arial Black', sans-serif;
+    font-size: clamp(12px, 1.5vw, 17px);
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    color: #23262d;
+    line-height: 1;
+}
+
+.sl-logo-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(6px, 0.72vw, 8.5px);
+    font-weight: 700;
+    color: #3f444e;
+    letter-spacing: 0.3px;
+}
+
+/* ============================================================================
+   RIGHT SIDE CONSOLE: SCRATCH ENGINE & 12" VINYL CRATE
+   ============================================================================ */
+.sl-side-console {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.sl-console-card {
+    background: rgba(16, 18, 23, 0.94);
+    border: 1px solid rgba(216, 220, 226, 0.22);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65);
+}
+
+.sl-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sl-card-head .head-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sl-card-head h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #f1f5f9;
+}
+
+.status-led {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status-led.red {
+    background: var(--sl-red-led);
+    box-shadow: 0 0 8px var(--sl-red-led);
+}
+
+.status-led.orange {
+    background: #fb923c;
+    box-shadow: 0 0 8px #fb923c;
+}
+
+.card-badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: #1e232d;
+    color: #cbd5e1;
+    border: 1px solid #334155;
+}
+
+/* Scratch Oscilloscope */
+.sl-scope-container {
+    position: relative;
+    background: #07080b;
+    border: 1px solid #262a34;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+#sl-scratch-canvas {
+    width: 100%;
+    height: 135px;
+    display: block;
+}
+
+.scope-hud-top {
+    position: absolute;
+    top: 7px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: #f87171;
+    pointer-events: none;
+}
+
+/* Turntablist Macro Battle Grid */
+.sl-battle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.sl-battle-btn {
+    padding: 9px 10px;
+    background: linear-gradient(180deg, #272b35 0%, #171a21 100%);
+    border: 1px solid #3f4654;
+    border-radius: 6px;
+    color: #f1f5f9;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.sl-battle-btn:hover {
+    border-color: #f87171;
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.35);
+}
+
+.sl-battle-btn:active {
+    transform: scale(0.96);
+}
+
+/* Analog Sliders */
+.sl-analog-sliders {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    background: #111318;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #232730;
+}
+
+.analog-slider-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9.5px;
+    color: #94a3b8;
+    text-align: center;
+}
+
+.analog-slider-col input[type="range"] {
+    width: 100%;
+    accent-color: #ef4444;
+    cursor: pointer;
+}
+
+.analog-slider-col span {
+    color: #e2e8f0;
+    font-size: 10px;
+}
+
+/* 12" Vinyl Crate List */
+.sl-vinyl-crate-list {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    max-height: 290px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.crate-record-item {
+    display: grid;
+    grid-template-columns: 32px 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    background: #14171e;
+    border: 1px solid #262b36;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.crate-record-item:hover {
+    background: #1c202a;
+    border-color: #64748b;
+}
+
+.crate-record-item.active {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.14);
+}
+
+.crate-mini-vinyl {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ef4444 0%, #ef4444 28%, #111318 30%, #272b35 60%, #090a0d 100%);
+    border: 1px solid #475569;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.crate-mini-vinyl::after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #e2e8f0;
+}
+
+.crate-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.crate-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+.crate-sub {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: #94a3b8;
+}
+
+.crate-rpm-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    padding: 3px 7px;
+    border-radius: 4px;
+    background: #1e2430;
+    color: #fca5a5;
+    border: 1px solid #334155;
+}
+
+/* ============================================================================
+   RESPONSIVE MOBILE-FIRST ADAPTATION
+   ============================================================================ */
+@media (max-width: 1120px) {
+    .sl-main-stage {
+        grid-template-columns: 1fr;
+    }
+    .sl1200-plinth {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .sl-rpm-btn {
+        width: 34px;
+        height: 18px;
+    }
+    .sl-power-knob {
+        width: 32px;
+        height: 32px;
+    }
+    .tonearm-pivot-group {
+        transform-origin: 76px 46px;
+        scale: 0.72;
+        top: -2%;
+        left: 12%;
+    }
+}

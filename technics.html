@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TECHNICS SL-1200MK7 // DIRECT DRIVE TURNTABLE SYSTEM</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,700;1,700&family=Inter:wght@600;800;900&family=Orbitron:wght@600;800;900&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/technics.css">
+</head>
+<body class="technics-body">
+
+<!-- RETRO NAV SWITCHER -->
+<nav class="retro-nav-bar">
+    <div class="retro-nav-brand"><span class="live-dot"></span> PIRATE WEB RADIO</div>
+    <div class="retro-nav-links">
+        <a href="index.html" class="retro-nav-pill">📻 SHARP GF-9494</a>
+        <a href="televideo.html" class="retro-nav-pill">📺 TELEVIDEO</a>
+        <a href="corona.html" class="retro-nav-pill">💎 Y2K CORONA</a>
+        <a href="alienware.html" class="retro-nav-pill">👽 ALIENWARE INVADER</a>
+        <a href="xbox.html" class="retro-nav-pill">🟢 XBOX 2002</a>
+        <a href="cdj100s.html" class="retro-nav-pill">💿 CDJ-100S</a>
+        <a href="technics.html" class="retro-nav-pill active">🎛️ TECHNICS 1200</a>
+    </div>
+</nav>
+
+<!-- CORE WEB AUDIO ELEMENT -->
+<audio id="technics-audio" src="test-track.mp3" preload="auto" crossorigin="anonymous"></audio>
+
+<!-- ==========================================================================
+     TOP ANALOG DIRECT-DRIVE SYSTEM HEADER
+     ========================================================================== -->
+<header class="sl-header-bar">
+    <div class="sl-brand-left">
+        <div class="sl-45-icon" id="btn-header-45adapter" title="Adattatore 45 Giri in Alluminio Tornito"></div>
+        <div class="sl-title-group">
+            <h1>Technics SL-1200 // DIRECT DRIVE TURNTABLE SYSTEM</h1>
+            <div class="sl-sub" id="sl-status-banner">JOG SCRATCH MODE ATTIVO // PREMI E TRASCINA IL VINILE PER FERMARE E SCRATCHARE</div>
+        </div>
+    </div>
+
+    <div class="sl-header-actions">
+        <div class="sl-slipmat-switcher" role="group" aria-label="Stile Piatto e Slipmat">
+            <button type="button" class="sl-style-btn active" data-mat="reference" id="btn-mat-ref">⚫ SLIPMAT TECHNICS (REF)</button>
+            <button type="button" class="sl-style-btn" data-mat="vinyl" id="btn-mat-vinyl">💿 VINILE 12" + LABEL</button>
+            <button type="button" class="sl-style-btn" data-mat="dubplate" id="btn-mat-dub">🔮 TRASPARENTE X-RAY</button>
+        </div>
+        <span class="sl-telemetry-pill" id="sl-rpm-readout">33.3 RPM // QUARTZ LOCK</span>
+    </div>
+</header>
+
+<!-- ==========================================================================
+     MAIN WORKSPACE:
+     LEFT: AUTHENTIC TECHNICS SL-1200 TURNTABLE CHASSIS (1:1 Reference Layout)
+     RIGHT: SCRATCH TELEMETRY, TRANSFORMER FADER & VINYL CRATE
+     ========================================================================== -->
+<main class="sl-main-stage">
+
+    <!-- ======================================================================
+         MODULE 01: TECHNICS SL-1200 DIE-CAST ALUMINUM TURNTABLE
+         ====================================================================== -->
+    <section class="sl-turntable-wrapper">
+
+        <!-- Interactive Instruction Toast above Turntable -->
+        <div class="sl-scratch-hint-bar" id="sl-scratch-hint">
+            <span class="hint-dot"></span>
+            <span id="scratch-live-text">🖐️ <strong>MODALITÀ JOG VINILE:</strong> Tieni premuto sul disco per bloccare la musica, muovi in senso orario/antiorario per <strong>Scratchare avanti e indietro</strong>!</span>
+        </div>
+
+        <!-- DIE-CAST BRUSHED SILVER ALUMINUM PLINTH -->
+        <div class="sl1200-plinth" id="sl1200-plinth">
+
+            <!-- Four Corner Brushed Screws / Subtle Industrial Depth -->
+            <div class="plinth-chamfer-border"></div>
+
+            <!-- 1. TOP-LEFT: MACHINED ALUMINUM 45-RPM ADAPTER POCKET -->
+            <button type="button" class="sl-45-adapter-well" id="btn-45-adapter" title="Adattatore 45 RPM in Alluminio Spazzolato (Clicca per Backspin!)">
+                <div class="adapter-concentric-shine"></div>
+                <div class="adapter-center-bore"></div>
+            </button>
+
+            <!-- 2. TOP-RIGHT (LEFT OF TONEARM): AUX HEADSHELL STAND HOLE -->
+            <div class="sl-headshell-hole" title="Supporto Portatestina Ausiliario"></div>
+
+            <!-- ==============================================================
+                 3. DIRECT-DRIVE PLATTER + STROBE DOTS + TECHNICS SLIPMAT/VINYL
+                 ============================================================== -->
+            <div class="sl-platter-bezel" id="sl-platter-bezel">
+
+                <!-- Outer Bevelled Black Rim with 4 Concentric Stroboscopic Dot Rings -->
+                <div class="sl-strobe-rim" id="sl-strobe-rim">
+                    <div class="strobe-ring r1"></div>
+                    <div class="strobe-ring r2"></div>
+                    <div class="strobe-ring r3"></div>
+                    <div class="strobe-ring r4"></div>
+                </div>
+
+                <!-- Red Stroboscopic Reflection Glow at 7:30-8:00 o'clock (Matches Reference!) -->
+                <div class="sl-strobe-red-reflection" id="sl-strobe-glow">
+                    <div class="red-dot-matrix"></div>
+                </div>
+
+                <!-- White Stylus Target Light Reflection at 5:30 o'clock (Matches Reference!) -->
+                <div class="sl-target-light-reflection" id="sl-target-glow"></div>
+
+                <!-- Chrome Platter Lip -->
+                <div class="sl-platter-chrome-lip"></div>
+
+                <!-- INTERACTIVE ROTATING VINYL & TECHNICS SLIPMAT SURFACE -->
+                <div class="sl-vinyl-disc" id="sl-vinyl-disc" role="slider" aria-label="Disco in Vinile Interattivo Jog e Scratch" tabindex="0">
+
+                    <!-- Micro-Grooves & Anisotropic Vinyl Sheen (Rotates with Record) -->
+                    <div class="vinyl-grooves-layer"></div>
+                    <div class="vinyl-specular-sheen"></div>
+
+                    <!-- Iconic Mirrored "Technics / Technics" Slipmat Graphic from Reference Photo -->
+                    <div class="technics-slipmat-graphic" id="technics-slipmat-graphic">
+                        <div class="slipmat-felt-texture"></div>
+                        <span class="slipmat-logo upright">Technics</span>
+                        <span class="slipmat-logo inverted">Technics</span>
+                    </div>
+
+                    <!-- Optional Classic 12" Center Record Label (Visible in Vinyl/Dubplate modes) -->
+                    <div class="vinyl-center-label" id="vinyl-center-label">
+                        <span class="label-brand">QDG PIRATE WAX</span>
+                        <span class="label-title" id="vinyl-label-title">SIDE A // 33⅓ RPM</span>
+                    </div>
+
+                    <!-- Visual Scratch / Cue Marker Sticker on Vinyl Edge (Helps track rotation angle) -->
+                    <div class="vinyl-cue-marker"></div>
+
+                    <!-- Center Chrome Spindle (Fixed axis with rotating collar) -->
+                    <div class="sl-center-spindle">
+                        <div class="spindle-tip"></div>
+                    </div>
+                </div>
+
+                <!-- Hand Contact Visual Ring when user is pressing/scratching the vinyl -->
+                <div class="vinyl-touch-halo" id="vinyl-touch-halo"></div>
+            </div>
+
+            <!-- ==============================================================
+                 4. BOTTOM-LEFT: POWER ROTARY SWITCH + STROBE ILLUMINATOR TOWER
+                    + START/STOP + 33 / 45 RPM BUTTONS
+                 ============================================================== -->
+
+            <!-- Strobe Illuminator & Rotary ON/OFF Switch -->
+            <div class="sl-strobe-tower-assembly">
+                <button type="button" class="sl-power-knob" id="btn-sl-power" title="Interruttore Rotativo ON/OFF & Luce Stroboscopica">
+                    <span class="knob-fin"></span>
+                </button>
+                <div class="strobe-prism-housing">
+                    <div class="strobe-red-emitter on" id="strobe-emitter-led"></div>
+                </div>
+                <!-- Silkscreened Pitch Dot Legend below Strobe Tower -->
+                <div class="sl-strobe-legend">
+                    <span>• +6%</span>
+                    <span>• +3.3%</span>
+                    <span>• 0%</span>
+                    <span>• -3.3%</span>
+                </div>
+            </div>
+
+            <!-- Large Rectangular START · STOP Button -->
+            <button type="button" class="sl-start-stop-btn" id="btn-start-stop" title="START · STOP (Avvia / Ferma il Motore Direct Drive)">
+                <span>START · STOP</span>
+            </button>
+
+            <!-- 33 & 45 RPM Speed Selector Buttons with Red LED Strips -->
+            <div class="sl-rpm-buttons">
+                <button type="button" class="sl-rpm-btn active" id="btn-rpm-33" data-rpm="33.3" title="33⅓ Giri al Minuto">
+                    <span class="rpm-num">33</span>
+                    <span class="rpm-led on" id="led-rpm-33"></span>
+                </button>
+                <button type="button" class="sl-rpm-btn" id="btn-rpm-45" data-rpm="45" title="45 Giri al Minuto (+35% Pitch)">
+                    <span class="rpm-num">45</span>
+                    <span class="rpm-led" id="led-rpm-45"></span>
+                </button>
+            </div>
+
+            <!-- ==============================================================
+                 5. BOTTOM-CENTER: POP-UP STYLUS TARGET LIGHT
+                 ============================================================== -->
+            <button type="button" class="sl-stylus-light-cylinder on" id="btn-stylus-light" title="Luce Puntamento Puntina Pop-Up (Accendi / Spegni)">
+                <div class="stylus-bulb-glow"></div>
+            </button>
+
+            <!-- ==============================================================
+                 6. RIGHT: GIMBAL S-SHAPED TONEARM ASSEMBLY
+                 ============================================================== -->
+            <div class="sl-tonearm-assembly">
+                <!-- Circular Recessed Brushed Base -->
+                <div class="tonearm-base-well">
+                    <div class="tonearm-height-ring">
+                        <div class="tonearm-inner-dark-ring"></div>
+                        <!-- Anti-Skating Dial -->
+                        <div class="antiskate-knob" title="Controllo Anti-Skating"></div>
+                        <!-- Cueing Lever -->
+                        <div class="cue-lever" id="btn-tonearm-cue" title="Leva Alzabraccio (Cueing Lever)"></div>
+                    </div>
+                </div>
+
+                <!-- Rotating Gimbal + Counterweight + S-Shaped Chrome Tube + Headshell -->
+                <div class="tonearm-pivot-group" id="tonearm-pivot-group">
+                    <!-- Rear Cylindrical Counterweight -->
+                    <div class="tonearm-counterweight">
+                        <div class="cw-scale-ring"></div>
+                    </div>
+
+                    <!-- Center Gimbal Housing Bridge -->
+                    <div class="tonearm-gimbal-bridge">
+                        <div class="gimbal-screw-top"></div>
+                    </div>
+
+                    <!-- SVG S-Shaped Tubular Chrome Arm & Slotted Black Technics Headshell -->
+                    <svg class="tonearm-svg" viewBox="0 0 180 420" overflow="visible">
+                        <defs>
+                            <linearGradient id="chromeArmGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#6b7280"/>
+                                <stop offset="35%" stop-color="#f8fafc"/>
+                                <stop offset="55%" stop-color="#cbd5e1"/>
+                                <stop offset="85%" stop-color="#475569"/>
+                                <stop offset="100%" stop-color="#e2e8f0"/>
+                            </linearGradient>
+                            <filter id="armDropShadow" x="-30%" y="-10%" width="160%" height="130%">
+                                <feDropShadow dx="-6" dy="10" stdDeviation="6" flood-color="rgba(0,0,0,0.62)"/>
+                            </filter>
+                        </defs>
+
+                        <g filter="url(#armDropShadow)">
+                            <!-- Arm Rest Clip on the Plinth -->
+                            <path d="M 86 115 L 104 115" stroke="#1e2024" stroke-width="7" stroke-linecap="round"/>
+
+                            <!-- Iconic S-Shaped Tubular Tonearm Curve -->
+                            <path d="M 92 20 C 90 95, 114 155, 118 220 C 122 280, 95 322, 68 364"
+                                  fill="none"
+                                  stroke="url(#chromeArmGrad)"
+                                  stroke-width="11"
+                                  stroke-linecap="round"/>
+                            <!-- Specular Highlight Line along the S-Arm -->
+                            <path d="M 91 20 C 89 95, 113 155, 117 220 C 121 280, 94 322, 67 364"
+                                  fill="none"
+                                  stroke="#ffffff"
+                                  stroke-width="2"
+                                  opacity="0.7"/>
+
+                            <!-- Chrome Locking Collar (SME Connector) -->
+                            <g transform="translate(68, 364) rotate(31)">
+                                <rect x="-7" y="-6" width="14" height="12" rx="2" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+
+                                <!-- Black Die-Cast Technics Headshell with Slots -->
+                                <path d="M -9 6 L 9 6 L 12 58 L -12 58 Z" fill="#18191c" stroke="#3f434a" stroke-width="1.2"/>
+                                <!-- Headshell Weight Slots -->
+                                <rect x="-6" y="16" width="4" height="22" rx="1.5" fill="#71717a"/>
+                                <rect x="2" y="16" width="4" height="22" rx="1.5" fill="#71717a"/>
+                                <!-- Cartridge Mounting Screws -->
+                                <circle cx="-4" cy="44" r="2.2" fill="#d4d4d8"/>
+                                <circle cx="4" cy="44" r="2.2" fill="#d4d4d8"/>
+                                <!-- Technics White Print on Headshell Front -->
+                                <line x1="-6" y1="53" x2="6" y2="53" stroke="#cbd5e1" stroke-width="1.8"/>
+                                <!-- Finger Lift Arm -->
+                                <path d="M 10 38 L 28 45 L 30 48" fill="none" stroke="#d4d4d8" stroke-width="2.8" stroke-linecap="round"/>
+                                <!-- Glowing Stylus Tip Indicator -->
+                                <circle cx="0" cy="59" r="3" fill="#ff2a2a" id="stylus-tip-led"/>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- ==============================================================
+                 7. RIGHT-BOTTOM: PITCH ADJ. VERTICAL SLIDER + ×2 + RESET
+                 ============================================================== -->
+            <div class="sl-pitch-assembly">
+                <!-- [ ×2 ] Pitch Range Doubler Button (±8% / ±16%) -->
+                <button type="button" class="sl-x2-btn" id="btn-pitch-x2" title="×2 Pitch Range (±8% / ±16%)">
+                    <span class="x2-text">×2</span>
+                    <span class="x2-led" id="led-pitch-x2"></span>
+                </button>
+
+                <div class="sl-pitch-main-row">
+                    <!-- RESET Quartz Lock Round Silver Button + Red Zero LED -->
+                    <div class="sl-reset-col">
+                        <div class="pitch-zero-led on" id="led-pitch-zero" title="Quartz Lock 0%"></div>
+                        <button type="button" class="sl-reset-btn" id="btn-pitch-reset" title="RESET (Quartz Lock 0.0%)"></button>
+                        <span class="sl-silk-tiny">RESET</span>
+                    </div>
+
+                    <!-- Recessed Vertical Slotted Pitch Fader -->
+                    <div class="sl-pitch-slot-bezel">
+                        <div class="pitch-tick-labels">
+                            <span>8</span>
+                            <span>6</span>
+                            <span>4</span>
+                            <span>2</span>
+                            <span class="zero">0</span>
+                            <span>2</span>
+                            <span>4</span>
+                            <span>6</span>
+                            <span>8</span>
+                        </div>
+
+                        <div class="pitch-black-groove"></div>
+
+                        <input type="range" class="sl-pitch-range-input" id="sl-pitch-slider" min="-8" max="8" step="0.1" value="0" aria-label="Pitch Adjust">
+
+                        <!-- Sculpted Silver/Black Pitch Knob -->
+                        <div class="sl-pitch-knob-cap" id="sl-pitch-cap" style="top: 50%;">
+                            <div class="knob-center-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <span class="sl-silk-tiny pitch-footer-label">PITCH ADJ.</span>
+            </div>
+
+            <!-- ==============================================================
+                 8. BOTTOM-RIGHT BRANDING SILKSCREEN
+                    "Technics DIRECT DRIVE TURNTABLE SYSTEM SL-1200MK7"
+                 ============================================================== -->
+            <div class="sl-bottom-branding">
+                <div class="sl-logo-word">Technics</div>
+                <div class="sl-logo-sub">DIRECT DRIVE TURNTABLE SYSTEM <strong>SL-1200</strong></div>
+            </div>
+
+        </div><!-- /.sl1200-plinth -->
+    </section>
+
+    <!-- ======================================================================
+         MODULE 02: SCRATCH TELEMETRY, BATTLE FADER & VINYL RECORD CRATE
+         ====================================================================== -->
+    <aside class="sl-side-console">
+
+        <!-- CARD A: REAL-TIME JOG / SCRATCH PHYSICS & BATTLE CONTROLS -->
+        <div class="sl-console-card">
+            <div class="sl-card-head">
+                <div class="head-left">
+                    <span class="status-led red"></span>
+                    <h2>VINYL JOG &amp; SCRATCH ENGINE</h2>
+                </div>
+                <span class="card-badge" id="scratch-state-badge">MOTOR: STANDBY</span>
+            </div>
+
+            <!-- Live Scratch Velocity & Groove Oscilloscope -->
+            <div class="sl-scope-container">
+                <canvas id="sl-scratch-canvas" width="440" height="135"></canvas>
+                <div class="scope-hud-top">
+                    <span id="hud-angle-deg">ANGLE: 0.0°</span>
+                    <span id="hud-velocity-rpm">VEL: 0.0 RPM</span>
+                    <span id="hud-time-pos">POS: 00:00.0</span>
+                </div>
+            </div>
+
+            <!-- Quick Turntablist Scratch & Battle Macros -->
+            <div class="sl-battle-grid">
+                <button type="button" class="sl-battle-btn" id="btn-macro-baby" title="Esegue uno scratch ritmico avanti/indietro sul vinile">
+                    🖐️ BABY SCRATCH
+                </button>
+                <button type="button" class="sl-battle-btn" id="btn-macro-backspin" title="Lancia il disco all'indietro ad alta velocità (Backspin)">
+                    ⏪ BACKSPIN WHIP
+                </button>
+                <button type="button" class="sl-battle-btn" id="btn-macro-transformer" title="Taglia ritmicamente il volume come un crossfader da gara">
+                    ⚡ TRANSFORMER CUT
+                </button>
+                <button type="button" class="sl-battle-btn" id="btn-macro-brake" title="Frenata progressiva del motore Direct Drive">
+                    🛑 POWER BRAKE
+                </button>
+            </div>
+
+            <!-- Torque, Vinyl Crackle & Volume Sliders -->
+            <div class="sl-analog-sliders">
+                <div class="analog-slider-col">
+                    <label for="sl-crackle-vol">VINYL DUST CRACKLE</label>
+                    <input type="range" id="sl-crackle-vol" min="0" max="100" value="28">
+                    <span id="val-crackle">28%</span>
+                </div>
+                <div class="analog-slider-col">
+                    <label for="sl-torque-feel">PLATTER TORQUE</label>
+                    <input type="range" id="sl-torque-feel" min="20" max="100" value="85">
+                    <span id="val-torque">HIGH (85%)</span>
+                </div>
+                <div class="analog-slider-col">
+                    <label for="sl-master-vol">PHONO PREAMP VOL</label>
+                    <input type="range" id="sl-master-vol" min="0" max="100" value="90">
+                    <span id="val-phono-vol">90%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD B: 12" VINYL RECORD CRATE (SELEZIONA IL DISCO DA METTERE SUL PIATTO) -->
+        <div class="sl-console-card crate-card">
+            <div class="sl-card-head">
+                <div class="head-left">
+                    <span class="status-led orange"></span>
+                    <h2>12" VINYL CRATE // SELEZIONA TRACCIA</h2>
+                </div>
+                <span class="card-badge">DIRECT DRIVE</span>
+            </div>
+
+            <div class="sl-vinyl-crate-list" id="sl-vinyl-crate-list">
+                <!-- Populated dynamically by js/technics/technics.js -->
+            </div>
+        </div>
+
+    </aside>
+
+</main>
+
+<script src="js/technics/technics.js"></script>
+</body>
+</html>
