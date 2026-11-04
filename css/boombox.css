@@ -1,0 +1,773 @@
+/* ============================================================================
+   SHARP GF-9494 BOOMBOX INTERFACE (css/boombox.css)
+   Vintage 1980s Japanese Ghettoblaster / Stereo Cassette Tape Recorder
+   Brushed aluminum chassis, dual analog VU needles, rotating cassette spools,
+   bumping woofers, APLD buttons, and analog radio tuning dial.
+   ============================================================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body.boombox-body {
+    background: #14171d radial-gradient(circle at 50% 30%, #252b36 0%, #0d0f14 100%);
+    color: #e2e8f0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    user-select: none;
+    padding-bottom: 40px;
+}
+
+/* ============================================================================
+   MAIN BOOMBOX CONTAINER
+   ============================================================================ */
+.boombox-stage {
+    width: 100%;
+    max-width: 1120px;
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.boombox-chassis {
+    width: 100%;
+    background: linear-gradient(180deg, #c3c8cf 0%, #a8aeb7 8%, #9ca2ab 45%, #888e96 85%, #6a7078 100%);
+    border-radius: 8px;
+    border: 4px solid #3c4046;
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.85),
+        inset 0 2px 3px rgba(255, 255, 255, 0.8),
+        inset 0 -3px 4px rgba(0, 0, 0, 0.6);
+    position: relative;
+    padding: 12px 14px 18px;
+    margin-top: 10px;
+}
+
+/* Top Carry Handle Brackets & Corner Protectors */
+.chassis-corner-l,
+.chassis-corner-r {
+    position: absolute;
+    top: -8px;
+    width: 32px;
+    height: 14px;
+    background: linear-gradient(90deg, #4b5159, #888e97, #3b4046);
+    border: 2px solid #202327;
+    border-radius: 3px;
+}
+.chassis-corner-l { left: 40px; }
+.chassis-corner-r { right: 40px; }
+
+/* Top Mechanical Button Deck (Levers on top of boombox) */
+.top-deck-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 8px;
+    padding: 0 10px;
+}
+
+.tape-transport-row {
+    display: flex;
+    gap: 4px;
+    background: #2b2e34;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 2px solid #1a1c20;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+}
+
+.transport-btn {
+    background: linear-gradient(180deg, #e6e9ed 0%, #b8bec7 50%, #8c939d 100%);
+    border: 1px solid #4a4f56;
+    border-bottom: 3px solid #2a2d33;
+    border-radius: 2px;
+    font-size: 8.5px;
+    font-weight: 800;
+    font-family: 'Press Start 2P', monospace;
+    padding: 6px 10px;
+    color: #1e2227;
+    cursor: pointer;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.08s ease;
+}
+
+.transport-btn:hover {
+    filter: brightness(1.1);
+}
+
+.transport-btn:active,
+.transport-btn.pressed {
+    transform: translateY(2px);
+    border-bottom-width: 1px;
+    background: linear-gradient(180deg, #b8bec7 0%, #8c939d 100%);
+    box-shadow: inset 0 2px 3px rgba(0,0,0,0.5);
+}
+
+.transport-btn.rec {
+    color: #b91c1c;
+}
+.transport-btn.rec .rec-dot {
+    width: 6px;
+    height: 6px;
+    background: #dc2626;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.transport-btn.play.active {
+    background: linear-gradient(180deg, #dcfce7 0%, #86efac 100%);
+    color: #14532d;
+    border-color: #22c55e;
+}
+
+/* ============================================================================
+   TOP RECESSED INSTRUMENT PANEL (VU METERS, APLD, TUNER)
+   ============================================================================ */
+.top-instrument-panel {
+    display: grid;
+    grid-template-columns: 270px 1fr 340px;
+    gap: 12px;
+    background: #1e2228;
+    border: 3px solid #363b43;
+    border-radius: 4px;
+    padding: 8px 12px;
+    box-shadow:
+        inset 0 6px 12px rgba(0, 0, 0, 0.8),
+        0 2px 3px rgba(255, 255, 255, 0.2);
+    margin-bottom: 12px;
+    align-items: center;
+}
+
+/* DUAL ANALOG NEEDLE VU METERS */
+.dual-vu-box {
+    display: flex;
+    gap: 8px;
+    background: #121519;
+    padding: 6px;
+    border-radius: 4px;
+    border: 2px solid #2b3038;
+}
+
+.analog-meter {
+    flex: 1;
+    background: radial-gradient(circle at 50% 90%, #fef3c7 0%, #fde68a 35%, #e2d9b6 85%);
+    border: 2px solid #475569;
+    border-radius: 3px;
+    height: 58px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.45);
+}
+
+.analog-meter::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 50% 10%, rgba(255,255,255,0.7) 0%, transparent 60%),
+        linear-gradient(rgba(0,0,0,0.06) 50%, transparent 50%);
+    background-size: 100% 100%, 100% 2px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.meter-scale-svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.meter-needle {
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    width: 1.5px;
+    height: 44px;
+    background: #dc2626;
+    transform-origin: bottom center;
+    transform: rotate(-32deg);
+    transition: transform 0.06s cubic-bezier(0.1, 0.9, 0.2, 1);
+    box-shadow: 1px 0 2px rgba(0, 0, 0, 0.5);
+    z-index: 3;
+}
+
+.meter-pivot {
+    position: absolute;
+    bottom: -5px;
+    left: calc(50% - 6px);
+    width: 12px;
+    height: 12px;
+    background: #1f2937;
+    border: 2px solid #4b5563;
+    border-radius: 50%;
+    z-index: 4;
+}
+
+.meter-label {
+    position: absolute;
+    bottom: 4px;
+    left: 6px;
+    font-size: 8px;
+    font-weight: 900;
+    color: #1e293b;
+    font-family: 'Arial Black', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+/* CENTER: LEDS & APLD SYSTEM */
+.apld-center-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.indicator-leds-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.led-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-size: 6.5px;
+    font-weight: bold;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+.led-bulb {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #334155;
+    border: 1px solid #0f172a;
+    transition: all 0.15s ease;
+}
+
+.led-bulb.red.on {
+    background: #ef4444;
+    box-shadow: 0 0 8px #ef4444, inset 0 0 2px #fff;
+}
+.led-bulb.amber.on {
+    background: #f59e0b;
+    box-shadow: 0 0 8px #f59e0b, inset 0 0 2px #fff;
+}
+.led-bulb.green.on {
+    background: #22c55e;
+    box-shadow: 0 0 8px #22c55e, inset 0 0 2px #fff;
+}
+
+.apld-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    width: 100%;
+}
+
+.apld-title {
+    font-size: 7px;
+    font-family: 'Arial Black', sans-serif;
+    color: #cbd5e1;
+    letter-spacing: 0.5px;
+}
+
+.apld-buttons-rack {
+    display: flex;
+    gap: 3px;
+    background: #111418;
+    padding: 3px 6px;
+    border-radius: 3px;
+    border: 1px solid #333a44;
+}
+
+.apld-btn {
+    width: 22px;
+    height: 18px;
+    background: linear-gradient(180deg, #e2e8f0 0%, #94a3b8 100%);
+    border: 1px solid #475569;
+    border-radius: 2px;
+    font-size: 8px;
+    font-weight: 900;
+    color: #0f172a;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    transition: all 0.08s ease;
+}
+
+.apld-btn:active,
+.apld-btn.active {
+    background: #f59e0b;
+    color: #fff;
+    transform: translateY(1px);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
+}
+
+/* RIGHT: RADIO TUNING SCALE WINDOW */
+.tuner-glass-window {
+    background: #0f141c;
+    border: 2px solid #334155;
+    border-radius: 3px;
+    padding: 4px 8px;
+    position: relative;
+    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.85);
+    overflow: hidden;
+}
+
+.tuner-bands {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-family: monospace;
+    font-size: 7.5px;
+    color: #cbd5e1;
+    letter-spacing: 0.5px;
+}
+
+.tuner-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding-bottom: 1px;
+}
+
+.tuner-row .band-name {
+    color: #f59e0b;
+    font-weight: bold;
+    width: 28px;
+}
+.tuner-row .band-scale {
+    color: #94a3b8;
+    flex: 1;
+    text-align: right;
+    font-size: 6.8px;
+}
+
+/* Red Vertical Tuning Needle */
+.tuner-needle-line {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 48%;
+    width: 2px;
+    background: #ef4444;
+    box-shadow: 0 0 6px #ef4444;
+    pointer-events: none;
+    transition: left 0.12s ease-out;
+}
+
+.tuner-glass-glare {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 45%);
+    pointer-events: none;
+}
+
+/* ============================================================================
+   MAIN SECTION: 2 MASSIVE WOOFERS + CENTER CASSETTE TAPE DECK
+   ============================================================================ */
+.main-acoustic-deck {
+    display: grid;
+    grid-template-columns: 1fr 280px 1fr;
+    gap: 14px;
+    align-items: stretch;
+}
+
+/* ----------------------------------------------------------------------------
+   LOUDSPEAKER ASSEMBLIES (LEFT & RIGHT)
+   ---------------------------------------------------------------------------- */
+.speaker-assembly {
+    background: #1c2026;
+    border: 3px solid #333842;
+    border-radius: 6px;
+    position: relative;
+    box-shadow:
+        inset 0 4px 10px rgba(0, 0, 0, 0.9),
+        0 2px 4px rgba(255, 255, 255, 0.15);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+/* 4-16 OHMS Badge */
+.speaker-badge-ohm {
+    position: absolute;
+    top: 8px;
+    font-size: 7px;
+    font-weight: 900;
+    font-family: 'Arial Black', sans-serif;
+    color: #b91c1c;
+    background: #0f1115;
+    padding: 2px 5px;
+    border: 1px solid #374151;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+    z-index: 4;
+}
+.speaker-assembly.left .speaker-badge-ohm { right: 8px; }
+.speaker-assembly.right .speaker-badge-ohm { left: 8px; }
+
+/* Tweeter in sculpted acoustic horn */
+.tweeter-horn {
+    width: 68px;
+    height: 68px;
+    background: radial-gradient(circle, #0a0c0f 40%, #1f242c 70%, #3b424e 100%);
+    border: 3px solid #14181e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 3px 6px rgba(0,0,0,0.9);
+    position: relative;
+}
+
+.tweeter-grille-mesh {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #111419;
+    background-image:
+        radial-gradient(#2b323c 1px, transparent 1px),
+        radial-gradient(#1c2128 1px, #0f1216 1px);
+    background-size: 4px 4px;
+    border: 2px solid #282f3a;
+}
+
+/* Main Woofer */
+.woofer-housing {
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, #101317 0%, #1a1e24 60%, #2a313b 100%);
+    border: 5px solid #20252e;
+    border-radius: 50%;
+    box-shadow:
+        inset 0 10px 25px rgba(0, 0, 0, 0.95),
+        0 2px 6px rgba(255, 255, 255, 0.1);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6px;
+    transition: transform 0.05s ease-out;
+}
+
+/* Bass pulse reaction */
+.woofer-cone {
+    width: 175px;
+    height: 175px;
+    background:
+        radial-gradient(circle at 45% 45%, #3d4552 0%, #20252c 50%, #13161a 100%);
+    border: 4px solid #191c22;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 6px 14px rgba(0,0,0,0.8);
+    transition: transform 0.05s ease-out;
+}
+
+/* Chrome Center Dust Cap */
+.woofer-dust-cap {
+    width: 58px;
+    height: 58px;
+    background: radial-gradient(circle at 40% 35%, #ffffff 0%, #cbd5e1 30%, #475569 70%, #1e293b 100%);
+    border: 2px solid #334155;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.7);
+}
+
+/* Perforated Metal Mesh Grille Overlay */
+.metal-mesh-overlay {
+    position: absolute;
+    inset: 4px;
+    border-radius: 4px;
+    background-image:
+        radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        radial-gradient(rgba(0,0,0,0.5) 1px, transparent 1px);
+    background-size: 5px 5px;
+    background-position: 0 0, 2.5px 2.5px;
+    pointer-events: none;
+    z-index: 2;
+    box-shadow: inset 0 0 12px rgba(0,0,0,0.6);
+}
+
+/* ----------------------------------------------------------------------------
+   CENTER CASSETTE DECK & STEREO DYNAMIC SOUND
+   ---------------------------------------------------------------------------- */
+.center-deck-section {
+    background: #181b20;
+    border: 3px solid #333842;
+    border-radius: 4px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.8);
+}
+
+/* Cassette Well Door */
+.cassette-well-door {
+    width: 100%;
+    height: 145px;
+    background: #0f1217;
+    border: 2px solid #374151;
+    border-radius: 4px;
+    position: relative;
+    padding: 8px;
+    box-shadow: inset 0 3px 8px rgba(0,0,0,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Transparent Tape Window */
+.tape-window {
+    width: 220px;
+    height: 105px;
+    background: #1e2530;
+    border: 2px solid #475569;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 16px;
+    box-shadow: inset 0 0 14px rgba(0,0,0,0.8);
+    overflow: hidden;
+}
+
+/* Cassette Tape Body inside */
+.cassette-label-band {
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    right: 10px;
+    height: 18px;
+    background: #f59e0b;
+    border: 1px solid #78350f;
+    font-size: 7px;
+    font-weight: 900;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+    font-family: monospace;
+}
+
+/* Rotating Tape Reels */
+.tape-reel {
+    width: 44px;
+    height: 44px;
+    background: #ffffff;
+    border: 3px solid #cbd5e1;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    z-index: 2;
+}
+
+.tape-reel-inner {
+    width: 20px;
+    height: 20px;
+    background: #0f172a;
+    border-radius: 50%;
+    position: relative;
+}
+
+/* 3-Tooth Spoke Hub */
+.reel-spoke {
+    position: absolute;
+    top: -2px;
+    left: 8px;
+    width: 4px;
+    height: 24px;
+    background: #ffffff;
+}
+.reel-spoke:nth-child(2) { transform: rotate(60deg); }
+.reel-spoke:nth-child(3) { transform: rotate(120deg); }
+
+/* Rotating CSS Animation */
+.tape-reel.spinning {
+    animation: tape-spin 1.8s linear infinite;
+}
+@keyframes tape-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.cassette-glass-reflection {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(125deg, rgba(255,255,255,0.2) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* Mechanical Tape Counter [000] */
+.tape-counter-block {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+}
+
+.counter-digits {
+    background: #000;
+    border: 2px solid #4b5563;
+    padding: 2px 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 3px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.9);
+}
+
+.counter-reset-btn {
+    width: 12px;
+    height: 12px;
+    background: #e2e8f0;
+    border: 1px solid #1e293b;
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+.counter-reset-btn:active {
+    transform: translateY(1px);
+}
+
+/* CENTER BADGES & TYPOGRAPHY */
+.deck-typography {
+    text-align: center;
+    width: 100%;
+}
+
+.brand-stereo-dynamic {
+    font-size: 11px;
+    font-weight: 900;
+    font-family: 'Arial Black', sans-serif;
+    color: #e2e8f0;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.brand-subline {
+    font-size: 6.5px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #94a3b8;
+    margin: 2px 0 6px;
+    letter-spacing: 0.8px;
+}
+
+.sharp-model-badge {
+    background: linear-gradient(180deg, #111418 0%, #20242b 100%);
+    border: 2px solid #cbd5e1;
+    border-radius: 3px;
+    padding: 4px 14px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.6);
+}
+
+.sharp-text {
+    font-size: 13px;
+    font-weight: 900;
+    font-family: 'Arial Black', sans-serif;
+    color: #ffffff;
+    letter-spacing: 2px;
+    font-style: italic;
+}
+
+.model-text {
+    color: #f59e0b;
+}
+
+/* LOWER DECK ROW: PHONES JACK & 22W RED BADGE */
+.lower-deck-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px 0;
+}
+
+.phones-jack-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 7px;
+    font-weight: bold;
+    color: #94a3b8;
+}
+
+.jack-socket {
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle, #000 45%, #64748b 80%, #cbd5e1 100%);
+    border: 1px solid #1e293b;
+    border-radius: 50%;
+    box-shadow: inset 0 2px 3px rgba(0,0,0,0.8);
+}
+
+.power-badge-22w {
+    background: #dc2626;
+    border: 2px solid #ffffff;
+    border-radius: 3px;
+    padding: 2px 8px;
+    font-size: 13px;
+    font-weight: 900;
+    font-family: 'Arial Black', sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+@media (max-width: 960px) {
+    .top-instrument-panel {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .main-acoustic-deck {
+        grid-template-columns: 1fr;
+    }
+    .woofer-housing {
+        width: 180px;
+        height: 180px;
+    }
+    .woofer-cone {
+        width: 140px;
+        height: 140px;
+    }
+}

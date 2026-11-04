@@ -1,0 +1,291 @@
+/* ============================================================================
+   RADIOFAX // TELEVIDEO ARCHIVE - STILE TELETEXT CRT (css/televideo.css)
+   ============================================================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+:root {
+    --tt-black:   #000000;
+    --tt-white:   #ffffff;
+    --tt-yellow:  #ffff00;
+    --tt-cyan:    #00ffff;
+    --tt-green:   #00ff00;
+    --tt-red:     #ff0000;
+    --tt-blue:    #0000ff;
+    --tt-magenta: #ff00ff;
+}
+
+body.televideo-body {
+    background-color: var(--tt-black);
+    color: var(--tt-white);
+    font-family: 'VT323', monospace;
+    font-size: 25px;
+    line-height: 1.08;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* CRT SCANLINES & VIGNETTE OVERLAY */
+body.televideo-body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.38) 50%),
+        radial-gradient(circle at center, transparent 65%, rgba(0, 0, 0, 0.65) 100%);
+    background-size: 100% 4px, 100% 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.televideo-screen {
+    width: 100%;
+    max-width: 980px;
+    background: var(--tt-black);
+    padding: 16px 22px;
+    margin: 20px auto 40px;
+    border: 2px solid #111;
+    box-shadow: 0 0 50px rgba(0, 255, 255, 0.09);
+    transition: transform 0.05s ease-out;
+}
+
+/* COLORI TESTO */
+.t-yel { color: var(--tt-yellow); }
+.t-cya { color: var(--tt-cyan); }
+.t-grn { color: var(--tt-green); }
+.t-red { color: var(--tt-red); }
+.t-mag { color: var(--tt-magenta); }
+.t-wht { color: var(--tt-white); }
+.t-blk { color: var(--tt-black); }
+
+/* SFONDI */
+.bg-blu { background-color: var(--tt-blue); }
+.bg-wht { background-color: var(--tt-white); }
+.bg-red { background-color: var(--tt-red); }
+.bg-grn { background-color: var(--tt-green); }
+.bg-yel { background-color: var(--tt-yellow); }
+.bg-cya { background-color: var(--tt-cyan); }
+
+/* HEADER SUPERIORE */
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+#tx-status {
+    padding: 0 6px;
+}
+
+/* LOGO A BLOCCHI INVERTITI */
+.logo-row {
+    display: flex;
+    align-items: stretch;
+    font-size: 48px;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+.logo-block-white {
+    background-color: var(--tt-white);
+    color: var(--tt-black);
+    padding: 2px 12px;
+    letter-spacing: 5px;
+    font-weight: bold;
+}
+.logo-block-blue {
+    background-color: var(--tt-blue);
+    color: var(--tt-yellow);
+    flex-grow: 1;
+    padding: 2px 20px;
+    letter-spacing: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* TESTO STIRATO (Double Height Teletext) */
+.double-height {
+    font-size: 34px;
+    transform: scaleY(1.25);
+    transform-origin: top;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* MARQUEE TIPO BREAKING NEWS */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    background: #050518;
+    border-top: 2px solid var(--tt-blue);
+    border-bottom: 2px solid var(--tt-blue);
+    color: var(--tt-green);
+    padding: 3px 0;
+    margin-bottom: 12px;
+}
+.marquee-content {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee-anim 18s linear infinite;
+}
+@keyframes marquee-anim {
+    0%   { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
+
+/* GABBIA A 2 COLONNE PER L'INDICE */
+.grid-2col {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-top: 6px;
+}
+.col { width: 48.5%; }
+
+.index-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+    padding: 1px 6px;
+    cursor: pointer;
+    transition: background-color 0.08s steps(1);
+}
+.index-row:hover {
+    background-color: #000088;
+}
+.index-row.active {
+    background-color: var(--tt-blue);
+}
+.index-row.active .cat {
+    color: var(--tt-white);
+}
+.index-row .cat { color: var(--tt-yellow); }
+.index-row .page { color: var(--tt-white); text-align: right; }
+
+.cyan-break {
+    color: var(--tt-cyan);
+    margin: 10px 0;
+    width: 100%;
+    font-size: 22px;
+}
+
+/* REACTIVE AUDIO DECK */
+.audio-deck {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 14px;
+    align-items: center;
+    border-top: 4px solid var(--tt-blue);
+    padding-top: 10px;
+    margin-top: 6px;
+}
+
+.vu-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Discrete LED VU */
+.led-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.led-label {
+    color: var(--tt-cyan);
+    width: 55px;
+    font-size: 22px;
+}
+.led {
+    flex: 1;
+    height: 16px;
+    background-color: #161616;
+    border: 1px solid #2b2b2b;
+    transition: background-color 0.04s steps(1), box-shadow 0.04s steps(1);
+}
+.led.active.lvl-green  { background-color: var(--tt-green);  box-shadow: 0 0 6px var(--tt-green); }
+.led.active.lvl-yellow { background-color: var(--tt-yellow); box-shadow: 0 0 6px var(--tt-yellow); }
+.led.active.lvl-red    { background-color: var(--tt-red);    box-shadow: 0 0 8px var(--tt-red); }
+
+/* ASCII VU (#vcr-vu) */
+.ascii-vu-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 23px;
+}
+#vcr-vu {
+    letter-spacing: 2px;
+    color: var(--tt-green);
+}
+
+/* SVG Oscilloscope */
+.osc-box {
+    background: #020208;
+    border: 2px solid var(--tt-blue);
+    height: 54px;
+    position: relative;
+    overflow: hidden;
+}
+.osc-box svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+#osc-path {
+    fill: none;
+    stroke: var(--tt-cyan);
+    stroke-width: 2.2;
+    stroke-linejoin: bevel;
+    filter: drop-shadow(0 0 4px var(--tt-cyan));
+}
+
+/* ANIMAZIONI & FASTEXT */
+.blink {
+    animation: blink-anim 0.9s step-end infinite;
+}
+@keyframes blink-anim {
+    50% { opacity: 0; }
+}
+
+.footer-bar {
+    background-color: var(--tt-blue);
+    color: var(--tt-cyan);
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 12px;
+    margin: 10px 0 6px 0;
+}
+
+.fastext-keys {
+    display: flex;
+    font-size: 23px;
+    gap: 12px;
+}
+.f-key {
+    padding: 2px 12px;
+    color: var(--tt-black);
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.05s steps(1), filter 0.1s;
+}
+.f-key:hover {
+    filter: brightness(1.2);
+}
+.f-key:active {
+    transform: translateY(2px);
+}

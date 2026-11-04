@@ -1,0 +1,96 @@
+/* ============================================================================
+   RADIO INTERFACE SWITCHER (css/nav.css)
+   Allows seamless toggling between:
+   1. 📻 SHARP GF-9494 STEREO BOOMBOX
+   2. 📺 TELEVIDEO RADIOFAX ARCHIVE
+   ============================================================================ */
+
+.retro-nav-bar {
+    width: 100%;
+    background: #0f1217;
+    border-bottom: 2px solid #2b3038;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Press Start 2P', monospace, sans-serif;
+    font-size: 8px;
+    color: #94a3b8;
+    z-index: 9999;
+    box-sizing: border-box;
+    position: relative;
+    user-select: none;
+}
+
+.retro-nav-brand {
+    color: #f59e0b;
+    letter-spacing: 1px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.retro-nav-brand span.live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ef4444;
+    box-shadow: 0 0 8px #ef4444;
+    display: inline-block;
+    animation: nav-pulse 1s infinite alternate;
+}
+
+@keyframes nav-pulse {
+    from { opacity: 0.35; transform: scale(0.9); }
+    to   { opacity: 1;    transform: scale(1.1); }
+}
+
+.retro-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.retro-nav-pill {
+    padding: 6px 12px;
+    background: #1e242d;
+    color: #cbd5e1;
+    border: 1px solid #333d4b;
+    text-decoration: none;
+    font-size: 8px;
+    border-radius: 3px;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.retro-nav-pill:hover {
+    background: #333d4b;
+    color: #ffffff;
+    border-color: #64748b;
+}
+
+.retro-nav-pill.active {
+    background: #d97706;
+    color: #0f172a;
+    border-color: #f59e0b;
+    font-weight: bold;
+    box-shadow: inset 1px 1px 0 #fde68a, 0 0 10px rgba(245, 158, 11, 0.45);
+}
+
+@media (max-width: 640px) {
+    .retro-nav-bar {
+        flex-direction: column;
+        gap: 8px;
+        padding: 6px 8px;
+    }
+    .retro-nav-pill {
+        font-size: 7px;
+        padding: 4px 8px;
+    }
+}
