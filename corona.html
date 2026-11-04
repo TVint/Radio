@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Y2K CORONA // 9-SERIES LIQUID CHROME BENTO RADIO</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,700;1,700&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/corona.css">
+</head>
+<body class="corona-body">
+
+<!-- RETRO NAV SWITCHER -->
+<nav class="retro-nav-bar">
+    <div class="retro-nav-brand"><span class="live-dot"></span> PIRATE WEB RADIO</div>
+    <div class="retro-nav-links">
+        <a href="index.html" class="retro-nav-pill">📻 SHARP GF-9494</a>
+        <a href="televideo.html" class="retro-nav-pill">📺 TELEVIDEO</a>
+        <a href="corona.html" class="retro-nav-pill active">💎 Y2K CORONA</a>
+    </div>
+</nav>
+
+<!-- CORE WEB AUDIO STREAM SOURCE -->
+<audio id="corona-audio" src="test-track.mp3" preload="auto" crossorigin="anonymous"></audio>
+
+<!-- ==========================================================================
+     MOBILE-FIRST Y2K BENTO GRID SHELL
+     Assembled from authentic 2004 WMP9 "Corona" 9-Slice Bitmap Fragments
+     ========================================================================== -->
+<main class="y2k-bento-shell" id="bento-shell">
+
+    <!-- SYSTEM TELEMETRY BAR -->
+    <header class="y2k-system-bar">
+        <div class="sys-brand-cluster">
+            <span class="sys-badge-pill"><span class="sys-badge-dot"></span> DSP 9-SERIES ONLINE</span>
+            <span class="sys-title-glitch" id="sys-header-status">CORONA // LIQUID-CHROME BENTO ENGINE</span>
+        </div>
+        <div class="sys-telemetry-cluster">
+            <span class="sys-telemetry-chip" id="sys-sample-rate">48.0 kHz // 32-BIT FLOAT</span>
+            <span class="sys-telemetry-chip" id="sys-clock-readout">00:00:00</span>
+        </div>
+    </header>
+
+    <!-- ======================================================================
+         MODULE 01: HOLOGRAPHIC PLASMA & CYBER-OSCILLOSCOPE STAGE
+         Framed with 9-Slice Corona Chrome Rails + minimize_video_background.png
+         ====================================================================== -->
+    <section class="corona-9slice-card bento-visualizer-card" id="card-visualizer">
+        <!-- 9-SLICE TOP CHROME RAIL -->
+        <div class="c9-top-bar">
+            <div class="c9-top-left">
+                <span class="c9-card-tag"><span class="c9-card-index">01</span> PLASMA // OSCILLOSCOPE</span>
+            </div>
+            <div class="c9-top-middle">
+                <button type="button" class="bitmap-capsule-left magnetic-target" id="btn-glitch-burst" title="Innesca Glitch Cromatica & Bass Drop">
+                    ⚡ GLITCH FX
+                </button>
+            </div>
+            <div class="c9-top-right"></div>
+        </div>
+
+        <!-- 9-SLICE MIDDLE ROW -->
+        <div class="c9-mid-left"></div>
+        <div class="c9-mid-body" style="padding: 10px;">
+            <div class="visualizer-stage-wrap" id="visualizer-stage">
+                <!-- Authentic Corona Slide-In Top Metallic Bar -->
+                <div class="visualizer-top-slide-bar">
+                    <span id="viz-stream-code">STREAM // QDG-Y2K-909</span>
+                    <span id="viz-peak-db">PEAK: -INF dB</span>
+                </div>
+
+                <!-- High-FPS Web Audio Reactive Canvas -->
+                <canvas id="y2k-plasma-canvas"></canvas>
+
+                <!-- Original Corona Video Bezel Slice (mix-blend-mode: screen) -->
+                <div class="visualizer-corona-bezel"></div>
+
+                <!-- Interactive Cursor-Tracking Holographic Grid (mix-blend-mode: color-dodge) -->
+                <div class="visualizer-holo-grid" id="viz-holo-grid"></div>
+
+                <!-- Floating Glitch HUD & Mode Selector -->
+                <div class="visualizer-hud-overlay">
+                    <div class="hud-station-row">
+                        <div>
+                            <div class="hud-now-playing-kicker">
+                                <img src="assets/corona/equalizer_feature.png" alt="" width="15" height="15">
+                                <span id="hud-channel-tag">CH_01 // LIQUID BREAKBEAT TRANSMISSION</span>
+                            </div>
+                            <h1 class="hud-track-title" id="hud-track-title">CYBERIA 2004 (CORONA DUB)</h1>
+                            <div class="hud-artist-sub" id="hud-artist-sub">DJ MARCO BETTIN // QDG PIRATE ARCHIVE</div>
+                        </div>
+
+                        <div class="viz-mode-bar" role="group" aria-label="Modalità Visualizzatore">
+                            <button type="button" class="viz-mode-btn active magnetic-target" data-viz-mode="plasma">LIQUID ORB</button>
+                            <button type="button" class="viz-mode-btn magnetic-target" data-viz-mode="matrix">SPECTRUM 3D</button>
+                            <button type="button" class="viz-mode-btn magnetic-target" data-viz-mode="scope">CYBER SCOPE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="c9-mid-right"></div>
+
+        <!-- 9-SLICE BOTTOM CHROME RAIL + GRIPPY -->
+        <div class="c9-bottom-bar">
+            <div class="c9-bottom-left">
+                <span class="c9-footer-meta" id="viz-fps-counter">RENDER: 60 FPS // MIX-BLEND: SCREEN</span>
+            </div>
+            <div class="c9-bottom-middle">
+                <span class="c9-footer-meta">9-SLICE RASTER ENGINE</span>
+            </div>
+            <div class="c9-bottom-right">
+                <div class="c9-corner-grippy"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         MODULE 02: 8-BAND TACTILE BITMAP EQUALIZER & STEREO BALANCE MATRIX
+         Framed with 9-Slice Corona Rails + Recessed equalizer_pane_* Slices
+         ====================================================================== -->
+    <section class="corona-9slice-card bento-eq-card" id="card-equalizer">
+        <div class="c9-top-bar">
+            <div class="c9-top-left">
+                <span class="c9-card-tag"><span class="c9-card-index">02</span> 8-BAND DSP // BIQUAD EQ</span>
+            </div>
+            <div class="c9-top-middle">
+                <span class="c9-footer-meta" id="eq-status-badge" style="color: var(--y2k-acid-green);">DSP ACTIVE</span>
+            </div>
+            <div class="c9-top-right"></div>
+        </div>
+
+        <div class="c9-mid-left"></div>
+        <div class="c9-mid-body">
+            <!-- EQ Power, Reset & Authentic Corona LCD Preset Bar -->
+            <div class="eq-header-controls">
+                <div class="eq-power-group">
+                    <button type="button" class="bitmap-orb-19 orb-eq-power active magnetic-target" id="btn-eq-power" title="Attiva/Bypass DSP Equalizer"></button>
+                    <span class="eq-btn-label">BYPASS</span>
+                    <button type="button" class="bitmap-orb-19 orb-eq-reset magnetic-target" id="btn-eq-reset" title="Reset Flat 0 dB"></button>
+                    <span class="eq-btn-label">FLAT</span>
+                </div>
+
+                <!-- Original equalizer_preset_track_fill.png + Left/Right Bitmap Arrows -->
+                <div class="corona-preset-selector">
+                    <button type="button" class="preset-arrow-btn left magnetic-target" id="btn-preset-prev" title="Preset Precedente"></button>
+                    <div class="preset-lcd-screen" id="eq-preset-lcd">Y2K CLUB BASS</div>
+                    <button type="button" class="preset-arrow-btn right magnetic-target" id="btn-preset-next" title="Preset Successivo"></button>
+                </div>
+            </div>
+
+            <!-- Recessed Hardware Sub-Pane using equalizer_pane_left / middle / right.png -->
+            <div class="corona-recessed-pane">
+                <div class="crp-left"></div>
+                <div class="crp-middle">
+                    <!-- 8 Interactive Bitmap Faders (equalizer_track.png + equalizer_thumb.png) -->
+                    <div class="eq-fader-matrix" id="eq-fader-matrix">
+                        <!-- Populated & wired to real Web Audio BiquadFilterNodes by corona.js -->
+                    </div>
+
+                    <!-- Stereo Panner Balance Bar (equalizer_balance_track.png) -->
+                    <div class="stereo-balance-row">
+                        <div class="eq-btn-label">
+                            <span>STEREO PANNER (L/R):</span>
+                            <strong id="balance-readout" style="color: var(--y2k-cyber-cyan);">CENTER</strong>
+                        </div>
+                        <div class="balance-fader-wrap">
+                            <span class="eq-freq-label">L</span>
+                            <div class="balance-bitmap-track" id="balance-track" title="Trascina per bilanciamento Stereo L/R (Doppio click per centrare)">
+                                <div class="balance-bitmap-thumb" id="balance-thumb"></div>
+                            </div>
+                            <span class="eq-freq-label">R</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="crp-right"></div>
+            </div>
+        </div>
+        <div class="c9-mid-right"></div>
+
+        <div class="c9-bottom-bar">
+            <div class="c9-bottom-left">
+                <span class="c9-footer-meta">TACTILE 3D BITMAP FADERS</span>
+            </div>
+            <div class="c9-bottom-middle">
+                <span class="c9-footer-meta">DRAG OR SCROLL</span>
+            </div>
+            <div class="c9-bottom-right">
+                <div class="c9-corner-grippy"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         MODULE 03: GLITCH TELEMETRY & CYBER SYNTHESIS MATRIX
+         ====================================================================== -->
+    <section class="corona-9slice-card bento-telemetry-card" id="card-telemetry">
+        <div class="c9-top-bar">
+            <div class="c9-top-left">
+                <span class="c9-card-tag"><span class="c9-card-index">03</span> TELEMETRY // SYNTH PADS</span>
+            </div>
+            <div class="c9-top-middle"></div>
+            <div class="c9-top-right"></div>
+        </div>
+
+        <div class="c9-mid-left"></div>
+        <div class="c9-mid-body">
+            <div class="telemetry-bento-inner">
+                <div class="telemetry-stat-box">
+                    <div class="stat-label">SUB-BASS ENERGY (60Hz)</div>
+                    <div class="stat-value" id="stat-bass-energy">000%</div>
+                </div>
+                <div class="telemetry-stat-box">
+                    <div class="stat-label">TEMPO // LOCK</div>
+                    <div class="stat-value" id="stat-bpm-val">134.0 BPM</div>
+                </div>
+                <div class="telemetry-stat-box">
+                    <div class="stat-label">PITCH WARP SPEED</div>
+                    <div class="stat-value" id="stat-pitch-val">1.00x NORMAL</div>
+                </div>
+                <div class="telemetry-stat-box">
+                    <div class="stat-label">SIGNAL VECTOR</div>
+                    <div class="stat-value" id="stat-vector-state" style="color: var(--y2k-acid-green);">STANDBY</div>
+                </div>
+
+                <!-- Interactive Y2K Cyber Audio Stingers & Pitch Warp Controls -->
+                <div class="cyber-fx-pads">
+                    <button type="button" class="cyber-pad-btn magnetic-target" id="pad-laser-drop">
+                        <span>⚡ CYBER DROP</span>
+                        <small style="color: var(--y2k-cyber-cyan);">SYNTH STINGER</small>
+                    </button>
+                    <button type="button" class="cyber-pad-btn magnetic-target" id="pad-acid-sweep">
+                        <span>🌀 ACID SWEEP</span>
+                        <small style="color: var(--y2k-acid-green);">RESONANT FILTER</small>
+                    </button>
+                    <button type="button" class="cyber-pad-btn magnetic-target" id="pad-tape-warp">
+                        <span>💿 PITCH WARP</span>
+                        <small style="color: var(--y2k-warning-amber);">NIGHTCORE / SLOW</small>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="c9-mid-right"></div>
+
+        <div class="c9-bottom-bar">
+            <div class="c9-bottom-left">
+                <span class="c9-footer-meta">WEB AUDIO SYNTHESIS</span>
+            </div>
+            <div class="c9-bottom-middle"></div>
+            <div class="c9-bottom-right">
+                <div class="c9-corner-grippy"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         MODULE 04: METABALL LIQUID-CHROME TRANSPORT & SCRUBBER COMMAND DOCK
+         Anchored at bottom on Mobile, integrated in Bento Grid on Desktop.
+         Uses authentic transports.png (Play/Pause, Stop, Prev, Next, Mute),
+         track_bar.png + track_bar_filled.png, and volume_bar_filled.png
+         ====================================================================== -->
+    <section class="corona-9slice-card bento-transport-dock" id="card-transport-dock">
+        <div class="c9-top-bar">
+            <div class="c9-top-left">
+                <span class="c9-card-tag"><span class="c9-card-index">04</span> METABALL // COMMAND DOCK</span>
+            </div>
+            <div class="c9-top-middle">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <button type="button" class="bitmap-seek-btn left magnetic-target" id="btn-seek-back" title="-5 Secondi"></button>
+                    <button type="button" class="bitmap-seek-btn right magnetic-target" id="btn-seek-fwd" title="+5 Secondi"></button>
+                </div>
+            </div>
+            <div class="c9-top-right"></div>
+        </div>
+
+        <div class="c9-mid-left"></div>
+        <div class="c9-mid-body">
+            <div class="transport-command-grid">
+                <!-- Authentic Bitmap Seek Scrubber (track_bar.png + track_bar_filled.png + track_bar_slider.png) -->
+                <div class="corona-scrubber-row">
+                    <span class="scrubber-time" id="time-current">00:00</span>
+                    <div class="corona-track-bar" id="scrubber-track" title="Trascina per fare scrubbing nella traccia">
+                        <div class="corona-track-bar-fill" id="scrubber-fill"></div>
+                        <div class="corona-track-slider" id="scrubber-thumb"></div>
+                    </div>
+                    <span class="scrubber-time" id="time-total">03:42</span>
+                </div>
+
+                <!-- Main Metaball Transport Strip + Volume Ramp + Mobile Drawer Trigger -->
+                <div class="transport-main-controls">
+                    <!-- Original WMP9 Metaball Cluster (transports.png: Play/Pause, Stop, Prev, Next, Mute) -->
+                    <div class="metaball-transport-pod magnetic-target" id="metaball-pod">
+                        <button type="button" class="metaball-hit-btn" id="btn-meta-play" title="Play / Pause"></button>
+                        <button type="button" class="metaball-hit-btn" id="btn-meta-stop" title="Stop"></button>
+                        <button type="button" class="metaball-hit-btn" id="btn-meta-prev" title="Traccia Precedente"></button>
+                        <button type="button" class="metaball-hit-btn" id="btn-meta-next" title="Traccia Successiva"></button>
+                        <button type="button" class="metaball-hit-btn" id="btn-meta-mute" title="Mute / Unmute"></button>
+                    </div>
+
+                    <!-- Authentic Bitmap Volume Ramp (volume_bar_filled.png + volume_slider.png) -->
+                    <div class="corona-volume-pod">
+                        <span class="eq-freq-label" id="vol-label-pct">VOL 85%</span>
+                        <div class="corona-volume-ramp" id="volume-ramp" title="Trascina per regolare il Volume Master">
+                            <div class="corona-volume-fill" id="volume-fill"></div>
+                            <div class="corona-volume-thumb" id="volume-thumb"></div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile-First Clip-Path Tracklist Drawer Trigger -->
+                    <button type="button" class="drawer-toggle-pill magnetic-target" id="btn-drawer-toggle">
+                        <span>☰ TRACKLIST</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="c9-mid-right"></div>
+
+        <div class="c9-bottom-bar">
+            <div class="c9-bottom-left">
+                <span class="c9-footer-meta" id="dock-footer-state">STATE: READY</span>
+            </div>
+            <div class="c9-bottom-middle">
+                <span class="c9-footer-meta">MAGNETIC ORB CONTROLS</span>
+            </div>
+            <div class="c9-bottom-right">
+                <div class="c9-corner-grippy"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         MODULE 05: PIRATE ARCHIVE & TRACKLIST MATRIX
+         On Mobile: Revealed via animated clip-path circle/polygon transition!
+         On Desktop: Framed inside the right Bento column.
+         ====================================================================== -->
+    <section class="corona-9slice-card bento-tracklist-drawer" id="card-tracklist-drawer">
+        <div class="c9-top-bar">
+            <div class="c9-top-left">
+                <span class="c9-card-tag"><span class="c9-card-index">05</span> ARCHIVE // TRACKLIST</span>
+            </div>
+            <div class="c9-top-middle">
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <button type="button" class="bitmap-orb-19 orb-shuffle magnetic-target" id="btn-shuffle-tracks" title="Shuffle / Randomizza"></button>
+                    <button type="button" class="bitmap-orb-19 orb-file-open magnetic-target" id="btn-next-station" title="Salta a Nuova Stazione"></button>
+                </div>
+            </div>
+            <div class="c9-top-right"></div>
+        </div>
+
+        <div class="c9-mid-left"></div>
+        <div class="c9-mid-body">
+            <div class="tracklist-header-bar">
+                <span class="eq-btn-label" style="color:#081026; font-weight:700;">QDG // Y2K ROTATION QUEUE</span>
+                <button type="button" class="viz-mode-btn drawer-close-mobile" id="btn-drawer-close" style="padding:2px 8px;">✕ CHIUDI</button>
+            </div>
+
+            <div class="tracklist-items-container" id="tracklist-container">
+                <!-- Populated dynamically by js/corona/corona.js -->
+            </div>
+        </div>
+        <div class="c9-mid-right"></div>
+
+        <div class="c9-bottom-bar">
+            <div class="c9-bottom-left">
+                <span class="c9-footer-meta">CLIP-PATH DRAWER MATRIX</span>
+            </div>
+            <div class="c9-bottom-middle">
+                <span class="c9-footer-meta" id="queue-count-label">6 TRANSMISSIONS</span>
+            </div>
+            <div class="c9-bottom-right">
+                <div class="c9-corner-grippy"></div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script type="module" src="js/corona/corona.js"></script>
+</body>
+</html>

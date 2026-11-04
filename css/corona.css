@@ -1,0 +1,1518 @@
+/* ============================================================================
+   Y2K CORONA // 9-SERIES RETRO-FUTURIST BENTO WEB RADIO (css/corona.css)
+   Art Direction: Early-2000s Liquid Chrome & Cobalt Bitmap Slices ("Corona")
+                  re-engineered into a Mobile-First Industrial Y2K Bento Grid.
+   Techniques:
+   - True 9-Slice CSS Grid & Repeating Bitmap Rails (zero raster distortion)
+   - Spring Physics (cubic-bezier(0.34, 1.56, 0.64, 1)) & Magnetic Hover Targets
+   - Clip-Path Polygon/Circle Animated Reveals
+   - Tactile 3D Bitmap Faders & Multi-Layer mix-blend-mode Holographics
+   ============================================================================ */
+
+:root {
+    /* Y2K Corona Color Palette extracted & amplified from bitmap slices */
+    --y2k-bg-deep: #070b16;
+    --y2k-bg-cobalt: #131d38;
+    --y2k-periwinkle: #6882c8;
+    --y2k-periwinkle-bright: #8fa8f2;
+    --y2k-chrome-light: #e2e8f8;
+    --y2k-chrome-mid: #94a3c4;
+    --y2k-acid-green: #00ff66;
+    --y2k-cyber-cyan: #00f0ff;
+    --y2k-warning-amber: #ffb800;
+    --y2k-glitch-magenta: #ff007f;
+
+    /* Spring & Easing Curves */
+    --spring-bouncy: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --spring-snappy: cubic-bezier(0.22, 1, 0.36, 1);
+    --clip-transition: clip-path 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body.corona-body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: var(--y2k-bg-deep);
+    background-image:
+        radial-gradient(circle at 18% 15%, rgba(92, 124, 226, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(0, 240, 255, 0.14) 0%, transparent 50%),
+        linear-gradient(rgba(104, 130, 200, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(104, 130, 200, 0.06) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 24px 24px, 24px 24px;
+    color: var(--y2k-chrome-light);
+    font-family: 'Chakra Petch', 'Share Tech Mono', monospace, sans-serif;
+    overflow-x: hidden;
+    padding-bottom: 110px; /* Space for mobile bottom-anchored player dock */
+}
+
+/* Ambient Y2K Scanline & Holographic Grain Overlay */
+body.corona-body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9000;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.14) 0px,
+        rgba(0, 0, 0, 0.14) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    mix-blend-mode: overlay;
+}
+
+/* ============================================================================
+   1. MOBILE-FIRST BENTO GRID ARCHITECTURE
+   ============================================================================ */
+
+.y2k-bento-shell {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 14px 12px 32px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    position: relative;
+}
+
+/* Top Industrial Status Header Strip */
+.y2k-system-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 14px;
+    background: linear-gradient(90deg, rgba(26, 38, 74, 0.92), rgba(14, 21, 44, 0.95));
+    border: 1px solid rgba(143, 168, 242, 0.35);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+}
+
+.sys-brand-cluster {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sys-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 9px;
+    background: rgba(0, 255, 102, 0.12);
+    border: 1px solid var(--y2k-acid-green);
+    color: var(--y2k-acid-green);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    box-shadow: 0 0 12px rgba(0, 255, 102, 0.25);
+}
+
+.sys-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--y2k-acid-green);
+    box-shadow: 0 0 8px var(--y2k-acid-green);
+    animation: pulse-acid 1.1s infinite alternate;
+}
+
+@keyframes pulse-acid {
+    from { opacity: 0.35; transform: scale(0.85); }
+    to   { opacity: 1;    transform: scale(1.25); }
+}
+
+.sys-title-glitch {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: uppercase;
+    position: relative;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+.sys-telemetry-cluster {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--y2k-cyber-cyan);
+}
+
+.sys-telemetry-chip {
+    background: rgba(7, 11, 22, 0.75);
+    border: 1px solid rgba(104, 130, 200, 0.4);
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+/* ============================================================================
+   2. TRUE 9-SLICE BITMAP CARD SYSTEM (.corona-9slice-card)
+   Uses original WMP9 Corona raster slices without stretching corners!
+   - Top-Left:     player_top_left.png (299x33 -> clipped/positioned cleanly)
+   - Top-Mid:      player_top_middle.png (1x33 repeat-x)
+   - Top-Right:    player_top_right.png (46x33)
+   - Mid-Left:     player_left.png (19x1 repeat-y)
+   - Mid-Right:    player_right.png (7x1 repeat-y)
+   - Bottom-Left:  player_bottom_left.png (286x23)
+   - Bottom-Mid:   player_bottom_middle.png (1x23 repeat-x)
+   - Bottom-Right: player_bottom_right.png (59x23)
+   ============================================================================ */
+
+.corona-9slice-card {
+    display: grid;
+    grid-template-columns: 19px 1fr 7px;
+    grid-template-rows: 33px 1fr 23px;
+    position: relative;
+    filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.65));
+    transition: transform 0.4s var(--spring-snappy), filter 0.4s ease;
+    isolation: isolate;
+}
+
+.corona-9slice-card:hover {
+    filter: drop-shadow(0 20px 38px rgba(0, 240, 255, 0.16)) drop-shadow(0 12px 28px rgba(0, 0, 0, 0.75));
+}
+
+/* TOP RAIL (Row 1, spans all 3 columns with 3 internal flex segments) */
+.c9-top-bar {
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
+    display: flex;
+    align-items: stretch;
+    height: 33px;
+    position: relative;
+    z-index: 3;
+    user-select: none;
+}
+
+.c9-top-left {
+    width: 190px;
+    flex-shrink: 0;
+    background-image: url('../assets/corona/player_top_left.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 299px 33px;
+    display: flex;
+    align-items: center;
+    padding-left: 24px;
+}
+
+.c9-top-middle {
+    flex: 1;
+    min-width: 12px;
+    background-image: url('../assets/corona/player_top_middle.png');
+    background-repeat: repeat-x;
+    background-position: left top;
+    background-size: 1px 33px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 6px;
+}
+
+.c9-top-right {
+    width: 46px;
+    flex-shrink: 0;
+    background-image: url('../assets/corona/player_top_right.png');
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: 46px 33px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Card Header Label inside the 9-slice top chrome bezel */
+.c9-card-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 240, 255, 0.55);
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transform: translateY(-1px);
+}
+
+.c9-card-index {
+    display: inline-block;
+    padding: 1px 5px;
+    background: rgba(9, 15, 34, 0.78);
+    border: 1px solid rgba(0, 240, 255, 0.6);
+    border-radius: 3px;
+    color: var(--y2k-cyber-cyan);
+    font-size: 9px;
+}
+
+/* MIDDLE ROW: Left Cylinder Rail + Fluid Interior + Right Chrome Rail */
+.c9-mid-left {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    background-image: url('../assets/corona/player_left.png');
+    background-repeat: repeat-y;
+    background-position: left top;
+    background-size: 19px 1px;
+    z-index: 2;
+}
+
+.c9-mid-body {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(104, 130, 200, 0.22), transparent 70%),
+        linear-gradient(180deg, #162142 0%, #0b1124 100%);
+    position: relative;
+    z-index: 1;
+    padding: 14px;
+    overflow: hidden;
+    border-top: 1px solid rgba(143, 168, 242, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+.c9-mid-right {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+    background-image: url('../assets/corona/player_right.png');
+    background-repeat: repeat-y;
+    background-position: right top;
+    background-size: 7px 1px;
+    z-index: 2;
+}
+
+/* BOTTOM RAIL (Row 3, spans all 3 columns) */
+.c9-bottom-bar {
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+    display: flex;
+    align-items: stretch;
+    height: 23px;
+    position: relative;
+    z-index: 3;
+    user-select: none;
+}
+
+.c9-bottom-left {
+    width: 170px;
+    flex-shrink: 0;
+    background-image: url('../assets/corona/player_bottom_left.png');
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 286px 23px;
+    display: flex;
+    align-items: center;
+    padding-left: 26px;
+}
+
+.c9-bottom-middle {
+    flex: 1;
+    min-width: 12px;
+    background-image: url('../assets/corona/player_bottom_middle.png');
+    background-repeat: repeat-x;
+    background-position: left bottom;
+    background-size: 1px 23px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+}
+
+.c9-bottom-right {
+    width: 59px;
+    flex-shrink: 0;
+    background-image: url('../assets/corona/player_bottom_right.png');
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: 59px 23px;
+    position: relative;
+}
+
+/* Authentic Bitmap Textured Corner Grippy (grippy.png 17x22) */
+.c9-corner-grippy {
+    position: absolute;
+    right: 2px;
+    bottom: 1px;
+    width: 17px;
+    height: 22px;
+    background-image: url('../assets/corona/grippy.png');
+    background-repeat: no-repeat;
+    background-size: 17px 22px;
+    pointer-events: none;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6));
+}
+
+.c9-footer-meta {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: rgba(226, 232, 248, 0.85);
+    letter-spacing: 1px;
+    text-shadow: 0 1px 1px #000;
+}
+
+/* ============================================================================
+   3. RECESSED SUB-PANE 9-SLICE (equalizer_pane_left / middle / right)
+   Used inside cards to frame tactile hardware bays
+   ============================================================================ */
+
+.corona-recessed-pane {
+    display: grid;
+    grid-template-columns: 3px 1fr 4px;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55);
+}
+
+.crp-left {
+    background-image: url('../assets/corona/equalizer_pane_left.png');
+    background-repeat: no-repeat;
+    background-size: 3px 100%;
+}
+
+.crp-middle {
+    background-image: url('../assets/corona/equalizer_pane_middle.png');
+    background-repeat: repeat-x;
+    background-size: 1px 100%;
+    padding: 12px 10px;
+    position: relative;
+}
+
+.crp-right {
+    background-image: url('../assets/corona/equalizer_pane_right.png');
+    background-repeat: no-repeat;
+    background-size: 4px 100%;
+}
+
+/* ============================================================================
+   4. MODULE 01: HOLOGRAPHIC PLASMA & CYBER-OSCILLOSCOPE STAGE
+   Combines minimize_video_background.png + WebGL-style 2D Canvas + mix-blend-mode
+   ============================================================================ */
+
+.visualizer-stage-wrap {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #03060e;
+    border: 1px solid rgba(143, 168, 242, 0.4);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Original Corona Video Frame Overlay blended with screen/overlay mode */
+.visualizer-corona-bezel {
+    position: absolute;
+    inset: 0;
+    background-image: url('../assets/corona/minimize_video_background.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    opacity: 0.28;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Slide-in Top Metallized Bevel Bar (minimize_top_slide_in.png) */
+.visualizer-top-slide-bar {
+    position: relative;
+    z-index: 4;
+    height: 25px;
+    background-image: url('../assets/corona/minimize_top_slide_in.png');
+    background-size: 100% 25px;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: #0b132b;
+    font-weight: 700;
+}
+
+#y2k-plasma-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 1;
+}
+
+/* Holographic Blend Overlay Layer (reacts with mix-blend-mode: color-dodge) */
+.visualizer-holo-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at var(--cursor-x, 50%) var(--cursor-y, 50%), rgba(0, 240, 255, 0.25) 0%, transparent 45%),
+        repeating-linear-gradient(90deg, rgba(0, 255, 102, 0.05) 0px, rgba(0, 255, 102, 0.05) 1px, transparent 1px, transparent 32px);
+    mix-blend-mode: color-dodge;
+}
+
+/* Floating Glitch HUD inside Visualizer */
+.visualizer-hud-overlay {
+    position: relative;
+    z-index: 5;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+    background: linear-gradient(0deg, rgba(4, 8, 19, 0.92) 0%, rgba(4, 8, 19, 0.45) 75%, transparent 100%);
+}
+
+.hud-station-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.hud-now-playing-kicker {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--y2k-acid-green);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hud-track-title {
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin: 2px 0 0;
+    text-shadow: 2px 0 0 rgba(255, 0, 127, 0.7), -2px 0 0 rgba(0, 240, 255, 0.7);
+    transition: transform 0.25s var(--spring-bouncy);
+}
+
+/* Clip-path animated reveal when switching track/station */
+.hud-track-title.clip-reveal-anim {
+    animation: clip-wipe-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes clip-wipe-in {
+    0% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+        transform: translateX(-12px) skewX(-8deg);
+        filter: hue-rotate(90deg) brightness(2);
+    }
+    60% {
+        clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        transform: translateX(0) skewX(0deg);
+        filter: hue-rotate(0deg) brightness(1);
+    }
+}
+
+.hud-artist-sub {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--y2k-periwinkle-bright);
+    letter-spacing: 1px;
+}
+
+/* Visualizer Mode Selector Capsules using original player_top_controls_left.png */
+.viz-mode-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.viz-mode-btn {
+    appearance: none;
+    border: 1px solid rgba(143, 168, 242, 0.45);
+    background: rgba(19, 29, 56, 0.85);
+    color: var(--y2k-chrome-light);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.3s var(--spring-bouncy), background 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.viz-mode-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    border-color: var(--y2k-cyber-cyan);
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.35);
+}
+
+.viz-mode-btn.active {
+    background: linear-gradient(180deg, #3b63d1 0%, #1c3582 100%);
+    border-color: var(--y2k-acid-green);
+    color: #fff;
+    box-shadow: 0 0 14px rgba(0, 255, 102, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+}
+
+/* ============================================================================
+   5. BITMAP SPRITE MICRO-BUTTONS & CAPSULES (WITH SPRING & MAGNETIC HOVER)
+   ============================================================================ */
+
+.magnetic-target {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.35s var(--spring-bouncy), filter 0.25s ease;
+    will-change: transform;
+}
+
+/* Top Capsule Sprite Button (player_top_controls_left.png 91x19) */
+.bitmap-capsule-left {
+    width: 91px;
+    height: 19px;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    background-image: url('../assets/corona/player_top_controls_left.png');
+    background-repeat: no-repeat;
+    background-size: 91px 19px;
+    cursor: pointer;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    color: #e2e8f8;
+    text-shadow: 0 1px 2px #000;
+    letter-spacing: 1px;
+}
+
+.bitmap-capsule-left:hover {
+    background-image: url('../assets/corona/player_top_controls_left_hover.png');
+    filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.6));
+}
+
+.bitmap-capsule-left:active {
+    background-image: url('../assets/corona/player_top_controls_left_down.png');
+    transform: scale(0.93) !important;
+}
+
+/* Seek Capsule Buttons (seekbutton_left.png / seekbutton_right.png 35x13) */
+.bitmap-seek-btn {
+    width: 52px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+    position: relative;
+}
+
+.bitmap-seek-btn.left {
+    background-image: url('../assets/corona/seekbutton_left.png');
+}
+.bitmap-seek-btn.left:hover {
+    background-image: url('../assets/corona/seekbutton_left_hover.png');
+    filter: drop-shadow(0 0 6px var(--y2k-cyber-cyan));
+}
+.bitmap-seek-btn.left:active {
+    background-image: url('../assets/corona/seekbutton_left_down.png');
+    transform: scale(0.9);
+}
+
+.bitmap-seek-btn.right {
+    background-image: url('../assets/corona/seekbutton_right.png');
+}
+.bitmap-seek-btn.right:hover {
+    background-image: url('../assets/corona/seekbutton_right_hover.png');
+    filter: drop-shadow(0 0 6px var(--y2k-cyber-cyan));
+}
+.bitmap-seek-btn.right:active {
+    background-image: url('../assets/corona/seekbutton_right_down.png');
+    transform: scale(0.9);
+}
+
+/* 19x19 Round Bitmap Micro-Buttons (EQ On/Off, Reset, Shuffle, Open, Menu) */
+.bitmap-orb-19 {
+    width: 24px;
+    height: 24px;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+    transition: transform 0.32s var(--spring-bouncy), filter 0.2s ease;
+}
+
+.bitmap-orb-19:hover {
+    transform: scale(1.18);
+    filter: drop-shadow(0 0 8px rgba(0, 255, 102, 0.7));
+}
+
+.bitmap-orb-19:active {
+    transform: scale(0.88);
+}
+
+.orb-eq-power {
+    background-image: url('../assets/corona/equalizer_onoff_button.png');
+}
+.orb-eq-power:hover {
+    background-image: url('../assets/corona/equalizer_onoff_button_hover.png');
+}
+.orb-eq-power.active,
+.orb-eq-power:active {
+    background-image: url('../assets/corona/equalizer_onoff_button_down.png');
+}
+
+.orb-eq-reset {
+    background-image: url('../assets/corona/equalizer_reset.png');
+}
+.orb-eq-reset:hover {
+    background-image: url('../assets/corona/equalizer_reset_hover.png');
+}
+.orb-eq-reset:active {
+    background-image: url('../assets/corona/equalizer_reset_down.png');
+}
+
+.orb-shuffle {
+    background-image: url('../assets/corona/playlist_shufflebutton.png');
+}
+.orb-shuffle:hover {
+    background-image: url('../assets/corona/playlist_shufflebutton_hover.png');
+}
+.orb-shuffle.active,
+.orb-shuffle:active {
+    background-image: url('../assets/corona/playlist_shufflebutton_down.png');
+}
+
+.orb-file-open {
+    background-image: url('../assets/corona/file_open_button.png');
+}
+.orb-file-open:hover {
+    background-image: url('../assets/corona/file_open_button_hover.png');
+}
+.orb-file-open:active {
+    background-image: url('../assets/corona/file_open_button_down.png');
+}
+
+/* ============================================================================
+   6. MODULE 02: 8-BAND TACTILE BITMAP EQUALIZER & STEREO BALANCE DECK
+   Uses authentic equalizer_track.png (18x67) + equalizer_thumb.png (18x17)
+   with 3D physical elevation, neon glow shadows, and live BiquadFilter DSP
+   ============================================================================ */
+
+.eq-header-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.eq-power-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.eq-btn-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--y2k-chrome-light);
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Authentic Preset LCD Bar (equalizer_preset_track_fill.png + left/right arrows) */
+.corona-preset-selector {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.5));
+}
+
+.preset-arrow-btn {
+    width: 24px;
+    height: 24px;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+    transition: transform 0.25s var(--spring-bouncy), filter 0.2s;
+}
+
+.preset-arrow-btn.left {
+    background-image: url('../assets/corona/equalizer_preset_button_left.png');
+}
+.preset-arrow-btn.left:hover {
+    background-image: url('../assets/corona/equalizer_preset_button_left_hover.png');
+    filter: brightness(1.2);
+}
+.preset-arrow-btn.left:active {
+    background-image: url('../assets/corona/equalizer_preset_button_left_down.png');
+    transform: scale(0.9);
+}
+
+.preset-arrow-btn.right {
+    background-image: url('../assets/corona/equalizer_preset_button_right.png');
+}
+.preset-arrow-btn.right:hover {
+    background-image: url('../assets/corona/equalizer_preset_button_right_hover.png');
+    filter: brightness(1.2);
+}
+.preset-arrow-btn.right:active {
+    background-image: url('../assets/corona/equalizer_preset_button_right_down.png');
+    transform: scale(0.9);
+}
+
+.preset-lcd-screen {
+    height: 24px;
+    min-width: 145px;
+    padding: 0 12px;
+    background-image: url('../assets/corona/equalizer_preset_track_fill.png');
+    background-repeat: repeat-x;
+    background-size: auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--y2k-acid-green);
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 8px rgba(0, 255, 102, 0.7);
+    overflow: hidden;
+}
+
+/* 8-Band Tactile Fader Matrix */
+.eq-fader-matrix {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 6px;
+    padding: 10px 6px;
+    background: rgba(6, 10, 22, 0.68);
+    border: 1px solid rgba(104, 130, 200, 0.28);
+    border-radius: 6px;
+    justify-items: center;
+}
+
+.eq-band-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    user-select: none;
+    touch-action: none;
+}
+
+.eq-db-tooltip {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: var(--y2k-cyber-cyan);
+    background: rgba(7, 13, 29, 0.9);
+    border: 1px solid rgba(0, 240, 255, 0.35);
+    padding: 1px 4px;
+    border-radius: 3px;
+    min-width: 34px;
+    text-align: center;
+    transition: transform 0.25s var(--spring-bouncy), background 0.2s, color 0.2s;
+}
+
+/* Authentic Bitmap EQ Track (equalizer_track.png 18x67 scaled cleanly to 24x108) */
+.eq-bitmap-track {
+    position: relative;
+    width: 24px;
+    height: 108px;
+    background-image: url('../assets/corona/equalizer_track.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: ns-resize;
+    border-radius: 4px;
+    transition: transform 0.3s var(--spring-bouncy), filter 0.25s ease;
+}
+
+/* Dynamic Neon Fill Bar behind the bitmap thumb */
+.eq-neon-fill {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    height: 50%;
+    background: linear-gradient(180deg, var(--y2k-cyber-cyan) 0%, var(--y2k-acid-green) 100%);
+    border-radius: 2px;
+    opacity: 0.65;
+    pointer-events: none;
+    box-shadow: 0 0 10px var(--y2k-cyber-cyan);
+    transition: height 0.08s linear;
+}
+
+/* Authentic Bitmap EQ Thumb (equalizer_thumb.png 18x17 -> 24x22) */
+.eq-bitmap-thumb {
+    position: absolute;
+    left: 0;
+    width: 24px;
+    height: 22px;
+    top: calc(50% - 11px);
+    background-image: url('../assets/corona/equalizer_thumb.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    pointer-events: none;
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.8));
+    transition: transform 0.28s var(--spring-bouncy), filter 0.2s ease;
+}
+
+.eq-band-column:hover .eq-bitmap-thumb {
+    background-image: url('../assets/corona/equalizer_thumb_hover.png');
+    transform: scale(1.14);
+    filter: drop-shadow(0 5px 10px rgba(0, 240, 255, 0.75));
+}
+
+.eq-band-column.dragging .eq-bitmap-track {
+    transform: scale(1.05);
+}
+
+.eq-band-column.dragging .eq-bitmap-thumb {
+    background-image: url('../assets/corona/equalizer_thumb_down.png');
+    transform: scale(1.26) translateY(-1px);
+    filter: drop-shadow(0 8px 14px rgba(0, 255, 102, 0.95)) brightness(1.15);
+}
+
+.eq-band-column.dragging .eq-db-tooltip {
+    background: var(--y2k-acid-green);
+    color: #040914;
+    font-weight: 700;
+    transform: translateY(-3px) scale(1.12);
+}
+
+.eq-freq-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: rgba(226, 232, 248, 0.78);
+    letter-spacing: 0.5px;
+}
+
+/* Stereo Balance & Spatial Panner Bar (equalizer_balance_track.png 67x18) */
+.stereo-balance-row {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(143, 168, 242, 0.25);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.balance-fader-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+    touch-action: none;
+}
+
+.balance-bitmap-track {
+    position: relative;
+    width: 110px;
+    height: 22px;
+    background-image: url('../assets/corona/equalizer_balance_track.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: ew-resize;
+}
+
+.balance-bitmap-thumb {
+    position: absolute;
+    top: 1px;
+    width: 20px;
+    height: 20px;
+    left: calc(50% - 10px);
+    background-image: url('../assets/corona/equalizer_balance_thumb_hover.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.85));
+    transition: transform 0.28s var(--spring-bouncy), filter 0.2s;
+    pointer-events: none;
+}
+
+.balance-bitmap-track:hover .balance-bitmap-thumb,
+.balance-bitmap-track.dragging .balance-bitmap-thumb {
+    background-image: url('../assets/corona/equalizer_balance_thumb_down.png');
+    transform: scale(1.22);
+    filter: drop-shadow(0 0 10px var(--y2k-cyber-cyan));
+}
+
+/* ============================================================================
+   7. MODULE 03: METABALL LIQUID-CHROME TRANSPORT & SCRUBBER COMMAND DOCK
+   Reimagines transports.png (136x30), minimize_transports.png, track_bar.png,
+   and volume_bar_filled.png into a tactile Y2K Command Deck.
+   On Mobile (< 960px), this docks at the bottom of the screen!
+   ============================================================================ */
+
+.transport-command-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Scrubber Seek Bar using original track_bar.png + track_bar_filled.png + track_bar_slider.png */
+.corona-scrubber-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    user-select: none;
+    touch-action: none;
+}
+
+.scrubber-time {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--y2k-cyber-cyan);
+    min-width: 42px;
+    text-align: center;
+}
+
+.corona-track-bar {
+    position: relative;
+    flex: 1;
+    height: 16px;
+    background-image: url('../assets/corona/track_bar.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.25s var(--spring-bouncy), filter 0.2s;
+}
+
+.corona-track-bar:hover {
+    background-image: url('../assets/corona/track_bar_hover.png');
+    transform: scaleY(1.12);
+    filter: drop-shadow(0 0 8px rgba(0, 255, 102, 0.45));
+}
+
+.corona-track-bar-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 35%;
+    background-image: url('../assets/corona/track_bar_filled.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.corona-track-slider {
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    width: 26px;
+    height: 15px;
+    transform: translate(-50%, -50%);
+    background-image: url('../assets/corona/track_bar_slider.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+    transition: transform 0.25s var(--spring-bouncy);
+}
+
+.corona-track-bar:hover .corona-track-slider,
+.corona-track-bar.dragging .corona-track-slider {
+    background-image: url('../assets/corona/track_bar_slider_hover.png');
+    transform: translate(-50%, -50%) scale(1.24);
+}
+
+/* Main Transport Deck Row: Metaball Sprite Cluster + Volume Ramp + Drawer Trigger */
+.transport-main-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+/* Authentic Metaball Transport Pod (transports.png 136x30 scaled 1.35x -> 184x41) */
+.metaball-transport-pod {
+    position: relative;
+    width: 184px;
+    height: 41px;
+    background-image: url('../assets/corona/transports.png');
+    background-repeat: no-repeat;
+    background-size: 184px 41px;
+    display: grid;
+    grid-template-columns: 41px 35px 35px 35px 38px;
+    align-items: stretch;
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.7));
+    transition: transform 0.35s var(--spring-bouncy), filter 0.3s ease;
+}
+
+.metaball-transport-pod:hover {
+    filter: drop-shadow(0 8px 18px rgba(0, 240, 255, 0.4));
+}
+
+/* Active Pause Overlay on first orb (transports_pause.png 30x30 -> 41x41) */
+.metaball-transport-pod.is-playing::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 41px;
+    height: 41px;
+    background-image: url('../assets/corona/transports_pause.png');
+    background-repeat: no-repeat;
+    background-size: 41px 41px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.metaball-transport-pod.is-playing.play-hover::before {
+    background-image: url('../assets/corona/transports_pause_hover.png');
+}
+
+.metaball-transport-pod.is-playing.play-down::before {
+    background-image: url('../assets/corona/transports_pause_down.png');
+}
+
+/* Individual Transparent Hit Zones inside the Metaball Strip */
+.metaball-hit-btn {
+    appearance: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+    border-radius: 50%;
+    transition: transform 0.25s var(--spring-bouncy), box-shadow 0.2s;
+}
+
+.metaball-hit-btn:hover {
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.65), inset 0 0 8px rgba(255, 255, 255, 0.45);
+}
+
+.metaball-hit-btn:active {
+    transform: scale(0.86);
+}
+
+/* Authentic Volume Ramp (volume_bar_filled.png 68x18 + volume_slider.png 10x18) */
+.corona-volume-pod {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+    touch-action: none;
+}
+
+.corona-volume-ramp {
+    position: relative;
+    width: 88px;
+    height: 23px;
+    background: rgba(7, 12, 26, 0.75);
+    border-radius: 4px;
+    cursor: ew-resize;
+    padding: 1px;
+}
+
+.corona-volume-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 80%;
+    background-image: url('../assets/corona/volume_bar_filled.png');
+    background-repeat: no-repeat;
+    background-size: 88px 23px;
+    pointer-events: none;
+}
+
+.corona-volume-thumb {
+    position: absolute;
+    top: 0;
+    left: 80%;
+    width: 13px;
+    height: 23px;
+    transform: translateX(-50%);
+    background-image: url('../assets/corona/volume_slider.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.85));
+    transition: transform 0.25s var(--spring-bouncy);
+}
+
+.corona-volume-ramp:hover .corona-volume-thumb,
+.corona-volume-ramp.dragging .corona-volume-thumb {
+    background-image: url('../assets/corona/volume_slider_hover.png');
+    transform: translateX(-50%) scale(1.22);
+    filter: drop-shadow(0 0 8px var(--y2k-acid-green));
+}
+
+/* Mobile Tracklist Drawer Toggle Button */
+.drawer-toggle-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--y2k-cyber-cyan);
+    background: linear-gradient(180deg, rgba(35, 62, 138, 0.9), rgba(14, 24, 58, 0.95));
+    color: #fff;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.25);
+    transition: transform 0.3s var(--spring-bouncy), box-shadow 0.2s;
+}
+
+.drawer-toggle-pill:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 0 18px rgba(0, 240, 255, 0.55);
+}
+
+.drawer-toggle-pill:active {
+    transform: scale(0.94);
+}
+
+/* ============================================================================
+   8. MODULE 04: Y2K GLITCH TELEMETRY & SYNTHESIS MATRIX CARD
+   ============================================================================ */
+
+.telemetry-bento-inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.telemetry-stat-box {
+    background: rgba(6, 10, 24, 0.72);
+    border: 1px solid rgba(104, 130, 200, 0.3);
+    border-radius: 5px;
+    padding: 8px 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.telemetry-stat-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--y2k-cyber-cyan);
+}
+
+.stat-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: var(--y2k-chrome-mid);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.stat-value {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 2px;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.45);
+}
+
+/* Cyber Synth Trigger Pads inside Telemetry Module */
+.cyber-fx-pads {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.cyber-pad-btn {
+    padding: 8px 6px;
+    background: linear-gradient(180deg, rgba(38, 56, 112, 0.8) 0%, rgba(15, 23, 48, 0.9) 100%);
+    border: 1px solid rgba(143, 168, 242, 0.4);
+    border-radius: 6px;
+    color: var(--y2k-chrome-light);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: transform 0.32s var(--spring-bouncy), border-color 0.2s, box-shadow 0.2s;
+}
+
+.cyber-pad-btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    border-color: var(--y2k-acid-green);
+    box-shadow: 0 6px 16px rgba(0, 255, 102, 0.28);
+    color: #fff;
+}
+
+.cyber-pad-btn:active {
+    transform: scale(0.92);
+}
+
+/* ============================================================================
+   9. MODULE 05: TRACKLIST ARCHIVE MATRIX (DESKTOP BENTO CARD + MOBILE CLIP-PATH DRAWER)
+   Uses playlist_top.png, playlist_middle.png, playlist_bottom.png & playlist_grippy.png
+   ============================================================================ */
+
+.tracklist-header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding: 6px 10px;
+    background-image: url('../assets/corona/minimize_top_background.png');
+    background-size: 100% 100%;
+    border-radius: 4px;
+}
+
+.tracklist-items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    max-height: 310px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.tracklist-items-container::-webkit-scrollbar {
+    width: 6px;
+}
+.tracklist-items-container::-webkit-scrollbar-track {
+    background: rgba(7, 11, 22, 0.6);
+}
+.tracklist-items-container::-webkit-scrollbar-thumb {
+    background: var(--y2k-periwinkle);
+    border-radius: 3px;
+}
+
+.corona-track-item {
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 11px;
+    background: rgba(10, 17, 36, 0.78);
+    border: 1px solid rgba(104, 130, 200, 0.28);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.3s var(--spring-bouncy), background 0.2s, border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.corona-track-item:hover {
+    transform: translateX(4px) scale(1.01);
+    background: rgba(25, 41, 84, 0.85);
+    border-color: var(--y2k-cyber-cyan);
+    box-shadow: 0 4px 14px rgba(0, 240, 255, 0.2);
+}
+
+.corona-track-item.active {
+    background: linear-gradient(90deg, rgba(28, 56, 130, 0.92) 0%, rgba(13, 28, 68, 0.92) 100%);
+    border-color: var(--y2k-acid-green);
+    box-shadow: 0 0 16px rgba(0, 255, 102, 0.28), inset 3px 0 0 var(--y2k-acid-green);
+}
+
+.track-idx-pill {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--y2k-cyber-cyan);
+    background: rgba(4, 8, 18, 0.8);
+    border: 1px solid rgba(0, 240, 255, 0.35);
+    border-radius: 4px;
+    padding: 3px 0;
+    text-align: center;
+}
+
+.corona-track-item.active .track-idx-pill {
+    background: var(--y2k-acid-green);
+    color: #040914;
+    border-color: var(--y2k-acid-green);
+}
+
+.track-info-col {
+    min-width: 0;
+}
+
+.track-name-line {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.track-meta-line {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--y2k-chrome-mid);
+    margin-top: 2px;
+}
+
+.track-bpm-badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--y2k-acid-green);
+    background: rgba(0, 255, 102, 0.1);
+    border: 1px solid rgba(0, 255, 102, 0.35);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* ============================================================================
+   10. DESKTOP 12-COLUMN BENTO GRID vs MOBILE DOCK & CLIP-PATH DRAWER
+   ============================================================================ */
+
+@media (min-width: 960px) {
+    body.corona-body {
+        padding-bottom: 32px;
+    }
+
+    .y2k-bento-shell {
+        grid-template-columns: repeat(12, 1fr);
+        grid-auto-rows: minmax(80px, auto);
+        gap: 18px;
+        padding: 20px 24px 40px;
+    }
+
+    .y2k-system-bar {
+        grid-column: 1 / -1;
+    }
+
+    /* Card 1: Cyber Visualizer & Live Stream Stage (7 cols, 2 rows) */
+    .bento-visualizer-card {
+        grid-column: 1 / 8;
+        grid-row: span 2;
+    }
+
+    .visualizer-stage-wrap {
+        min-height: 350px;
+        height: 100%;
+    }
+
+    /* Card 2: 8-Band Tactile BiquadFilter Equalizer (5 cols) */
+    .bento-eq-card {
+        grid-column: 8 / 13;
+    }
+
+    /* Card 3: Glitch Telemetry & Cyber Synth Pads (5 cols) */
+    .bento-telemetry-card {
+        grid-column: 8 / 13;
+    }
+
+    /* Card 4: Metaball Transport & Scrubber Command Dock (7 cols) */
+    .bento-transport-dock {
+        grid-column: 1 / 8;
+    }
+
+    /* Card 5: Tracklist Archive Matrix (5 cols) */
+    .bento-tracklist-drawer {
+        grid-column: 8 / 13;
+        clip-path: none !important;
+        pointer-events: auto !important;
+        opacity: 1 !important;
+    }
+
+    .drawer-toggle-pill,
+    .drawer-close-mobile {
+        display: none !important;
+    }
+}
+
+/* MOBILE-FIRST SPECIALIZATION (< 960px):
+   - Floating Liquid-Chrome Player anchored at the bottom
+   - Animated Clip-Path Reveal Drawer for the Tracklist Matrix */
+@media (max-width: 959px) {
+    .bento-transport-dock {
+        position: fixed;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        z-index: 8500;
+        filter: drop-shadow(0 -8px 28px rgba(0, 0, 0, 0.88)) drop-shadow(0 0 16px rgba(0, 240, 255, 0.25));
+    }
+
+    .bento-transport-dock .c9-mid-body {
+        padding: 10px 12px;
+        background: linear-gradient(180deg, rgba(22, 34, 68, 0.96) 0%, rgba(9, 15, 32, 0.98) 100%);
+        backdrop-filter: blur(14px);
+    }
+
+    /* Clip-Path Animated Tracklist Drawer on Mobile */
+    .bento-tracklist-drawer {
+        position: fixed;
+        left: 10px;
+        right: 10px;
+        bottom: 138px;
+        z-index: 8600;
+        /* Hidden state using circular/polygonal clip-path at bottom right */
+        clip-path: circle(0% at 88% 95%);
+        opacity: 0;
+        pointer-events: none;
+        transition: clip-path 0.58s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
+    }
+
+    .bento-tracklist-drawer.drawer-open {
+        clip-path: circle(150% at 88% 95%);
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+/* Chromatic Aberration Glitch Burst Class triggered on Bass Peaks or Track Change */
+.bass-glitch-burst {
+    animation: y2k-chromatic-glitch 0.22s steps(2, end);
+}
+
+@keyframes y2k-chromatic-glitch {
+    0% {
+        filter: drop-shadow(-3px 0 0 var(--y2k-glitch-magenta)) drop-shadow(3px 0 0 var(--y2k-cyber-cyan));
+        transform: translate(1px, -1px);
+    }
+    50% {
+        filter: drop-shadow(3px 0 0 var(--y2k-acid-green)) drop-shadow(-3px 0 0 var(--y2k-glitch-magenta));
+        transform: translate(-1px, 1px);
+    }
+    100% {
+        filter: none;
+        transform: none;
+    }
+}
