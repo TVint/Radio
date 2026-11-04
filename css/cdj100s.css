@@ -1,0 +1,1695 @@
+/* ============================================================================
+   PIONEER CDJ-100S (1998) // DIGITAL COMPACT DISC PLAYER
+   Industrial Y2K Hardware & Tactile DSP Interface (css/cdj100s.css)
+   Inspired by the Pioneer CDJ-100S Dual Tabletop Reference Photo
+   ============================================================================ */
+
+:root {
+    /* Warm Mahogany / Walnut Wood Tabletop (From Photo Background) */
+    --wood-base: #6e3f23;
+    --wood-dark: #3f200e;
+    --wood-highlight: #945834;
+
+    /* Pioneer CDJ-100S Pearl-Silver / Warm Champagne-Grey Satin Finish */
+    --cdj-silver-light: #eae5df;
+    --cdj-silver-main: #ddd7cf;
+    --cdj-silver-mid: #cfc8be;
+    --cdj-silver-dark: #b5ada2;
+    --cdj-silk-ink: #35322f;
+
+    /* Iconic Digital Jog Break Translucent Periwinkle-Blue Buttons */
+    --jb-blue-base: #5f73b7;
+    --jb-blue-light: #93a7eb;
+    --jb-blue-deep: #32417a;
+    --jb-blue-glow: #4f7dff;
+
+    /* VFD (Vacuum Fluorescent Display) Colors */
+    --vfd-bg: #111316;
+    --vfd-digit: #eef7ff;
+    --vfd-cyan-glow: rgba(175, 225, 255, 0.65);
+    --vfd-orange: #ff7b1c;
+    --vfd-red: #ff3b30;
+
+    /* Green Optical Prism Window */
+    --prism-green: #7ce625;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body.cdj-body {
+    min-height: 100vh;
+    background-color: var(--wood-dark);
+    /* Realistic Warm Wood Grain Tabletop matching the photo background */
+    background-image:
+        radial-gradient(ellipse at 50% 25%, rgba(168, 98, 52, 0.42) 0%, rgba(45, 22, 10, 0.88) 85%),
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 210, 170, 0.025) 0px,
+            rgba(255, 210, 170, 0.025) 2px,
+            rgba(20, 8, 2, 0.06) 2px,
+            rgba(20, 8, 2, 0.06) 7px
+        ),
+        linear-gradient(180deg, #7c4728 0%, #5c321a 48%, #3c1f0e 100%);
+    color: #f1f5f9;
+    font-family: 'Chakra Petch', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+    padding-bottom: 48px;
+}
+
+/* ============================================================================
+   TOP CLUB BOOTH HEADER
+   ============================================================================ */
+.cdj-booth-header {
+    max-width: 1360px;
+    margin: 12px auto 8px;
+    padding: 10px 18px;
+    background: rgba(18, 16, 15, 0.86);
+    border: 1px solid rgba(221, 215, 207, 0.25);
+    border-radius: 10px;
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+}
+
+.cdj-header-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cdj-badge-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: conic-gradient(from 45deg, #d4d4d8, #60a5fa, #a855f7, #4ade80, #facc15, #d4d4d8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 0 14px rgba(96, 165, 250, 0.5);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cdj-badge-icon:hover {
+    transform: rotate(180deg) scale(1.1);
+}
+
+.cdj-title-group h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    color: #f5f2ed;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.cdj-subtitle {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: #fb923c;
+    letter-spacing: 1px;
+}
+
+.cdj-header-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.cdj-view-switcher {
+    display: flex;
+    background: #1a1817;
+    padding: 3px;
+    border-radius: 6px;
+    border: 1px solid #3f3b37;
+    gap: 4px;
+}
+
+.cdj-view-btn {
+    background: transparent;
+    border: none;
+    color: #a8a29e;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cdj-view-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.cdj-view-btn.active {
+    background: linear-gradient(180deg, #5f73b7, #394b8c);
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(95, 115, 183, 0.6);
+}
+
+.cdj-telemetry-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 5px;
+    background: #0d0f12;
+    color: #7ce625;
+    border: 1px solid rgba(124, 230, 37, 0.35);
+    box-shadow: inset 0 0 8px rgba(124, 230, 37, 0.15);
+}
+
+/* ============================================================================
+   MAIN BOOTH WORKSPACE & VIEW MODES
+   ============================================================================ */
+.cdj-booth-stage {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.cdj-mobile-tabs {
+    display: none;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.cdj-mob-tab {
+    flex: 1;
+    padding: 9px 6px;
+    background: rgba(20, 18, 16, 0.85);
+    border: 1px solid rgba(221, 215, 207, 0.3);
+    color: #d6d3d1;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.cdj-mob-tab.active {
+    background: linear-gradient(180deg, #5f73b7, #354687);
+    color: #fff;
+    border-color: #93a7eb;
+}
+
+/* ============================================================================
+   DUAL PIONEER CDJ-100S TABLETOP GRID
+   ============================================================================ */
+.cdj-twins-tabletop {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    padding: 36px 22px 26px;
+    border-radius: 16px;
+    /* Subtle wooden booth framing */
+    background:
+        radial-gradient(circle at 50% 40%, rgba(255, 225, 190, 0.07), rgba(0, 0, 0, 0.38));
+    border: 1px solid rgba(255, 215, 180, 0.14);
+    box-shadow: inset 0 2px 24px rgba(0, 0, 0, 0.45), 0 20px 50px rgba(0, 0, 0, 0.6);
+    margin-bottom: 22px;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Single Deck Focus Mode */
+.cdj-twins-tabletop.layout-single {
+    grid-template-columns: minmax(0, 620px);
+    justify-content: center;
+}
+
+.cdj-twins-tabletop.layout-single #cdj-unit-b {
+    display: none;
+}
+
+/* Top-Down 90-Degree Photo Orientation Mode */
+.cdj-twins-tabletop.layout-rotated .cdj-chassis {
+    transform: rotate(90deg) scale(0.92);
+}
+
+/* Ambient Rear Power & White RCA Cables SVG */
+.cdj-rear-cables-svg {
+    position: absolute;
+    top: -12px;
+    left: 0;
+    width: 100%;
+    height: 155px;
+    pointer-events: none;
+    z-index: 1;
+    filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.65));
+}
+
+/* ============================================================================
+   PIONEER CDJ-100S HARDWARE UNIT
+   ============================================================================ */
+.cdj100s-unit {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    user-select: none;
+}
+
+/* ----------------------------------------------------------------------------
+   FRONT / TOP SLOT-IN CD BAY & IRIDESCENT OPTICAL DISC ANIMATION
+   ---------------------------------------------------------------------------- */
+.cdj-slot-bay {
+    position: relative;
+    width: 78%;
+    height: 46px;
+    margin-bottom: -10px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: visible;
+}
+
+.cdj-slot-bezel {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 16px;
+    background: linear-gradient(180deg, #b8b0a4 0%, #8f877b 100%);
+    border-radius: 10px 10px 0 0;
+    border: 1px solid #6b645b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Center semicircular notch on the front slot lip (visible on left edge of photo!) */
+.cdj-slot-notch {
+    width: 24px;
+    height: 9px;
+    background: #18181b;
+    border-radius: 0 0 12px 12px;
+    border: 1px solid #524c44;
+    position: absolute;
+    top: 0;
+}
+
+.cdj-slot-lip {
+    width: 86%;
+    height: 4px;
+    background: #121316;
+    border-radius: 2px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Animated Optical Compact Disc */
+.cdj-optical-disc {
+    position: relative;
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, transparent 0%, transparent 16%, rgba(255, 255, 255, 0.85) 17%, rgba(210, 218, 226, 0.92) 28%, #d4d8de 68%, #9ca3af 100%);
+    box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.65), inset 0 0 0 2px rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.45s ease;
+}
+
+.cdj-optical-disc.inserted {
+    /* Tucked inside the slot with just a subtle 10px rim peeking out so user can see/click it */
+    transform: translateY(172px) scale(0.88);
+    opacity: 0.92;
+}
+
+.cdj-optical-disc.inserted:hover {
+    transform: translateY(156px) scale(0.92);
+}
+
+.cdj-optical-disc.ejected {
+    /* Partially ejected out of the slot! */
+    transform: translateY(96px) rotate(-8deg);
+    opacity: 1;
+    animation: ejected-disc-float 2.6s ease-in-out infinite alternate;
+}
+
+@keyframes ejected-disc-float {
+    0%   { transform: translateY(96px) rotate(-6deg); }
+    100% { transform: translateY(84px) rotate(6deg); }
+}
+
+.cd-rainbow-sheen {
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        rgba(56, 189, 248, 0.45) 35deg,
+        rgba(168, 85, 247, 0.45) 65deg,
+        rgba(74, 222, 128, 0.4) 95deg,
+        transparent 140deg,
+        transparent 180deg,
+        rgba(250, 204, 21, 0.4) 215deg,
+        rgba(244, 63, 94, 0.4) 245deg,
+        rgba(59, 130, 246, 0.45) 280deg,
+        transparent 330deg
+    );
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    animation: disc-sheen-spin 5s linear infinite;
+}
+
+@keyframes disc-sheen-spin {
+    to { transform: rotate(360deg); }
+}
+
+.cd-label-ring {
+    position: absolute;
+    top: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    pointer-events: none;
+}
+
+.cd-print-brand {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 8px;
+    font-weight: 900;
+    color: #1e293b;
+    letter-spacing: 1px;
+}
+
+.cd-print-track {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: #0f172a;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-top: 2px;
+    font-weight: bold;
+}
+
+.cd-spindle-hole {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #27170c;
+    border: 4px solid rgba(255, 255, 255, 0.65);
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* ----------------------------------------------------------------------------
+   MAIN PIONEER CDJ-100S CHASSIS SHELL
+   ---------------------------------------------------------------------------- */
+.cdj-chassis {
+    position: relative;
+    z-index: 4;
+    width: 100%;
+    /* Pearl-Silver / Warm Champagne Satin Brushed Polycarbonate */
+    background:
+        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.55), transparent 60%),
+        linear-gradient(165deg, #ebe6e0 0%, #ded8d0 45%, #cfc8be 85%, #bfb7ac 100%);
+    border-radius: 10px;
+    padding: 18px 18px 20px;
+    border-top: 2px solid #f7f4f0;
+    border-left: 2px solid #efebe6;
+    border-right: 2px solid #aba297;
+    border-bottom: 5px solid #8c8479;
+    box-shadow:
+        0 24px 45px rgba(0, 0, 0, 0.68),
+        0 4px 10px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    transition: transform 0.35s ease;
+}
+
+/* Top-Right POWER Silkscreen Legend (Matches photo top-right corner) */
+.cdj-power-legend {
+    position: absolute;
+    top: 6px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--cdj-silk-ink);
+    letter-spacing: 0.6px;
+    opacity: 0.85;
+}
+
+.cdj-power-legend .pwr-title {
+    border-top: 1.5px solid var(--cdj-silk-ink);
+    padding-top: 1px;
+}
+
+/* Silkscreen Hardware Labels */
+.cdj-silk-label {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--cdj-silk-ink);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    line-height: 1.05;
+    text-align: center;
+}
+
+.cdj-silk-label.stacked em {
+    font-style: normal;
+    font-size: 8px;
+    opacity: 0.85;
+}
+
+/* ============================================================================
+   UPPER DECK: VFD DISPLAY MODULE + EJECT BUTTON
+   ============================================================================ */
+.cdj-upper-deck {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    align-items: center;
+    margin-top: 6px;
+    margin-bottom: 14px;
+}
+
+.cdj-vfd-housing {
+    background: linear-gradient(180deg, #1a1c20 0%, #101215 100%);
+    border-radius: 5px;
+    padding: 8px 12px 10px;
+    border-top: 2px solid #59554f;
+    border-left: 2px solid #59554f;
+    border-right: 1px solid #f2ede7;
+    border-bottom: 2px solid #f5f0ea;
+    box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.9);
+}
+
+.cdj-vfd-branding {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+    padding: 0 2px;
+}
+
+.pioneer-brand-left {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.pioneer-wordmark {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #b4b9c2;
+}
+
+.pioneer-subtext {
+    font-size: 7.5px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: #7c828d;
+}
+
+.cdj-model-wordmark {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    color: #9fa6b2;
+}
+
+/* Smoked Glass VFD Screen */
+.cdj-vfd-screen {
+    position: relative;
+    background: #08090c;
+    border-radius: 3px;
+    padding: 8px 12px 7px;
+    border: 1px solid #262930;
+    box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.95);
+    overflow: hidden;
+}
+
+.vfd-scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.02) 0px,
+        rgba(255, 255, 255, 0.02) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    pointer-events: none;
+}
+
+.vfd-main-row {
+    display: grid;
+    grid-template-columns: 62px 1fr 68px;
+    align-items: end;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+.vfd-col-track,
+.vfd-col-time,
+.vfd-col-tempo {
+    display: flex;
+    flex-direction: column;
+}
+
+.vfd-col-time {
+    align-items: center;
+}
+
+.vfd-col-tempo {
+    align-items: flex-end;
+}
+
+.vfd-micro-label {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 0.8px;
+    margin-bottom: 1px;
+}
+
+.vfd-seg-digits {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--vfd-digit);
+    text-shadow: 0 0 8px var(--vfd-cyan-glow), 0 0 2px #ffffff;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 1.5px;
+}
+
+.vfd-seg-digits.track-digits {
+    font-size: 24px;
+    color: #f8fafc;
+}
+
+.vfd-seg-digits.time-digits {
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.vfd-seg-digits.tempo-digits {
+    font-size: 21px;
+}
+
+/* Orange Bracket Line + AUTO CUE + MT Badges (Matches Photo VFD Bottom) */
+.vfd-status-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.vfd-orange-bracket {
+    flex: 1;
+    height: 4px;
+    border-left: 2px solid var(--vfd-orange);
+    border-bottom: 2px solid var(--vfd-orange);
+    border-right: 2px solid var(--vfd-orange);
+    box-shadow: 0 1px 5px rgba(255, 123, 28, 0.45);
+}
+
+.vfd-badge-autocue {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px;
+    font-weight: 700;
+    padding: 1px 4px;
+    border-radius: 2px;
+    background: rgba(255, 59, 48, 0.15);
+    color: #52525b;
+    border: 1px solid #3f3f46;
+}
+
+.vfd-badge-autocue.active {
+    background: #dc2626;
+    color: #ffffff;
+    border-color: #f87171;
+    box-shadow: 0 0 6px rgba(239, 68, 68, 0.7);
+}
+
+.vfd-badge-mt {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 2px;
+    background: #27272a;
+    color: #52525b;
+}
+
+.vfd-badge-mt.active {
+    background: var(--vfd-orange);
+    color: #090a0c;
+    box-shadow: 0 0 8px rgba(255, 123, 28, 0.8);
+}
+
+.vfd-badge-fx {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px;
+    color: #93c5fd;
+    letter-spacing: 0.5px;
+}
+
+/* Playing Address Dot-Matrix Bar */
+.vfd-address-bar {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 2px;
+    height: 6px;
+    padding-top: 2px;
+}
+
+.vfd-addr-seg {
+    background: #1e232a;
+    border-radius: 1px;
+    transition: background 0.08s ease;
+}
+
+.vfd-addr-seg.lit {
+    background: #e2f1ff;
+    box-shadow: 0 0 4px rgba(175, 225, 255, 0.8);
+}
+
+.vfd-addr-seg.cue-mark {
+    background: var(--vfd-orange);
+    box-shadow: 0 0 5px var(--vfd-orange);
+}
+
+/* EJECT BUTTON ZONE */
+.cdj-eject-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.cdj-btn-eject {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(180deg, #323438 0%, #1c1d21 100%);
+    border: 2px solid #8e877d;
+    border-radius: 5px;
+    color: #d4d4d8;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow:
+        0 3px 6px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.cdj-btn-eject:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.cdj-btn-eject.pulse-hint {
+    border-color: #60a5fa;
+    box-shadow: 0 0 12px rgba(96, 165, 250, 0.65);
+}
+
+/* ============================================================================
+   RAISED SCULPTED CENTRAL JOG & DIGITAL JOG BREAK ISLAND
+   Matches the iconic contoured raised centerpiece of the CDJ-100S
+   ============================================================================ */
+.cdj-sculpted-center {
+    position: relative;
+    background: linear-gradient(180deg, #ede9e3 0%, #e1dbd3 55%, #d6cfc6 100%);
+    border-radius: 12px 12px 24px 24px;
+    padding: 12px 14px 16px;
+    margin: 0 -6px 14px;
+    border-top: 2px solid #ffffff;
+    border-left: 1px solid #f5f2ed;
+    border-right: 1px solid #b5ada2;
+    border-bottom: 4px solid #9e968b;
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+/* ----------------------------------------------------------------------------
+   DIGITAL JOG BREAK ROW (JET, ZIP, WAH + HOLD + TIME MODE)
+   ---------------------------------------------------------------------------- */
+.cdj-jog-break-strip {
+    margin-bottom: 12px;
+}
+
+.jog-break-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 6px;
+}
+
+.jb-title {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--cdj-silk-ink);
+    letter-spacing: 0.8px;
+    margin-left: 34px;
+    margin-bottom: 2px;
+}
+
+.jb-metallic-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 52px);
+    gap: 10px;
+    background: linear-gradient(90deg, #b8b0a4, #cec7bd, #b8b0a4);
+    padding: 2px 8px;
+    border-radius: 3px;
+    border: 1px solid #9c9488;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    font-weight: 900;
+    color: #272522;
+}
+
+.jog-break-buttons-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0 4px;
+}
+
+.jb-blue-trio {
+    display: grid;
+    grid-template-columns: repeat(3, 52px);
+    gap: 10px;
+    justify-items: center;
+}
+
+/* Iconic Translucent Periwinkle/Indigo-Blue Convex Button */
+.cdj-jb-blue-btn {
+    position: relative;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 3px solid #2b2d35;
+    background:
+        radial-gradient(circle at 32% 28%, #b3c5ff 0%, #687ec7 42%, #3f5191 82%, #25315e 100%);
+    box-shadow:
+        0 4px 7px rgba(0, 0, 0, 0.5),
+        inset 0 2px 4px rgba(255, 255, 255, 0.65),
+        inset 0 -3px 6px rgba(15, 23, 42, 0.8);
+    cursor: pointer;
+    transition: all 0.16s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cdj-jb-blue-btn .jb-dome-shine {
+    position: absolute;
+    top: 4px;
+    left: 7px;
+    width: 14px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.55);
+    transform: rotate(-20deg);
+    pointer-events: none;
+}
+
+.cdj-jb-blue-btn:hover {
+    transform: scale(1.07);
+    filter: brightness(1.12);
+}
+
+.cdj-jb-blue-btn:active {
+    transform: scale(0.95);
+}
+
+/* Active Glowing Blue LED State */
+.cdj-jb-blue-btn.active {
+    border-color: #93c5fd;
+    background:
+        radial-gradient(circle at 35% 30%, #ffffff 0%, #7da4ff 35%, #3b66f5 75%, #1d369e 100%);
+    box-shadow:
+        0 0 18px #4f7dff,
+        0 0 32px rgba(79, 125, 255, 0.7),
+        inset 0 2px 6px #ffffff;
+}
+
+.jb-aux-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.cdj-round-black-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #4b4e57, #18191c 75%);
+    border: 2px solid #756e65;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.55);
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.cdj-round-black-btn:active {
+    transform: scale(0.9);
+}
+
+.cdj-round-black-btn.active {
+    border-color: var(--vfd-orange);
+    box-shadow: 0 0 10px var(--vfd-orange);
+}
+
+.cdj-white-ring-bezel {
+    position: relative;
+    padding: 3px;
+    border-radius: 50%;
+    border: 1.5px solid #fdfcfb;
+    background: #cac2b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cdj-micro-led {
+    position: absolute;
+    top: -6px;
+    right: -4px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #3f3f46;
+    border: 1px solid #18181b;
+}
+
+.cdj-micro-led.on {
+    background: #ef4444;
+    box-shadow: 0 0 6px #ef4444;
+}
+
+.cdj-micro-led.orange.on {
+    background: var(--vfd-orange);
+    box-shadow: 0 0 7px var(--vfd-orange);
+}
+
+/* ----------------------------------------------------------------------------
+   RECESSED BLACK JOG WELL + GREEN PRISM WINDOW + 10CM JOG WHEEL
+   ---------------------------------------------------------------------------- */
+.cdj-jog-section {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    align-items: center;
+    gap: 6px;
+}
+
+.cdj-jog-dir {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--cdj-silk-ink);
+}
+
+.cdj-jog-dir .dir-arrow {
+    font-size: 10px;
+    letter-spacing: -1px;
+    opacity: 0.75;
+}
+
+/* Matte-Black Contoured Platter Recess (Matches Photo) */
+.cdj-jog-black-well {
+    position: relative;
+    width: 100%;
+    max-width: 310px;
+    aspect-ratio: 1 / 0.94;
+    margin: 0 auto;
+    background: linear-gradient(145deg, #1b1d21 0%, #101215 60%, #181a1f 100%);
+    border-radius: 50% 14px 14px 50%;
+    padding: 14px;
+    border-top: 2px solid #6b655e;
+    border-left: 3px solid #57524b;
+    border-right: 2px solid #f4f0ea;
+    border-bottom: 2px solid #f4f0ea;
+    box-shadow: inset 0 8px 20px rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* COMPACT DISC DIGITAL AUDIO Logo in top-right of black well */
+.cdj-compact-disc-logo {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(161, 161, 170, 0.45);
+    padding: 2px 5px;
+    border-radius: 3px;
+    line-height: 0.95;
+    pointer-events: none;
+}
+
+.cdj-compact-disc-logo .disc-word {
+    font-size: 5.5px;
+    letter-spacing: 0.8px;
+    color: #a1a1aa;
+}
+
+.cdj-compact-disc-logo .disc-big {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    font-weight: 900;
+    color: #d4d4d8;
+    letter-spacing: 0.5px;
+}
+
+.cdj-compact-disc-logo .disc-sub {
+    font-size: 5px;
+    color: #a1a1aa;
+}
+
+/* Iconic Green Translucent CD Reflection Window (Bottom-Right of Black Well in Photo!) */
+.cdj-green-prism-window {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    width: 82px;
+    height: 48px;
+    border-radius: 6px 6px 10px 42px;
+    background: linear-gradient(135deg, rgba(28, 45, 22, 0.92), rgba(74, 148, 28, 0.55));
+    border: 1px solid rgba(132, 225, 58, 0.45);
+    overflow: hidden;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.85);
+}
+
+.prism-cd-edge {
+    position: absolute;
+    top: -28px;
+    left: -26px;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 12px solid rgba(190, 242, 100, 0.35);
+    background: conic-gradient(
+        from 0deg,
+        rgba(132, 204, 22, 0.15),
+        rgba(217, 249, 157, 0.75),
+        rgba(74, 222, 128, 0.2),
+        rgba(190, 242, 100, 0.8),
+        rgba(132, 204, 22, 0.15)
+    );
+    opacity: 0.35;
+    transition: opacity 0.3s ease;
+}
+
+.prism-cd-edge.spinning {
+    opacity: 0.95;
+    animation: prism-spin 1.8s linear infinite;
+}
+
+@keyframes prism-spin {
+    to { transform: rotate(360deg); }
+}
+
+.prism-green-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 65% 65%, rgba(132, 235, 45, 0.42), transparent 70%);
+    pointer-events: none;
+}
+
+/* 10CM TACTILE ROTARY JOG DIAL */
+.cdj-jog-wheel {
+    position: relative;
+    z-index: 3;
+    width: 224px;
+    height: 224px;
+    border-radius: 50%;
+    margin-right: 26px;
+    cursor: grab;
+    touch-action: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.85),
+        0 0 0 4px #25282e;
+}
+
+.cdj-jog-wheel:active {
+    cursor: grabbing;
+}
+
+/* Metallic Outer Rim of the Jog Wheel */
+.jog-chrome-rim {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 20deg,
+        #525866,
+        #d4d8e0,
+        #333740,
+        #b8bec9,
+        #262930,
+        #d4d8e0,
+        #525866
+    );
+    pointer-events: none;
+}
+
+/* Matte-Black Micro-Grooved Platter Face */
+.jog-grooved-platter {
+    position: relative;
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.12), transparent 55%),
+        repeating-radial-gradient(
+            circle at 50% 50%,
+            #22252b 0px,
+            #22252b 2px,
+            #17191d 2px,
+            #17191d 4px
+        );
+    box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.18), inset 0 -4px 10px rgba(0, 0, 0, 0.9);
+    will-change: transform;
+}
+
+/* Sculpted Finger Dimple on the Jog Wheel */
+.jog-finger-dimple {
+    position: absolute;
+    bottom: 26px;
+    left: 34px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 65% 65%, #32363f 0%, #101215 78%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.95);
+}
+
+.jog-center-cap {
+    position: absolute;
+    inset: 38%;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    pointer-events: none;
+}
+
+/* ============================================================================
+   BOTTOM CONTROLS: TRANSPORT CLUSTER (LEFT) + PITCH TEMPO FADER (RIGHT)
+   ============================================================================ */
+.cdj-bottom-controls {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 14px;
+    align-items: end;
+}
+
+.cdj-transport-cluster {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cdj-search-matrix {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.search-pair-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.search-btn-pair {
+    display: flex;
+    gap: 5px;
+}
+
+.cdj-sq-btn {
+    width: 38px;
+    height: 28px;
+    background: linear-gradient(180deg, #32353b 0%, #181a1e 100%);
+    border: 1.5px solid #756e65;
+    border-radius: 4px;
+    color: #e4e4e7;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: transform 0.08s ease;
+}
+
+.cdj-sq-btn:active {
+    transform: translateY(2px);
+}
+
+/* Large Rectangular CUE & PLAY/PAUSE Tactile Buttons */
+.cdj-main-transport-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.transport-big-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.cdj-big-rect-btn {
+    position: relative;
+    width: 100%;
+    height: 54px;
+    background: linear-gradient(180deg, #2e3136 0%, #17181c 100%);
+    border: 2px solid #787167;
+    border-radius: 6px;
+    color: #f4f4f5;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    box-shadow:
+        0 5px 10px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transition: transform 0.08s ease, box-shadow 0.12s ease;
+}
+
+.cdj-big-rect-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.btn-led-strip {
+    width: 28px;
+    height: 4px;
+    border-radius: 2px;
+    background: #3f3f46;
+    transition: all 0.15s ease;
+}
+
+.btn-led-strip.cue-led.ready {
+    background: var(--vfd-orange);
+    box-shadow: 0 0 8px var(--vfd-orange);
+}
+
+.btn-led-strip.play-led.playing {
+    background: #22c55e;
+    box-shadow: 0 0 10px #22c55e;
+}
+
+.btn-led-strip.play-led.paused {
+    background: #22c55e;
+    animation: play-pause-blink 0.55s infinite alternate;
+}
+
+@keyframes play-pause-blink {
+    from { opacity: 0.25; }
+    to   { opacity: 1; }
+}
+
+/* ----------------------------------------------------------------------------
+   TEMPO SLIDER & MASTER TEMPO SECTION
+   ---------------------------------------------------------------------------- */
+.cdj-tempo-cluster {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cdj-mt-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.mt-btn-holder {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cdj-pitch-fader-box {
+    background: #17191d;
+    border-radius: 5px;
+    padding: 6px 10px 8px;
+    border-top: 2px solid #6e675f;
+    border-left: 2px solid #6e675f;
+    border-right: 1px solid #f4efe8;
+    border-bottom: 1px solid #f4efe8;
+}
+
+.pitch-scale-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.pitch-scale-header .cdj-silk-label {
+    color: #d4d4d8;
+    font-size: 8px;
+}
+
+.pitch-sign {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    font-weight: bold;
+    color: #e4e4e7;
+}
+
+.cdj-fader-well {
+    position: relative;
+    height: 36px;
+    display: flex;
+    align-items: center;
+}
+
+/* White Precision Tick Scale (Matches Photo) */
+.fader-tick-scale {
+    position: absolute;
+    inset: 2px 8px;
+    background-image: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.65) 0px,
+        rgba(255, 255, 255, 0.65) 1px,
+        transparent 1px,
+        transparent 6px
+    );
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.center-zero-mark {
+    background: #17191d;
+    padding: 0 4px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: #ffffff;
+    transform: translateY(-3px);
+}
+
+.fader-slot-groove {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    height: 6px;
+    background: #050608;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #3f3f46;
+    border-radius: 3px;
+}
+
+.cdj-pitch-input {
+    position: relative;
+    z-index: 4;
+    width: 100%;
+    height: 36px;
+    opacity: 0;
+    cursor: ew-resize;
+}
+
+/* Physical Black & White Stripe Pitch Fader Knob */
+.cdj-fader-cap {
+    position: absolute;
+    top: 3px;
+    width: 22px;
+    height: 30px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #1f2126 0%, #383c45 48%, #181a1e 100%);
+    border: 1px solid #71717a;
+    border-radius: 3px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.cap-white-line {
+    width: 2px;
+    height: 100%;
+    background: #ffffff;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================================================
+   LOWER BENTO CONSOLE: DJM-300 MIXER & CD-R WALLET
+   ============================================================================ */
+.cdj-club-console-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 20px;
+}
+
+.cdj-console-card {
+    background: rgba(17, 19, 23, 0.92);
+    border: 1px solid rgba(221, 215, 207, 0.25);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65);
+}
+
+.console-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cc-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cc-title-wrap h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #e7e5e4;
+}
+
+.cc-led-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4f7dff;
+    box-shadow: 0 0 8px #4f7dff;
+}
+
+.cc-led-dot.orange {
+    background: var(--vfd-orange);
+    box-shadow: 0 0 8px var(--vfd-orange);
+}
+
+.cc-mode-Readout,
+.wallet-hint {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: #93c5fd;
+}
+
+/* VFD Scope Box */
+.cdj-vfd-scope-box {
+    position: relative;
+    background: #07080a;
+    border: 1px solid #272a30;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+#cdj-scope-canvas {
+    width: 100%;
+    height: 150px;
+    display: block;
+}
+
+.scope-overlay-hud {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--vfd-digit);
+    text-shadow: 0 0 6px var(--vfd-cyan-glow);
+    pointer-events: none;
+}
+
+.scope-mode-Row {
+    display: flex;
+    gap: 6px;
+    padding: 6px 8px;
+    background: #0d0f13;
+    border-top: 1px solid #1f232b;
+}
+
+.scope-mode-btn {
+    flex: 1;
+    padding: 4px 8px;
+    background: #181b22;
+    border: 1px solid #2e3440;
+    color: #94a3b8;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.scope-mode-btn.active {
+    background: #3b5bdb;
+    color: #ffffff;
+    border-color: #748ffc;
+}
+
+/* DJM Controls Strip */
+.djm-controls-strip {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.djm-eq-knobs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    background: #121418;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #262932;
+}
+
+.djm-knob-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.djm-knob-col label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: #a8a29e;
+}
+
+.djm-slider {
+    width: 100%;
+    accent-color: #5f73b7;
+    cursor: pointer;
+}
+
+.djm-slider.vol {
+    accent-color: var(--vfd-orange);
+}
+
+.djm-val {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: #e2e8f0;
+}
+
+.djm-utility-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.djm-action-btn {
+    padding: 9px 10px;
+    background: linear-gradient(180deg, #2b2f38, #191c22);
+    border: 1px solid #474d59;
+    border-radius: 6px;
+    color: #f1f5f9;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.djm-action-btn:hover {
+    border-color: #93a7eb;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(95, 115, 183, 0.35);
+}
+
+/* CD-R Wallet List */
+.cd-wallet-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 7px;
+    max-height: 295px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.cd-wallet-item {
+    display: grid;
+    grid-template-columns: 32px 1fr auto auto;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    background: #14171d;
+    border: 1px solid #282d37;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.cd-wallet-item:hover {
+    background: #1d222b;
+    border-color: #5f73b7;
+}
+
+.cd-wallet-item.active-a {
+    border-color: #60a5fa;
+    background: rgba(59, 130, 246, 0.14);
+}
+
+.cd-wallet-item.active-b {
+    border-color: var(--vfd-orange);
+    background: rgba(255, 123, 28, 0.14);
+}
+
+.cd-mini-disc {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #e2e8f0, #60a5fa, #c084fc, #4ade80, #e2e8f0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cd-mini-disc::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #14171d;
+}
+
+.cd-item-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.cd-item-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #f1f5f9;
+}
+
+.cd-item-sub {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: #94a3b8;
+}
+
+.cd-load-pill {
+    padding: 4px 8px;
+    background: #252b37;
+    border: 1px solid #3f4859;
+    border-radius: 4px;
+    color: #e2e8f0;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.cd-load-pill:hover {
+    background: #4f7dff;
+    color: #fff;
+}
+
+/* ============================================================================
+   RESPONSIVE MOBILE-FIRST ADAPTATION
+   ============================================================================ */
+@media (max-width: 1080px) {
+    .cdj-twins-tabletop {
+        grid-template-columns: 1fr;
+    }
+    .cdj-club-console-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 720px) {
+    .cdj-mobile-tabs {
+        display: flex;
+    }
+    .cdj100s-unit {
+        display: none;
+    }
+    .cdj100s-unit.active-mobile-pane {
+        display: flex;
+    }
+    .cdj-club-console-grid.hidden-mobile-pane {
+        display: none;
+    }
+    .cdj-bottom-controls {
+        grid-template-columns: 1fr;
+    }
+    .cdj-jog-wheel {
+        width: 190px;
+        height: 190px;
+    }
+    .jog-grooved-platter {
+        width: 176px;
+        height: 176px;
+    }
+}

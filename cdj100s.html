@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIONEER CDJ-100S (1998) // DIGITAL COMPACT DISC PLAYER</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,700;1,700&family=Orbitron:wght@500;700;900&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/cdj100s.css">
+</head>
+<body class="cdj-body">
+
+<!-- RETRO NAV SWITCHER -->
+<nav class="retro-nav-bar">
+    <div class="retro-nav-brand"><span class="live-dot"></span> PIRATE WEB RADIO</div>
+    <div class="retro-nav-links">
+        <a href="index.html" class="retro-nav-pill">📻 SHARP GF-9494</a>
+        <a href="televideo.html" class="retro-nav-pill">📺 TELEVIDEO</a>
+        <a href="corona.html" class="retro-nav-pill">💎 Y2K CORONA</a>
+        <a href="alienware.html" class="retro-nav-pill">👽 ALIENWARE INVADER</a>
+        <a href="xbox.html" class="retro-nav-pill">🟢 XBOX 2002</a>
+        <a href="cdj100s.html" class="retro-nav-pill active">💿 CDJ-100S</a>
+    </div>
+</nav>
+
+<!-- CORE WEB AUDIO ELEMENT -->
+<audio id="cdj-audio" src="test-track.mp3" preload="auto" crossorigin="anonymous"></audio>
+
+<!-- ==========================================================================
+     TOP CLUB BOOTH SYSTEM HEADER
+     ========================================================================== -->
+<header class="cdj-booth-header">
+    <div class="cdj-header-brand">
+        <div class="cdj-badge-icon" id="cdj-laser-badge" title="Impulso Laser Ottico CDJ-100S">💿</div>
+        <div class="cdj-title-group">
+            <h1>PIONEER CDJ-100S // DUAL DIGITAL TABLETOP</h1>
+            <div class="cdj-subtitle" id="cdj-booth-status">1998 DIGITAL JOG BREAK ENGINE // JET · ZIP · WAH DSP ATTIVO</div>
+        </div>
+    </div>
+
+    <div class="cdj-header-controls">
+        <div class="cdj-view-switcher" role="group" aria-label="Modalità Vista Console">
+            <button type="button" class="cdj-view-btn active" data-layout="dual" id="btn-layout-dual">🎛️ DUAL DECK (FOTO)</button>
+            <button type="button" class="cdj-view-btn" data-layout="single" id="btn-layout-single">🔍 FOCUS DECK A</button>
+            <button type="button" class="cdj-view-btn" data-layout="rotated" id="btn-layout-rotated">📐 VISTA TOP-DOWN 90°</button>
+        </div>
+        <span class="cdj-telemetry-tag" id="cdj-dsp-readout">DSP: BYPASS // 44.1 kHz</span>
+    </div>
+</header>
+
+<!-- ==========================================================================
+     MAIN CLUB BOOTH WORKSPACE
+     Includes Wooden Tabletop, Rear Power/RCA Cables, Dual Pioneer CDJ-100S Units,
+     and Club Mixer / CD-R Wallet Console
+     ========================================================================== -->
+<main class="cdj-booth-stage" id="cdj-booth-stage">
+
+    <!-- MOBILE QUICK DECK SWITCHER -->
+    <div class="cdj-mobile-tabs">
+        <button type="button" class="cdj-mob-tab active" data-mob-target="deckA">💿 DECK A (MASTER)</button>
+        <button type="button" class="cdj-mob-tab" data-mob-target="deckB">💿 DECK B (TWIN)</button>
+        <button type="button" class="cdj-mob-tab" data-mob-target="mixer">🎚️ MIXER & CD WALLET</button>
+    </div>
+
+    <!-- ======================================================================
+         DUAL PIONEER CDJ-100S TABLETOP STAGE (Inspired by the Reference Photo)
+         ====================================================================== -->
+    <section class="cdj-twins-tabletop" id="cdj-twins-tabletop">
+
+        <!-- AMBIENT REAR CABLES SVG (Black Power Cords & White/Red RCA Plugs like in Photo) -->
+        <svg class="cdj-rear-cables-svg" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true">
+            <!-- Black AC Power Cable Deck A -->
+            <path d="M 280 210 C 280 95, 430 110, 485 10" fill="none" stroke="#141619" stroke-width="10" stroke-linecap="round"/>
+            <path d="M 280 210 C 280 95, 430 110, 485 10" fill="none" stroke="#383e47" stroke-width="2" stroke-dasharray="6 4" opacity="0.6"/>
+            <!-- White RCA Line Out Plug & Cable Deck A -->
+            <rect x="332" y="175" width="14" height="36" rx="3" fill="#f1ece1" stroke="#b5ada0" stroke-width="1.5"/>
+            <line x1="335" y1="184" x2="343" y2="184" stroke="#9c9283" stroke-width="1.5"/>
+            <line x1="335" y1="190" x2="343" y2="190" stroke="#9c9283" stroke-width="1.5"/>
+            <path d="M 339 175 C 345 105, 580 140, 620 65 C 650 15, 520 45, 540 120" fill="none" stroke="#181a1f" stroke-width="7" stroke-linecap="round"/>
+            <!-- Black AC Power Cable Deck B -->
+            <path d="M 850 210 C 855 110, 720 130, 680 35 C 650 -10, 790 25, 890 15" fill="none" stroke="#121417" stroke-width="10" stroke-linecap="round"/>
+            <path d="M 850 210 C 855 110, 720 130, 680 35" fill="none" stroke="#383e47" stroke-width="2" opacity="0.5"/>
+            <!-- Tangled Loop on Right (Matches Photo Cable Loops) -->
+            <path d="M 540 120 C 565 185, 760 175, 790 95 C 815 30, 670 30, 695 110 C 715 170, 920 160, 980 65" fill="none" stroke="#191c21" stroke-width="7.5" stroke-linecap="round"/>
+        </svg>
+
+        <!-- ==================================================================
+             UNIT 01 // PIONEER CDJ-100S — DECK A (MASTER STREAM)
+             ================================================================== -->
+        <article class="cdj100s-unit active-mobile-pane" id="cdj-unit-a" data-deck="A">
+
+            <!-- FRONT/TOP SLOT-IN CD ANIMATION BAY -->
+            <div class="cdj-slot-bay">
+                <div class="cdj-slot-bezel">
+                    <div class="cdj-slot-notch"></div>
+                    <div class="cdj-slot-lip"></div>
+                </div>
+                <!-- Animated Iridescent Optical CD-R Disc -->
+                <div class="cdj-optical-disc inserted" id="cdj-disc-a" title="Clicca per Inserire / Espellere il CD dal Deck A">
+                    <div class="cd-rainbow-sheen"></div>
+                    <div class="cd-label-ring">
+                        <span class="cd-print-brand">QDG PIRATE CD-R</span>
+                        <span class="cd-print-track" id="cd-disc-label-a">TRK 01 // 80 MIN</span>
+                    </div>
+                    <div class="cd-spindle-hole"></div>
+                </div>
+            </div>
+
+            <!-- MAIN PEARL-SILVER CHAMPAGNE CHASSIS -->
+            <div class="cdj-chassis">
+
+                <!-- REAR POWER SWITCH CALLOUT (Top-Right Silkscreen like Photo) -->
+                <div class="cdj-power-legend">
+                    <span class="pwr-title">POWER</span>
+                    <span class="pwr-state">■ OFF</span>
+                    <span class="pwr-state">▬ ON</span>
+                </div>
+
+                <!-- ==========================================================
+                     TOP SECTION: VFD DISPLAY + EJECT + TRANSPORT + PITCH
+                     ========================================================== -->
+                <div class="cdj-upper-deck">
+
+                    <!-- VFD SCREEN MODULE (Pioneer DIGITAL COMPACT DISC PLAYER CDJ-100S) -->
+                    <div class="cdj-vfd-housing">
+                        <div class="cdj-vfd-branding">
+                            <div class="pioneer-brand-left">
+                                <span class="pioneer-wordmark">Pioneer</span>
+                                <span class="pioneer-subtext">DIGITAL COMPACT DISC PLAYER</span>
+                            </div>
+                            <div class="cdj-model-wordmark">CDJ-100S</div>
+                        </div>
+
+                        <!-- RECESSED SMOKED VFD GLASS -->
+                        <div class="cdj-vfd-screen" id="vfd-screen-a">
+                            <div class="vfd-scanlines"></div>
+
+                            <!-- VFD Top Row: TRACK | TIME / no DISC | TEMPO -->
+                            <div class="vfd-main-row">
+                                <div class="vfd-col-track">
+                                    <span class="vfd-micro-label">TRACK</span>
+                                    <span class="vfd-seg-digits track-digits" id="vfd-track-a">01</span>
+                                </div>
+
+                                <div class="vfd-col-time">
+                                    <span class="vfd-micro-label" id="vfd-timemode-label-a">ELAPSED</span>
+                                    <div class="vfd-seg-digits time-digits" id="vfd-time-a">00:00:00</div>
+                                </div>
+
+                                <div class="vfd-col-tempo">
+                                    <span class="vfd-micro-label">TEMPO</span>
+                                    <span class="vfd-seg-digits tempo-digits" id="vfd-tempo-a">0.0</span>
+                                </div>
+                            </div>
+
+                            <!-- VFD Orange Accent Bracket + AUTO CUE + MT Badges -->
+                            <div class="vfd-status-row">
+                                <div class="vfd-orange-bracket"></div>
+                                <span class="vfd-badge-autocue active" id="vfd-autocue-a">AUTO CUE</span>
+                                <span class="vfd-badge-mt active" id="vfd-mt-a">MT</span>
+                                <span class="vfd-badge-fx" id="vfd-fx-badge-a">JOG BREAK: OFF</span>
+                            </div>
+
+                            <!-- VFD Playing Address Dot-Matrix Bar / Mini Spectrum -->
+                            <div class="vfd-address-bar" id="vfd-bar-a">
+                                <!-- 24 LED segments generated/updated by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- EJECT BUTTON (Next to VFD Screen) -->
+                    <div class="cdj-eject-zone">
+                        <button type="button" class="cdj-btn-eject" id="btn-eject-a" title="EJECT CD (Inserisci / Espelli Disco)">
+                            <span class="eject-icon">⏏</span>
+                        </button>
+                        <span class="cdj-silk-label">EJECT</span>
+                    </div>
+                </div>
+
+                <!-- ==========================================================
+                     RAISED SCULPTED CENTRAL JOG & DIGITAL JOG BREAK HOUSING
+                     ========================================================== -->
+                <div class="cdj-sculpted-center">
+
+                    <!-- DIGITAL JOG BREAK ROW (JET, ZIP, WAH + HOLD + TIME MODE/AUTO CUE) -->
+                    <div class="cdj-jog-break-strip">
+                        <div class="jog-break-header">
+                            <span class="jb-title">DIGITAL JOG BREAK</span>
+                            <div class="jb-metallic-bar">
+                                <span>JET</span>
+                                <span>ZIP</span>
+                                <span>WAH</span>
+                            </div>
+                        </div>
+
+                        <div class="jog-break-buttons-row">
+                            <!-- 3 Signature Translucent Periwinkle-Blue Convex Buttons -->
+                            <div class="jb-blue-trio">
+                                <button type="button" class="cdj-jb-blue-btn" data-deck="A" data-fx="jet" id="btn-jet-a" title="JET (Flanger Doppler Sweep controllato dalla Jog Wheel)">
+                                    <span class="jb-dome-shine"></span>
+                                </button>
+                                <button type="button" class="cdj-jb-blue-btn" data-deck="A" data-fx="zip" id="btn-zip-a" title="ZIP (Pitch-Bend / Time Warp controllato dalla Jog Wheel)">
+                                    <span class="jb-dome-shine"></span>
+                                </button>
+                                <button type="button" class="cdj-jb-blue-btn" data-deck="A" data-fx="wah" id="btn-wah-a" title="WAH (Filtro Risonante Passa-Banda controllato dalla Jog Wheel)">
+                                    <span class="jb-dome-shine"></span>
+                                </button>
+                            </div>
+
+                            <!-- HOLD Button -->
+                            <div class="jb-aux-group">
+                                <button type="button" class="cdj-round-black-btn sm" id="btn-hold-a" title="HOLD (Congela il parametro dell'effetto Digital Jog Break)"></button>
+                                <span class="cdj-silk-label">HOLD</span>
+                            </div>
+
+                            <!-- TIME MODE / AUTO CUE Button with White Ring & Red LED -->
+                            <div class="jb-aux-group">
+                                <div class="cdj-white-ring-bezel">
+                                    <span class="cdj-micro-led on" id="led-autocue-a"></span>
+                                    <button type="button" class="cdj-round-black-btn sm" id="btn-timemode-a" title="TIME MODE (Elapsed / Remain) & AUTO CUE"></button>
+                                </div>
+                                <span class="cdj-silk-label stacked">TIME MODE<br><em>/ AUTO CUE</em></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RECESSED BLACK JOG WELL + GREEN CD PRISM WINDOW + 10CM JOG DIAL -->
+                    <div class="cdj-jog-section">
+                        <!-- Left REV - Silkscreen Arrow -->
+                        <div class="cdj-jog-dir left">
+                            <span class="dir-arrow">◄───</span>
+                            <span class="dir-text">REV <strong>-</strong></span>
+                        </div>
+
+                        <!-- Black Contoured Platter Well -->
+                        <div class="cdj-jog-black-well">
+                            <!-- Compact Disc Digital Audio Emblem -->
+                            <div class="cdj-compact-disc-logo">
+                                <span class="disc-word">COMPACT</span>
+                                <span class="disc-big">disc</span>
+                                <span class="disc-sub">DIGITAL AUDIO</span>
+                            </div>
+
+                            <!-- Iconic Green Translucent CD Reflection Window (Bottom Right of Well) -->
+                            <div class="cdj-green-prism-window" id="prism-window-a" title="Finestra Ottica Verde CDJ-100S">
+                                <div class="prism-cd-edge spinning" id="prism-disc-a"></div>
+                                <div class="prism-green-glow"></div>
+                            </div>
+
+                            <!-- 10CM TACTILE JOG WHEEL -->
+                            <div class="cdj-jog-wheel" id="jog-wheel-a" data-deck="A" role="slider" aria-label="Jog Dial Deck A" tabindex="0">
+                                <div class="jog-chrome-rim"></div>
+                                <div class="jog-grooved-platter" id="jog-rotor-a">
+                                    <!-- Finger Dimple -->
+                                    <div class="jog-finger-dimple"></div>
+                                    <div class="jog-center-cap"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right FWD + Silkscreen Arrow -->
+                        <div class="cdj-jog-dir right">
+                            <span class="dir-text"><strong>+</strong> FWD</span>
+                            <span class="dir-arrow">───►</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==========================================================
+                     BOTTOM / SIDE TRANSPORT & TEMPO CONTROLS
+                     Left: Track Search, Search, Cue, Play/Pause
+                     Right: Master Tempo + High-Precision Tempo Slider
+                     ========================================================== -->
+                <div class="cdj-bottom-controls">
+
+                    <!-- LEFT TRANSPORT CLUSTER -->
+                    <div class="cdj-transport-cluster">
+                        <!-- Search & Track Search 2x2 Matrix -->
+                        <div class="cdj-search-matrix">
+                            <div class="search-pair-group">
+                                <span class="cdj-silk-label">TRACK SEARCH</span>
+                                <div class="search-btn-pair">
+                                    <button type="button" class="cdj-sq-btn" id="btn-prev-a" title="Traccia Precedente |◄◄">|◄◄</button>
+                                    <button type="button" class="cdj-sq-btn" id="btn-next-a" title="Traccia Successiva ►►|">►►|</button>
+                                </div>
+                            </div>
+
+                            <div class="search-pair-group">
+                                <span class="cdj-silk-label">SEARCH</span>
+                                <div class="search-btn-pair">
+                                    <button type="button" class="cdj-sq-btn" id="btn-rew-a" title="Scrub Indietro ◄◄">◄◄</button>
+                                    <button type="button" class="cdj-sq-btn" id="btn-ff-a" title="Scrub Avanti ►►">►►</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Large Rectangular CUE & PLAY/PAUSE Tactile Buttons -->
+                        <div class="cdj-main-transport-pair">
+                            <div class="transport-big-wrap">
+                                <span class="cdj-silk-label">CUE</span>
+                                <button type="button" class="cdj-big-rect-btn cue-btn" id="btn-cue-a" title="CUE (Memorizza / Torna al Punto di Cue)">
+                                    <span class="btn-led-strip cue-led" id="led-cue-a"></span>
+                                    <span class="btn-caption">CUE</span>
+                                </button>
+                            </div>
+
+                            <div class="transport-big-wrap">
+                                <span class="cdj-silk-label">PLAY / PAUSE</span>
+                                <button type="button" class="cdj-big-rect-btn play-btn" id="btn-play-a" title="PLAY / PAUSE ►/❚❚">
+                                    <span class="btn-led-strip play-led" id="led-play-a"></span>
+                                    <span class="btn-caption">► / ❚❚</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT TEMPO & MASTER TEMPO SECTION -->
+                    <div class="cdj-tempo-cluster">
+                        <!-- Master Tempo Round Button -->
+                        <div class="cdj-mt-wrap">
+                            <div class="mt-btn-holder">
+                                <span class="cdj-micro-led orange on" id="led-mt-btn-a"></span>
+                                <button type="button" class="cdj-round-black-btn" id="btn-mt-a" title="MASTER TEMPO (Blocca la tonalità musicale mentre cambi i BPM)"></button>
+                            </div>
+                            <span class="cdj-silk-label stacked">MASTER<br>TEMPO</span>
+                        </div>
+
+                        <!-- Precision Slotted Tempo Fader (±10%) -->
+                        <div class="cdj-pitch-fader-box">
+                            <div class="pitch-scale-header">
+                                <span class="pitch-sign">−</span>
+                                <span class="cdj-silk-label">TEMPO</span>
+                                <span class="pitch-sign">+</span>
+                            </div>
+
+                            <div class="cdj-fader-well" id="pitch-well-a">
+                                <div class="fader-tick-scale">
+                                    <span class="center-zero-mark">0</span>
+                                </div>
+                                <div class="fader-slot-groove"></div>
+                                <input type="range" class="cdj-pitch-input" id="pitch-slider-a" min="-10" max="10" step="0.1" value="0" aria-label="Pitch Tempo Deck A">
+                                <div class="cdj-fader-cap" id="pitch-cap-a" style="left: 50%;">
+                                    <span class="cap-white-line"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /.cdj-bottom-controls -->
+
+            </div><!-- /.cdj-chassis -->
+        </article>
+
+        <!-- ==================================================================
+             UNIT 02 // PIONEER CDJ-100S — DECK B (PHOTO TWIN / DUB SAMPLER)
+             Starts in iconic "00 no dISC 0.0" mode just like the reference photo,
+             and can load any CD track or trigger live DJ Dub Samples!
+             ================================================================== -->
+        <article class="cdj100s-unit" id="cdj-unit-b" data-deck="B">
+
+            <!-- FRONT/TOP SLOT-IN CD ANIMATION BAY -->
+            <div class="cdj-slot-bay">
+                <div class="cdj-slot-bezel">
+                    <div class="cdj-slot-notch"></div>
+                    <div class="cdj-slot-lip"></div>
+                </div>
+                <!-- Animated Iridescent Optical CD-R Disc (Starts Ejected like Photo!) -->
+                <div class="cdj-optical-disc ejected" id="cdj-disc-b" title="Clicca per Inserire il CD nel Deck B!">
+                    <div class="cd-rainbow-sheen"></div>
+                    <div class="cd-label-ring">
+                        <span class="cd-print-brand">CLUB DUBPLATE CD-R</span>
+                        <span class="cd-print-track" id="cd-disc-label-b">CLICK TO INSERT</span>
+                    </div>
+                    <div class="cd-spindle-hole"></div>
+                </div>
+            </div>
+
+            <!-- MAIN PEARL-SILVER CHAMPAGNE CHASSIS -->
+            <div class="cdj-chassis">
+
+                <!-- REAR POWER SWITCH CALLOUT -->
+                <div class="cdj-power-legend">
+                    <span class="pwr-title">POWER</span>
+                    <span class="pwr-state">■ OFF</span>
+                    <span class="pwr-state">▬ ON</span>
+                </div>
+
+                <!-- TOP SECTION: VFD DISPLAY + EJECT -->
+                <div class="cdj-upper-deck">
+
+                    <!-- VFD SCREEN MODULE -->
+                    <div class="cdj-vfd-housing">
+                        <div class="cdj-vfd-branding">
+                            <div class="pioneer-brand-left">
+                                <span class="pioneer-wordmark">Pioneer</span>
+                                <span class="pioneer-subtext">DIGITAL COMPACT DISC PLAYER</span>
+                            </div>
+                            <div class="cdj-model-wordmark">CDJ-100S</div>
+                        </div>
+
+                        <!-- RECESSED SMOKED VFD GLASS (Shows exact "00 no dISC 0.0" from photo until loaded!) -->
+                        <div class="cdj-vfd-screen" id="vfd-screen-b">
+                            <div class="vfd-scanlines"></div>
+
+                            <div class="vfd-main-row">
+                                <div class="vfd-col-track">
+                                    <span class="vfd-micro-label">TRACK</span>
+                                    <span class="vfd-seg-digits track-digits" id="vfd-track-b">00</span>
+                                </div>
+
+                                <div class="vfd-col-time">
+                                    <span class="vfd-micro-label" id="vfd-timemode-label-b">STATUS</span>
+                                    <div class="vfd-seg-digits time-digits" id="vfd-time-b">no dISC</div>
+                                </div>
+
+                                <div class="vfd-col-tempo">
+                                    <span class="vfd-micro-label">TEMPO</span>
+                                    <span class="vfd-seg-digits tempo-digits" id="vfd-tempo-b">0.0</span>
+                                </div>
+                            </div>
+
+                            <div class="vfd-status-row">
+                                <div class="vfd-orange-bracket"></div>
+                                <span class="vfd-badge-autocue active" id="vfd-autocue-b">AUTO CUE</span>
+                                <span class="vfd-badge-mt active" id="vfd-mt-b">MT</span>
+                                <span class="vfd-badge-fx" id="vfd-fx-badge-b">INSERT CD ⏏</span>
+                            </div>
+
+                            <div class="vfd-address-bar" id="vfd-bar-b"></div>
+                        </div>
+                    </div>
+
+                    <!-- EJECT / INSERT BUTTON -->
+                    <div class="cdj-eject-zone">
+                        <button type="button" class="cdj-btn-eject pulse-hint" id="btn-eject-b" title="Inserisci / Espelli CD nel Deck B">
+                            <span class="eject-icon">⏏</span>
+                        </button>
+                        <span class="cdj-silk-label">EJECT</span>
+                    </div>
+                </div>
+
+                <!-- RAISED SCULPTED CENTRAL JOG & DIGITAL JOG BREAK HOUSING -->
+                <div class="cdj-sculpted-center">
+
+                    <!-- DIGITAL JOG BREAK ROW -->
+                    <div class="cdj-jog-break-strip">
+                        <div class="jog-break-header">
+                            <span class="jb-title">DIGITAL JOG BREAK</span>
+                            <div class="jb-metallic-bar">
+                                <span>JET</span>
+                                <span>ZIP</span>
+                                <span>WAH</span>
+                            </div>
+                        </div>
+
+                        <div class="jog-break-buttons-row">
+                            <div class="jb-blue-trio">
+                                <button type="button" class="cdj-jb-blue-btn" data-deck="B" data-fx="jet" id="btn-jet-b" title="JET (Flanger Doppler Sweep)">
+                                    <span class="jb-dome-shine"></span>
+                                </button>
+                                <button type="button" class="cdj-jb-blue-btn" data-deck="B" data-fx="zip" id="btn-zip-b" title="ZIP (Pitch-Bend / Time Warp)">
+                                    <span class="jb-dome-shine"></span>
+                                </button>
+                                <button type="button" class="cdj-jb-blue-btn" data-deck="B" data-fx="wah" id="btn-wah-b" title="WAH (Filtro Risonante Passa-Banda)">
+                                    <span class="jb-dome-shine"></span>
+                                </button>
+                            </div>
+
+                            <div class="jb-aux-group">
+                                <button type="button" class="cdj-round-black-btn sm" id="btn-hold-b" title="HOLD DSP"></button>
+                                <span class="cdj-silk-label">HOLD</span>
+                            </div>
+
+                            <div class="jb-aux-group">
+                                <div class="cdj-white-ring-bezel">
+                                    <span class="cdj-micro-led on" id="led-autocue-b"></span>
+                                    <button type="button" class="cdj-round-black-btn sm" id="btn-timemode-b" title="TIME MODE / AUTO CUE"></button>
+                                </div>
+                                <span class="cdj-silk-label stacked">TIME MODE<br><em>/ AUTO CUE</em></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RECESSED BLACK JOG WELL + GREEN CD PRISM WINDOW + 10CM JOG DIAL -->
+                    <div class="cdj-jog-section">
+                        <div class="cdj-jog-dir left">
+                            <span class="dir-arrow">◄───</span>
+                            <span class="dir-text">REV <strong>-</strong></span>
+                        </div>
+
+                        <div class="cdj-jog-black-well">
+                            <div class="cdj-compact-disc-logo">
+                                <span class="disc-word">COMPACT</span>
+                                <span class="disc-big">disc</span>
+                                <span class="disc-sub">DIGITAL AUDIO</span>
+                            </div>
+
+                            <!-- Iconic Green Translucent CD Reflection Window -->
+                            <div class="cdj-green-prism-window" id="prism-window-b" title="Finestra Ottica Verde CDJ-100S">
+                                <div class="prism-cd-edge" id="prism-disc-b"></div>
+                                <div class="prism-green-glow"></div>
+                            </div>
+
+                            <!-- 10CM TACTILE JOG WHEEL -->
+                            <div class="cdj-jog-wheel" id="jog-wheel-b" data-deck="B" role="slider" aria-label="Jog Dial Deck B" tabindex="0">
+                                <div class="jog-chrome-rim"></div>
+                                <div class="jog-grooved-platter" id="jog-rotor-b">
+                                    <div class="jog-finger-dimple"></div>
+                                    <div class="jog-center-cap"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cdj-jog-dir right">
+                            <span class="dir-text"><strong>+</strong> FWD</span>
+                            <span class="dir-arrow">───►</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOTTOM TRANSPORT & TEMPO CONTROLS -->
+                <div class="cdj-bottom-controls">
+                    <div class="cdj-transport-cluster">
+                        <div class="cdj-search-matrix">
+                            <div class="search-pair-group">
+                                <span class="cdj-silk-label">TRACK SEARCH</span>
+                                <div class="search-btn-pair">
+                                    <button type="button" class="cdj-sq-btn" id="btn-prev-b" title="Traccia Precedente |◄◄">|◄◄</button>
+                                    <button type="button" class="cdj-sq-btn" id="btn-next-b" title="Traccia Successiva ►►|">►►|</button>
+                                </div>
+                            </div>
+
+                            <div class="search-pair-group">
+                                <span class="cdj-silk-label">SEARCH</span>
+                                <div class="search-btn-pair">
+                                    <button type="button" class="cdj-sq-btn" id="btn-rew-b" title="Scrub Indietro ◄◄">◄◄</button>
+                                    <button type="button" class="cdj-sq-btn" id="btn-ff-b" title="Scrub Avanti ►►">►►</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cdj-main-transport-pair">
+                            <div class="transport-big-wrap">
+                                <span class="cdj-silk-label">CUE</span>
+                                <button type="button" class="cdj-big-rect-btn cue-btn" id="btn-cue-b" title="CUE / Synth Dub Siren">
+                                    <span class="btn-led-strip cue-led" id="led-cue-b"></span>
+                                    <span class="btn-caption">CUE</span>
+                                </button>
+                            </div>
+
+                            <div class="transport-big-wrap">
+                                <span class="cdj-silk-label">PLAY / PAUSE</span>
+                                <button type="button" class="cdj-big-rect-btn play-btn" id="btn-play-b" title="PLAY / PAUSE Deck B">
+                                    <span class="btn-led-strip play-led" id="led-play-b"></span>
+                                    <span class="btn-caption">► / ❚❚</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cdj-tempo-cluster">
+                        <div class="cdj-mt-wrap">
+                            <div class="mt-btn-holder">
+                                <span class="cdj-micro-led orange on" id="led-mt-btn-b"></span>
+                                <button type="button" class="cdj-round-black-btn" id="btn-mt-b" title="MASTER TEMPO Deck B"></button>
+                            </div>
+                            <span class="cdj-silk-label stacked">MASTER<br>TEMPO</span>
+                        </div>
+
+                        <div class="cdj-pitch-fader-box">
+                            <div class="pitch-scale-header">
+                                <span class="pitch-sign">−</span>
+                                <span class="cdj-silk-label">TEMPO</span>
+                                <span class="pitch-sign">+</span>
+                            </div>
+
+                            <div class="cdj-fader-well" id="pitch-well-b">
+                                <div class="fader-tick-scale">
+                                    <span class="center-zero-mark">0</span>
+                                </div>
+                                <div class="fader-slot-groove"></div>
+                                <input type="range" class="cdj-pitch-input" id="pitch-slider-b" min="-10" max="10" step="0.1" value="0" aria-label="Pitch Tempo Deck B">
+                                <div class="cdj-fader-cap" id="pitch-cap-b" style="left: 50%;">
+                                    <span class="cap-white-line"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.cdj-bottom-controls -->
+
+            </div><!-- /.cdj-chassis -->
+        </article>
+
+    </section><!-- /.cdj-twins-tabletop -->
+
+    <!-- ======================================================================
+         LOWER BENTO CONSOLE:
+         1. DJM-300 CLUB MIXER & DIGITAL JOG BREAK OSCILLOSCOPE
+         2. PIONEER CD WALLET CASE (8 COMPACT DISCS READY TO SLIDE IN)
+         ====================================================================== -->
+    <section class="cdj-club-console-grid" id="cdj-mixer-pane">
+
+        <!-- MODULE A: DJM-300 2-CHANNEL ISOLATOR MIXER & VFD SPECTRUM -->
+        <div class="cdj-console-card mixer-card">
+            <div class="console-card-header">
+                <div class="cc-title-wrap">
+                    <span class="cc-led-dot"></span>
+                    <h2>PIONEER DJM-300S // CLUB ISOLATOR &amp; JOG BREAK SCOPE</h2>
+                </div>
+                <div class="cc-mode-Readout" id="scope-fx-status">JOG BREAK: STANDBY</div>
+            </div>
+
+            <div class="mixer-console-body">
+                <!-- REAL-TIME VFD SPECTRUM & JOG BREAK WAVEFORM CANVAS -->
+                <div class="cdj-vfd-scope-box">
+                    <canvas id="cdj-scope-canvas" width="520" height="150"></canvas>
+                    <div class="scope-overlay-hud">
+                        <span id="hud-bpm-readout">128.0 BPM</span>
+                        <span id="hud-pitch-readout">PITCH: +0.0%</span>
+                        <span id="hud-jog-angle">JOG: 0°</span>
+                    </div>
+                    <div class="scope-mode-Row">
+                        <button type="button" class="scope-mode-btn active" data-viz="vfd">VFD BARS</button>
+                        <button type="button" class="scope-mode-btn" data-viz="laser">OPTICAL LASER</button>
+                        <button type="button" class="scope-mode-btn" data-viz="phase">JOG PHASE</button>
+                    </div>
+                </div>
+
+                <!-- 3-BAND ROTARY ISOLATOR EQ + MASTER VOLUME + DUB SIREN PADS -->
+                <div class="djm-controls-strip">
+                    <div class="djm-eq-knobs">
+                        <div class="djm-knob-col">
+                            <label for="eq-low">LOW (80Hz)</label>
+                            <input type="range" id="eq-low" class="djm-slider" min="-15" max="12" step="0.5" value="2">
+                            <span class="djm-val" id="val-eq-low">+2.0 dB</span>
+                        </div>
+                        <div class="djm-knob-col">
+                            <label for="eq-mid">MID (1kHz)</label>
+                            <input type="range" id="eq-mid" class="djm-slider" min="-15" max="12" step="0.5" value="0">
+                            <span class="djm-val" id="val-eq-mid">0.0 dB</span>
+                        </div>
+                        <div class="djm-knob-col">
+                            <label for="eq-high">HI (10kHz)</label>
+                            <input type="range" id="eq-high" class="djm-slider" min="-15" max="12" step="0.5" value="3">
+                            <span class="djm-val" id="val-eq-high">+3.0 dB</span>
+                        </div>
+                        <div class="djm-knob-col">
+                            <label for="master-vol">BOOTH VOL</label>
+                            <input type="range" id="master-vol" class="djm-slider vol" min="0" max="100" step="1" value="88">
+                            <span class="djm-val" id="val-master-vol">88%</span>
+                        </div>
+                    </div>
+
+                    <!-- Club Booth Sound FX & Quick Reset Row -->
+                    <div class="djm-utility-row">
+                        <button type="button" class="djm-action-btn" id="btn-reset-dsp">↺ RESET PITCH &amp; FX</button>
+                        <button type="button" class="djm-action-btn" id="btn-club-horn">🔊 CLUB SUB DROP</button>
+                        <button type="button" class="djm-action-btn" id="btn-sync-decks">⚡ LOAD BOTH DECKS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE B: CD-R DJ WALLET (8 COMPACT DISCS) -->
+        <div class="cdj-console-card wallet-card">
+            <div class="console-card-header">
+                <div class="cc-title-wrap">
+                    <span class="cc-led-dot orange"></span>
+                    <h2>DJ CD-R WALLET // SELEZIONA UN DISCO DA INSERIRE</h2>
+                </div>
+                <span class="wallet-hint">CLICCA UN CD PER CARICARE</span>
+            </div>
+
+            <div class="cd-wallet-list" id="cd-wallet-list">
+                <!-- Populated dynamically by js/cdj100s/cdj100s.js -->
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<script src="js/cdj100s/cdj100s.js"></script>
+</body>
+</html>
