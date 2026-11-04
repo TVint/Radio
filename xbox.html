@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OFFICIAL XBOX MP7.1 (2002) // BIO-PLASMA CONSOLE</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,700;1,700&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/xbox.css">
+</head>
+<body class="xbox-body">
+
+<!-- RETRO NAV SWITCHER -->
+<nav class="retro-nav-bar">
+    <div class="retro-nav-brand"><span class="live-dot"></span> PIRATE WEB RADIO</div>
+    <div class="retro-nav-links">
+        <a href="index.html" class="retro-nav-pill">📻 SHARP GF-9494</a>
+        <a href="televideo.html" class="retro-nav-pill">📺 TELEVIDEO</a>
+        <a href="corona.html" class="retro-nav-pill">💎 Y2K CORONA</a>
+        <a href="alienware.html" class="retro-nav-pill">👽 ALIENWARE INVADER</a>
+        <a href="xbox.html" class="retro-nav-pill active">🟢 XBOX 2002</a>
+    </div>
+</nav>
+
+<!-- CORE WEB AUDIO ELEMENT -->
+<audio id="xbox-audio" src="test-track.mp3" preload="auto" crossorigin="anonymous"></audio>
+
+<!-- ==========================================================================
+     TOP XBOX 2002 DASHBOARD SYSTEM BAR
+     ========================================================================== -->
+<header class="xbox-sys-header">
+    <div class="xbox-brand-left">
+        <div class="xbox-jewel-mini" id="header-xbox-jewel" title="Clicca per Xbox BIOS Boot Sound"></div>
+        <div class="xbox-title-block">
+            <h1>OFFICIAL XBOX SKIN // MP7.1 (2002)</h1>
+            <div class="sub" id="xbox-header-status">PROJECT DIRECTX-BOX // RADIOACTIVE PLASMA AUDIO ENGINE</div>
+        </div>
+    </div>
+
+    <div class="xbox-telemetry-pills">
+        <span class="xbox-stat-pill" id="xbox-bit-rate">192 kbps // WMA PRO</span>
+        <span class="xbox-stat-pill" id="xbox-peak-meter">PEAK: -INF dB</span>
+        <button type="button" class="xbox-boot-btn" id="btn-xbox-boot-chime">✳ BIOS BOOT PULSE</button>
+    </div>
+</header>
+
+<!-- ==========================================================================
+     MAIN 12-COLUMN XBOX HEATSINK BENTO GRID
+     Framed with authentic 2002 Xbox 9-Slice Heatsink & Brushed-Steel Slices
+     ========================================================================== -->
+<main class="xbox-bento-grid">
+
+    <!-- ======================================================================
+         MODULE 01: AUTHENTIC XBOX BIO-POD CONSOLE (main.png 350x216)
+         ====================================================================== -->
+    <section class="xbox-heatsink-card bento-xbox-pod">
+        <!-- 9-Slice Outer Heatsink + Inner Brushed Steel Bevel -->
+        <div class="xh-edge-top"></div>
+        <div class="xh-edge-bot"></div>
+        <div class="xh-edge-left"></div>
+        <div class="xh-edge-right"></div>
+        <div class="xh-inner-top">
+            <span class="xh-card-title">01 // XBOX BIO-POD CONSOLE</span>
+        </div>
+        <div class="xh-inner-bot">
+            <span class="xh-card-footer-tag">30-STEP VOL ARCH</span>
+            <span class="xh-card-footer-tag" id="pod-footer-vol">VOL: 85%</span>
+        </div>
+        <div class="xh-inner-left"></div>
+        <div class="xh-inner-right"></div>
+        <div class="xh-corner-tl"></div>
+        <div class="xh-corner-tr"><button type="button" class="xh-close-led-btn" title="Reset Pod"></button></div>
+        <div class="xh-corner-bl"></div>
+        <div class="xh-corner-br"></div>
+
+        <!-- Card Interior -->
+        <div class="xh-card-body">
+            <div class="biopod-stage-container">
+                <!-- Exact 350x216 Assembly of mainBox from xbox.wms -->
+                <div class="xbox-biopod-unit" id="xbox-biopod">
+                    <!-- Main Bio-Pod Shell (main.png) -->
+                    <div class="biopod-main-shell"></div>
+
+                    <!-- Top Window Micro-Buttons -->
+                    <button type="button" class="biopod-win-btn min" id="btn-pod-min" title="Toggle Dome Shutter"></button>
+                    <button type="button" class="biopod-win-btn full" id="btn-pod-full" title="Cycle Lens Mode"></button>
+                    <button type="button" class="biopod-win-btn close" id="btn-pod-close" title="Stop Playback"></button>
+
+                    <!-- Pulsing Xbox Jewel (x_pulse.png / x_pulse.gif) -->
+                    <button type="button" class="biopod-xbox-jewel" id="btn-pod-jewel" title="XBOX Jewel // Trigger Plasma Pulse"></button>
+
+                    <!-- Shutter Reverse Button (reverse_no.png at left:102, top:149) -->
+                    <button type="button" class="biopod-shutter-btn" id="btn-pod-shutter" title="Open / Close Green Dome Shutter"></button>
+
+                    <!-- Internal Lens Backdrop (screen_back_blur.jpg + nobang2.gif) -->
+                    <div class="biopod-lens-backdrop">
+                        <div class="biopod-nobang-gif" id="pod-nobang-layer"></div>
+                    </div>
+
+                    <!-- Embedded Lens EQ View (eq_back.png 169x69) -->
+                    <div class="biopod-lens-eq" id="pod-lens-eq"></div>
+
+                    <!-- Top Metadata & 32-Step Seek Arch (time_meta_back.png + seek.png) -->
+                    <div class="biopod-meta-arch">
+                        <div class="biopod-time-text" id="pod-time-readout">00:00</div>
+                        <div class="biopod-marquee-text" id="pod-marquee-text">QDG // XBOX LIVE SOUNDTRACK</div>
+                        <div class="biopod-seek-arch" id="pod-seek-arch" title="Trascina per fare Seek nella traccia (32 step)"></div>
+                    </div>
+
+                    <!-- Bottom Control Cradle & 30-Step Volume Arch (screen_buttons_back.png + vol.png) -->
+                    <div class="biopod-buttons-cradle">
+                        <div class="biopod-vol-arch" id="pod-vol-arch" title="Trascina per regolare il Volume (30 step)"></div>
+                        <button type="button" class="cradle-micro-btn cradle-eq-btn" id="btn-cradle-eq" title="Toggle Lens Equalizer"></button>
+                        <button type="button" class="cradle-micro-btn cradle-vis-btn" id="btn-cradle-vis" title="Cambia Effetto Visualizzatore"></button>
+                        <button type="button" class="cradle-micro-btn cradle-pl-btn" id="btn-cradle-pl" title="Salta a Traccia Casuale"></button>
+                    </div>
+
+                    <!-- Curved Lens Screen Cover & Translucent Green Dome Shutter (screen_cover.png + intro_anim.png) -->
+                    <div class="biopod-screen-cover">
+                        <div class="biopod-dome-iris" id="pod-dome-iris"></div>
+                    </div>
+
+                    <!-- Lower Transport Bar (up.gif / hover.gif / down.gif + pause_no.gif) -->
+                    <div class="biopod-transport-bar" id="pod-transport-bar">
+                        <div class="biopod-pause-overlay" id="pod-pause-overlay"></div>
+                        <button type="button" class="biopod-hit-btn play" id="btn-pod-play" title="Play / Pause"></button>
+                        <button type="button" class="biopod-hit-btn stop" id="btn-pod-stop" title="Stop"></button>
+                        <button type="button" class="biopod-hit-btn open" id="btn-pod-open" title="Next Radio Transmission"></button>
+                        <button type="button" class="biopod-hit-btn prev" id="btn-pod-prev" title="Previous Track"></button>
+                        <button type="button" class="biopod-hit-btn next" id="btn-pod-next" title="Next Track"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         MODULE 02: XBOX BIOS PLASMA VISUALIZER & TACTICAL SETTINGS DRAWER
+         Framed with 9-Slice Heatsink + x_vid_drawer.png (Brightness/Contrast/Hue/Sat)
+         ====================================================================== -->
+    <section class="xbox-heatsink-card bento-xbox-viz">
+        <div class="xh-edge-top"></div>
+        <div class="xh-edge-bot"></div>
+        <div class="xh-edge-left"></div>
+        <div class="xh-edge-right"></div>
+        <div class="xh-inner-top">
+            <span class="xh-card-title">02 // BIOS FLUBBER PLASMA & VIDEO DRAWER</span>
+        </div>
+        <div class="xh-inner-bot">
+            <span class="xh-card-footer-tag">60 FPS CATHODE MATRIX</span>
+            <span class="xh-card-footer-tag" id="viz-filter-readout">DSP MATRIX: NOMINAL</span>
+        </div>
+        <div class="xh-inner-left"></div>
+        <div class="xh-inner-right"></div>
+        <div class="xh-corner-tl"></div>
+        <div class="xh-corner-tr"><button type="button" class="xh-close-led-btn" id="btn-reset-viz-filters" title="Reset Matrix Sliders"></button></div>
+        <div class="xh-corner-bl"></div>
+        <div class="xh-corner-br"></div>
+
+        <div class="xh-card-body">
+            <!-- Main 60FPS Plasma Viewport -->
+            <div class="xbox-viz-viewport" id="xbox-viz-stage">
+                <canvas id="xbox-plasma-canvas"></canvas>
+
+                <div class="xbox-viz-hud-top">
+                    <span class="xbox-stat-pill">CH_X02 // DIRECT-SOUND 3D</span>
+                    <div class="viz-mode-pills">
+                        <button type="button" class="xbox-mode-pill active" data-vmode="flubber">BIOS FLUBBER</button>
+                        <button type="button" class="xbox-mode-pill" data-vmode="xray">X-RAY SCOPE</button>
+                        <button type="button" class="xbox-mode-pill" data-vmode="ring">JEWEL RING</button>
+                    </div>
+                </div>
+
+                <div class="xbox-viz-hud-bottom">
+                    <div>
+                        <h2 class="viz-track-headline" id="xbox-now-title">HALO // MJOLNIR MIX (QDG DUB)</h2>
+                        <div class="viz-track-subline" id="xbox-now-artist">DJ MARCO BETTIN // XBOX SOUNDTRACK ARCHIVE</div>
+                    </div>
+                    <span class="xbox-stat-pill" id="xbox-time-chip">00:00 / 03:42</span>
+                </div>
+            </div>
+
+            <!-- Authentic Xbox Video/DSP Settings Drawer (x_vid_drawer.png 223x112) -->
+            <div class="xbox-drawer-dock">
+                <div class="xbox-vid-drawer" id="xbox-vid-drawer">
+                    <!-- 6-Button Mini Transport Strip (x_d_no.png at left:60, top:25) -->
+                    <div class="drawer-mini-transport">
+                        <button type="button" class="drawer-mini-hit" data-dact="prev" title="Previous"></button>
+                        <button type="button" class="drawer-mini-hit" data-dact="play" title="Play"></button>
+                        <button type="button" class="drawer-mini-hit" data-dact="pause" title="Pause"></button>
+                        <button type="button" class="drawer-mini-hit" data-dact="stop" title="Stop"></button>
+                        <button type="button" class="drawer-mini-hit" data-dact="open" title="Next Station"></button>
+                        <button type="button" class="drawer-mini-hit" data-dact="next" title="Next"></button>
+                    </div>
+
+                    <!-- 4 Interactive Matrix Sliders (BRIGHTNESS, CONTRAST, HUE, SATURATION) -->
+                    <button type="button" class="drawer-reset-hit" style="top:45px;" data-reset="brightness" title="Reset Brightness"></button>
+                    <div class="drawer-slider-track" style="top:45px;" data-param="brightness" title="Trascina per regolare Brightness">
+                        <div class="drawer-slider-thumb" id="dthumb-brightness"></div>
+                    </div>
+
+                    <button type="button" class="drawer-reset-hit" style="top:55px;" data-reset="contrast" title="Reset Contrast"></button>
+                    <div class="drawer-slider-track" style="top:55px;" data-param="contrast" title="Trascina per regolare Contrast">
+                        <div class="drawer-slider-thumb" id="dthumb-contrast"></div>
+                    </div>
+
+                    <button type="button" class="drawer-reset-hit" style="top:65px;" data-reset="hue" title="Reset Hue"></button>
+                    <div class="drawer-slider-track" style="top:65px;" data-param="hue" title="Trascina per regolare Hue Shift">
+                        <div class="drawer-slider-thumb" id="dthumb-hue"></div>
+                    </div>
+
+                    <button type="button" class="drawer-reset-hit" style="top:75px;" data-reset="saturation" title="Reset Saturation"></button>
+                    <div class="drawer-slider-track" style="top:75px;" data-param="saturation" title="Trascina per regolare Saturation & Sub-Drive">
+                        <div class="drawer-slider-thumb" id="dthumb-saturation"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         MODULE 03: 10-BAND RADIOACTIVE PLASMA EQUALIZER (eq_back.png + thumb.png)
+         ====================================================================== -->
+    <section class="xbox-heatsink-card bento-xbox-eq">
+        <div class="xh-edge-top"></div>
+        <div class="xh-edge-bot"></div>
+        <div class="xh-edge-left"></div>
+        <div class="xh-edge-right"></div>
+        <div class="xh-inner-top">
+            <span class="xh-card-title">03 // 10-BAND PLASMA EQUALIZER</span>
+        </div>
+        <div class="xh-inner-bot">
+            <span class="xh-card-footer-tag">31Hz - 16kHz BIQUAD DSP</span>
+            <span class="xh-card-footer-tag">DRAG OR WHEEL</span>
+        </div>
+        <div class="xh-inner-left"></div>
+        <div class="xh-inner-right"></div>
+        <div class="xh-corner-tl"></div>
+        <div class="xh-corner-tr"><button type="button" class="xh-close-led-btn" id="btn-eq-flat" title="Reset Flat 0 dB"></button></div>
+        <div class="xh-corner-bl"></div>
+        <div class="xh-corner-br"></div>
+
+        <div class="xh-card-body">
+            <div class="xbox-eq-deck">
+                <!-- Authentic eq_back.png (2x magnified to 338x138) -->
+                <div class="xbox-eq-plasma-box" id="xbox-eq-box">
+                    <button type="button" class="xbox-eq-arrow prev" id="btn-eq-prev" title="Preset Precedente"></button>
+                    <div id="xbox-eq-bands-container"></div>
+                    <div class="xbox-eq-preset-label" id="xbox-eq-preset-name">XBOX SUB-PLASMA</div>
+                    <button type="button" class="xbox-eq-arrow next" id="btn-eq-next" title="Preset Successivo"></button>
+                </div>
+
+                <!-- Interactive Xbox Synth Sound Stingers -->
+                <div class="xbox-synth-pads">
+                    <button type="button" class="xbox-synth-pad" id="pad-bios-swell">
+                        <span>✳ BIOS SWELL</span>
+                        <small>2001 CHIME</small>
+                    </button>
+                    <button type="button" class="xbox-synth-pad" id="pad-shield-charge">
+                        <span>🛡 SHIELD RECHARGE</span>
+                        <small>MJOLNIR FX</small>
+                    </button>
+                    <button type="button" class="xbox-synth-pad" id="pad-plasma-drop">
+                        <span>☢ PLASMA DROP</span>
+                        <small>SUB-BASS 50Hz</small>
+                    </button>
+                    <button type="button" class="xbox-synth-pad" id="pad-overclock-pitch">
+                        <span>⚡ SPEED WARP</span>
+                        <small id="warp-rate-label">1.00x</small>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         MODULE 04: 2002 XBOX CONTENT SHOWCASE DECK (c_xbox.jpg / c_games.jpg / c_web.jpg)
+         ====================================================================== -->
+    <section class="xbox-heatsink-card bento-xbox-content">
+        <div class="xh-edge-top"></div>
+        <div class="xh-edge-bot"></div>
+        <div class="xh-edge-left"></div>
+        <div class="xh-edge-right"></div>
+        <div class="xh-inner-top">
+            <span class="xh-card-title">04 // 2002 XBOX ARCHIVE DECK</span>
+        </div>
+        <div class="xh-inner-bot">
+            <span class="xh-card-footer-tag" id="content-slide-counter">SLIDE 01 / 05</span>
+            <span class="xh-card-footer-tag">THE SKINS FACTORY</span>
+        </div>
+        <div class="xh-inner-left"></div>
+        <div class="xh-inner-right"></div>
+        <div class="xh-corner-tl"></div>
+        <div class="xh-corner-tr"><button type="button" class="xh-close-led-btn" id="btn-content-next-top" title="Next Card"></button></div>
+        <div class="xh-corner-bl"></div>
+        <div class="xh-corner-br"></div>
+
+        <div class="xh-card-body">
+            <div class="xbox-content-deck">
+                <div class="xbox-content-screen">
+                    <div class="xbox-content-banner" id="xbox-content-banner"></div>
+                    <div class="xbox-content-text-area">
+                        <div class="xbox-content-gif-text" id="xbox-content-gif"></div>
+                        <div class="xbox-content-nav-strip">
+                            <img src="assets/xbox/xbox_text.png" alt="XBOX.COM" height="14">
+                            <span style="font-family:'Share Tech Mono'; font-size:9px; color:#9ef161;" id="xbox-content-tag">SYSTEM ARCHIVE</span>
+                        </div>
+                        <div class="xbox-content-arrows">
+                            <button type="button" class="xbox-c-arrow up" id="btn-c-up" title="Slide Precedente"></button>
+                            <button type="button" class="xbox-c-arrow down" id="btn-c-down" title="Slide Successiva"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         MODULE 05: XBOX SOUNDTRACK PLAYLIST (plBox with shuff_no.png & rep_no.png)
+         ====================================================================== -->
+    <section class="xbox-heatsink-card bento-xbox-playlist">
+        <div class="xh-edge-top"></div>
+        <div class="xh-edge-bot"></div>
+        <div class="xh-edge-left"></div>
+        <div class="xh-edge-right"></div>
+        <div class="xh-inner-top">
+            <span class="xh-card-title">05 // XBOX SOUNDTRACK ROTATION</span>
+        </div>
+        <div class="xh-inner-bot">
+            <span class="xh-card-footer-tag" id="pl-mode-readout">SHUFFLE: OFF // REPEAT: ON</span>
+            <span class="xh-card-footer-tag">6 TRACKS READY</span>
+        </div>
+        <div class="xh-inner-left"></div>
+        <div class="xh-inner-right"></div>
+        <!-- Authentic Shuffle & Repeat Buttons inside Top-Left Heatsink Corner (from xbox.wms L251-259) -->
+        <div class="xh-corner-tl">
+            <button type="button" class="xh-shuff-btn" id="btn-pl-shuffle" title="Enable / Disable Shuffle"></button>
+            <button type="button" class="xh-rep-btn active" id="btn-pl-repeat" title="Enable / Disable Repeat"></button>
+        </div>
+        <div class="xh-corner-tr"><button type="button" class="xh-close-led-btn" title="Playlist Ready"></button></div>
+        <div class="xh-corner-bl"></div>
+        <div class="xh-corner-br"></div>
+
+        <div class="xh-card-body">
+            <div class="xbox-playlist-header">
+                <span>CH#</span>
+                <span>NAME // TRANSMISSION</span>
+                <span class="xbox-pl-header-album">ALBUM // SECTOR</span>
+                <span>TIME</span>
+            </div>
+            <div class="xbox-playlist-table" id="xbox-playlist-rows">
+                <!-- Populated dynamically by js/xbox/xbox.js -->
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script type="module" src="js/xbox/xbox.js"></script>
+</body>
+</html>
